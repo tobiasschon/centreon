@@ -84,17 +84,8 @@ function hidePasswordInCommand($command_name, $host_id, $service_id)
         . "AND svc_svc_id IN ('" . implode('\', \'', $arrSvcTplID) . "')";
     $res = $pearDB->query($query_custom_macro_svc);
 
-    $arrMacroPassword = array();
     while ($row = $res->fetchRow()) {
-        $arrMacroPassword = array_merge(
-            $arrMacroPassword,
-            array($row['svc_macro_name'])
-        );
-        $executed_check_command = getOptionName(
-            $command_line_with_macro,
-            $executed_check_command,
-            $row['svc_macro_name']
-        );
+        $command_line_with_macro = str_replace($row['svc_macro_name'], '***', $command_line_with_macro);
     }
 
     /* Get custom macros from hosts and templates */
@@ -105,16 +96,13 @@ function hidePasswordInCommand($command_name, $host_id, $service_id)
     $res = $pearDB->query($query_custom_macro_host);
 
     while ($row = $res->fetchRow()) {
-        $arrMacroPassword = array_merge(
-            $arrMacroPassword,
-            array($row['host_macro_name'])
-        );
-        $executed_check_command = getOptionName(
-            $command_line_with_macro,
-            $executed_check_command,
-            $row['host_macro_name']
-        );
+        $command_line_with_macro = str_replace($row['host_macro_name'], '***', $command_line_with_macro);
     }
+
+    $executed_check_command = getOptionName2(
+        $command_line_with_macro,
+        $executed_check_command
+    );
 
     return $executed_check_command;
 }
@@ -147,6 +135,28 @@ function getOptionName($command_with_macro, $executed_command, $macro)
         }
     }
 
+    return $executed_command;
+}
+
+/**
+ * Get the name of the option in the command line corresponding
+ * to the custom macro password type
+ *
+ * @param string $command_with_macro Configuration command line
+ * @param string $executed_command   Executed command line
+ *
+ * @return string
+ */
+function getOptionName2($command_with_macro, $executed_command)
+{
+
+    $tabMacro = explode(' ', $command_with_macro);
+    $tabValue = explode(' ', $executed_command);
+    foreach(array_keys($tabMacro, "***") as $key){
+        $tabValue[$key] = '***';
+    }
+
+    $executed_command = implode(' ', $tabValue);
     return $executed_command;
 }
 
