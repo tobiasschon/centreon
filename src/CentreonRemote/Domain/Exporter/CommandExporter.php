@@ -127,9 +127,9 @@ class CommandExporter extends ExporterServiceAbstract implements ExporterService
             $exportPathFile = $this->getFile(static::EXPORT_FILE_COMMAND);
             $result = $this->_parse($exportPathFile);
 
-            foreach ($result as $data) {
-                $db->insert('command', $data);
-            }
+            $db->insertBulk('command', $result);
+
+            unset($result);
         })();
 
         // insert command argument
@@ -137,9 +137,9 @@ class CommandExporter extends ExporterServiceAbstract implements ExporterService
             $exportPathFile = $this->getFile(static::EXPORT_FILE_COMMAND_ARG);
             $result = $this->_parse($exportPathFile);
 
-            foreach ($result as $data) {
-                $db->insert('command_arg_description', $dataRelation);
-            }
+            $db->insertBulk('command_arg_description', $result);
+
+            unset($result);
         })();
 
         // insert command macro
@@ -147,9 +147,9 @@ class CommandExporter extends ExporterServiceAbstract implements ExporterService
             $exportPathFile = $this->getFile(static::EXPORT_FILE_COMMAND_MACRO);
             $result = $this->_parse($exportPathFile);
 
-            foreach ($result as $data) {
-                $db->insert('on_demand_macro_command', $data);
-            }
+            $db->insertBulk('on_demand_macro_command', $result);
+
+            unset($result);
         })();
 
         // insert connector
@@ -157,9 +157,9 @@ class CommandExporter extends ExporterServiceAbstract implements ExporterService
             $exportPathFile = $this->getFile(static::EXPORT_FILE_CONNECTOR);
             $result = $this->_parse($exportPathFile);
 
-            foreach ($result as $data) {
-                $db->insert('connector', $data);
-            }
+            $db->insertBulk('connector', $result);
+
+            unset($result);
         })();
 
         // insert category
@@ -167,9 +167,9 @@ class CommandExporter extends ExporterServiceAbstract implements ExporterService
             $exportPathFile = $this->getFile(static::EXPORT_FILE_CATEGORY);
             $result = $this->_parse($exportPathFile);
 
-            foreach ($result as $data) {
-                $db->insert('command_categories', $data);
-            }
+            $db->insertBulk('command_categories', $result);
+
+            unset($result);
         })();
 
         // insert category relation
@@ -177,9 +177,9 @@ class CommandExporter extends ExporterServiceAbstract implements ExporterService
             $exportPathFile = $this->getFile(static::EXPORT_FILE_CATEGORY_RELATION);
             $result = $this->_parse($exportPathFile);
 
-            foreach ($result as $data) {
-                $db->insert('command_categories_relation', $data);
-            }
+            $db->insertBulk('command_categories_relation', $result);
+
+            unset($result);
         })();
 
         // restore foreign key checks

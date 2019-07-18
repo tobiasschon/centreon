@@ -165,19 +165,19 @@ class ServiceExporter extends ExporterServiceAbstract
             $exportPathFile = $this->getFile(static::EXPORT_FILE_HOST_RELATION);
             $result = $this->_parse($exportPathFile);
 
-            foreach ($result as $data) {
-                $db->insert('host_service_relation', $data);
-            }
+            $db->insertBulk('host_service_relation', $result);
+
+            unset($result);
         })();
 
-        // insert host relation
+        // insert service
         (function () use ($db) {
             $exportPathFile = $this->getFile(static::EXPORT_FILE_SERVICE);
             $result = $this->_parse($exportPathFile);
 
-            foreach ($result as $data) {
-                $db->insert('service', $data);
-            }
+            $db->insertBulk('service', $result);
+
+            unset($result);
         })();
 
         // insert group
@@ -185,9 +185,9 @@ class ServiceExporter extends ExporterServiceAbstract
             $exportPathFile = $this->getFile(static::EXPORT_FILE_GROUP);
             $result = $this->_parse($exportPathFile);
 
-            foreach ($result as $data) {
-                $db->insert('servicegroup', $data);
-            }
+            $db->insertBulk('servicegroup', $result);
+
+            unset($result);
         })();
 
         // insert group relation
@@ -195,9 +195,9 @@ class ServiceExporter extends ExporterServiceAbstract
             $exportPathFile = $this->getFile(static::EXPORT_FILE_GROUP_RELATION);
             $result = $this->_parse($exportPathFile);
 
-            foreach ($result as $data) {
-                $db->insert('servicegroup_relation', $data);
-            }
+            $db->insertBulk('servicegroup_relation', $result);
+
+            unset($result);
         })();
 
         // insert category
@@ -205,9 +205,9 @@ class ServiceExporter extends ExporterServiceAbstract
             $exportPathFile = $this->getFile(static::EXPORT_FILE_CATEGORY);
             $result = $this->_parse($exportPathFile);
 
-            foreach ($result as $data) {
-                $db->insert('service_categories', $data);
-            }
+            $db->insertBulk('service_categories', $result);
+
+            unset($result);
         })();
 
         // insert category relation
@@ -215,9 +215,9 @@ class ServiceExporter extends ExporterServiceAbstract
             $exportPathFile = $this->getFile(static::EXPORT_FILE_CATEGORY_RELATION);
             $result = $this->_parse($exportPathFile);
 
-            foreach ($result as $data) {
-                $db->insert('service_categories_relation', $data);
-            }
+            $db->insertBulk('service_categories_relation', $result);
+
+            unset($result);
         })();
 
         // insert macro
@@ -225,9 +225,9 @@ class ServiceExporter extends ExporterServiceAbstract
             $exportPathFile = $this->getFile(static::EXPORT_FILE_MACRO);
             $result = $this->_parse($exportPathFile);
 
-            foreach ($result as $data) {
-                $db->insert('on_demand_macro_service', $data);
-            }
+            $db->insertBulk('on_demand_macro_service', $result);
+
+            unset($result);
         })();
 
         // insert info
@@ -235,9 +235,9 @@ class ServiceExporter extends ExporterServiceAbstract
             $exportPathFile = $this->getFile(static::EXPORT_FILE_INFO);
             $result = $this->_parse($exportPathFile);
 
-            foreach ($result as $data) {
-                $db->insert('extended_service_information', $data);
-            }
+            $db->insertBulk('extended_service_information', $result);
+
+            unset($result);
         })();
 
         // restore foreign key checks
