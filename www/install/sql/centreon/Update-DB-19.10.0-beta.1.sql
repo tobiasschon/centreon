@@ -75,8 +75,3 @@ ALTER TABLE ods_view_details MODIFY metric_id int(11);
 
 -- Add trap filter
 ALTER TABLE `traps` MODIFY COLUMN `traps_exec_interval_type` ENUM('0','1','2','3') NULL DEFAULT '0';
-
---
--- Add new field for Remote Server option
---
-ALTER TABLE nagios_server ADD COLUMN IF NOT EXISTS `remote_server_centcore_ssh_proxy` enum('0','1') NOT NULL DEFAULT '1';
