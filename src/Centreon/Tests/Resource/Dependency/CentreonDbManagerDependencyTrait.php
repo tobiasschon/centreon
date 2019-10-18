@@ -1,4 +1,5 @@
 <?php
+
 /*
  * Copyright 2005-2019 Centreon
  * Centreon is developed by : Julien Mathis and Romain Le Merlus under
@@ -67,6 +68,6 @@ trait CentreonDbManagerDependencyTrait
     public function setUpCentreonDbManager(Container $container)
     {
 
-        $container[ServiceProvider::CENTREON_DB_MANAGER] = new CentreonDBManagerService;
+        $container[ServiceProvider::CENTREON_DB_MANAGER] = new CentreonDBManagerService();
     }
 }

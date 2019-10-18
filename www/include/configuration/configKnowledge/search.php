@@ -120,9 +120,9 @@ if ($searchOptions['poller']) {
     $searchPoller = "<option value='0'></option>";
     while ($row = $res->fetchRow()) {
         if (isset($_REQUEST['searchPoller']) && $row['id'] == $_REQUEST['searchPoller']) {
-            $searchPoller .= "<option value='".$row['id']."' selected>" . $row['name'] . "</option>";
+            $searchPoller .= "<option value='" . $row['id'] . "' selected>" . $row['name'] . "</option>";
         } else {
-            $searchPoller .= "<option value='".$row['id']."'>" .$row['name']. "</option>";
+            $searchPoller .= "<option value='" . $row['id'] . "'>" . $row['name'] . "</option>";
         }
     }
     $tpl->assign('searchPoller', $searchPoller);
@@ -138,9 +138,9 @@ if ($searchOptions['hostgroup']) {
     $searchHostgroup = "<option value='0'></option>";
     while ($row = $res->fetchRow()) {
         if (isset($_REQUEST['searchHostgroup']) && $row['hg_id'] == $_REQUEST['searchHostgroup']) {
-            $searchHostgroup .= "<option value ='".$row['hg_id']."' selected>" . $row['hg_name'] . "</option>";
+            $searchHostgroup .= "<option value ='" . $row['hg_id'] . "' selected>" . $row['hg_name'] . "</option>";
         } else {
-            $searchHostgroup .= "<option value ='".$row['hg_id']."'>" . $row['hg_name'] . "</option>";
+            $searchHostgroup .= "<option value ='" . $row['hg_id'] . "'>" . $row['hg_name'] . "</option>";
         }
     }
     $tpl->assign('searchHostgroup', $searchHostgroup);
@@ -156,9 +156,9 @@ if ($searchOptions['servicegroup']) {
     $searchServicegroup = "<option value='0'></option>";
     while ($row = $res->fetchRow()) {
         if (isset($_REQUEST['searchServicegroup']) && $row['sg_id'] == $_REQUEST['searchServicegroup']) {
-            $searchServicegroup .= "<option value ='".$row['sg_id']."' selected>" . $row['sg_name'] . "</option>";
+            $searchServicegroup .= "<option value ='" . $row['sg_id'] . "' selected>" . $row['sg_name'] . "</option>";
         } else {
-            $searchServicegroup .= "<option value ='".$row['sg_id']."'>" . $row['sg_name'] . "</option>";
+            $searchServicegroup .= "<option value ='" . $row['sg_id'] . "'>" . $row['sg_name'] . "</option>";
         }
     }
     $tpl->assign('searchServicegroup', $searchServicegroup);

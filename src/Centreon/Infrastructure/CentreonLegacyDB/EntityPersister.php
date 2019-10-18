@@ -1,4 +1,5 @@
 <?php
+
 /*
  * Copyright 2005-2019 Centreon
  * Centreon is developed by : Julien Mathis and Romain Le Merlus under
@@ -70,7 +71,7 @@ class EntityPersister
      */
     public function load(array $data): object
     {
-        $entity = new $this->entityClassName;
+        $entity = new $this->entityClassName();
 
         // load entity with data
         foreach ($data as $column => $value) {

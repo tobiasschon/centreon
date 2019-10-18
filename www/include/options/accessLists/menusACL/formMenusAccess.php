@@ -238,7 +238,8 @@ while ($topo1 = $DBRESULT1->fetchRow()) {
             $acl_topos2[$a]["childs"][$b]["childs"][$c] = array();
             $acl_topos2[$a]["childs"][$b]["childs"][$c]["name"] = _($topo3["topology_name"]);
 
-            if (isset($groupMenus[$topo3["topology_group"]]) &&
+            if (
+                isset($groupMenus[$topo3["topology_group"]]) &&
                 isset($groupMenus[$topo3["topology_group"]][$topo3["topology_parent"]])
             ) {
                 $acl_topos2[$a]["childs"][$b]["childs"][$c]["group"] =

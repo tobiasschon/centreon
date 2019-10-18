@@ -1,4 +1,5 @@
 <?php
+
 /*
  * Copyright 2005-2019 Centreon
  * Centreon is developed by : Julien Mathis and Romain Le Merlus under
@@ -87,7 +88,7 @@ class UniqueEntityValidator extends ConstraintValidator
         }
 
         foreach ($fields as $field) {
-            $methodValueGetter = 'get'. ucfirst($field);
+            $methodValueGetter = 'get' . ucfirst($field);
             $value = $entity->$methodValueGetter();
 
             $result = $this->db->getRepository($constraint->repository)

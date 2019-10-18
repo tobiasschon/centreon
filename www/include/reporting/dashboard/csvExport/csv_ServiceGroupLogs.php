@@ -83,7 +83,8 @@ $servicegroupId = filter_var(
 $allowedServicegroup = $centreon->user->access->getServiceGroupAclConf(null, 'broker');
 
 //checking if the user has ACL rights for this resource
-if (!$centreon->user->admin
+if (
+    !$centreon->user->admin
     && $servicegroupId !== null
     && !array_key_exists($servicegroupId, $allowedServicegroup)
 ) {
@@ -207,7 +208,7 @@ foreach ($stats as $key => $tab) {
             . $tab["UNKNOWN_MP"] . "%;"
             . $tab["UNKNOWN_A"] . ";"
             . $tab["MAINTENANCE_TP"] . " %;"
-            . $tab["UNDETERMINED_TP"]. "%\n";
+            . $tab["UNDETERMINED_TP"] . "%\n";
     }
 }
 echo "\n\n";

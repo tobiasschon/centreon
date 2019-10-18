@@ -51,7 +51,7 @@ class PollerConfigurationRequestBridge
      */
     public function collectDataFromRequest(): void
     {
-        $isRemoteServerWizard = (new ServerWizardIdentity)->requestConfigurationIsRemote();
+        $isRemoteServerWizard = (new ServerWizardIdentity())->requestConfigurationIsRemote();
 
         if ($isRemoteServerWizard) { // configure remote server
             // pollers linked to the remote server
@@ -69,7 +69,7 @@ class PollerConfigurationRequestBridge
      */
     public function collectDataFromAdditionalRemoteServers(): void
     {
-        $isRemoteServerWizard = (new ServerWizardIdentity)->requestConfigurationIsRemote();
+        $isRemoteServerWizard = (new ServerWizardIdentity())->requestConfigurationIsRemote();
 
         $linkedRemotes = [];
         if (!$isRemoteServerWizard && isset($_POST['linked_remote_slaves'])) {
@@ -112,7 +112,7 @@ class PollerConfigurationRequestBridge
         $data = [];
 
         foreach ($results as $result) {
-            $poller = new PollerServer;
+            $poller = new PollerServer();
             $poller->setId($result->id);
             $poller->setName($result->name);
             $poller->setIp($result->ip);
@@ -138,7 +138,7 @@ class PollerConfigurationRequestBridge
 
         if (count($results)) {
             $remoteData = reset($results);
-            $remoteServer = new PollerServer;
+            $remoteServer = new PollerServer();
             $remoteServer->setId($remoteData->id);
             $remoteServer->setName($remoteData->name);
             $remoteServer->setIp($remoteData->ip);

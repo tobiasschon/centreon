@@ -1,4 +1,5 @@
 <?php
+
 /*
  * Copyright 2005-2019 Centreon
  * Centreon is developed by : Julien Mathis and Romain Le Merlus under
@@ -49,10 +50,9 @@ class CheckListOfIdsTraitTest extends TestCase
     {
         $ids = [1, 3, 4];
 
-        $db = new CentreonDB;
-        $manager = new CentreonDBManagerService;
-        $trait = new class($db, $manager) extends RepositoryMock {
-
+        $db = new CentreonDB();
+        $manager = new CentreonDBManagerService();
+        $trait = new class ($db, $manager) extends RepositoryMock {
             use checkListOfIdsTrait;
 
             public function checkListOfIds(

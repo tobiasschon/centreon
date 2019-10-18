@@ -1,4 +1,5 @@
 <?php
+
 /*
  * Copyright 2005-2019 Centreon
  * Centreon is developed by : Julien Mathis and Romain Le Merlus under
@@ -53,15 +54,15 @@ use CentreonUser;
  */
 class TopologyWebserviceTest extends TestCase
 {
-    use Traits\WebServiceAuthorizePublicTrait,
-        TestCaseExtensionTrait,
-        Dependency\CentreonDbManagerDependencyTrait;
+    use Traits\WebServiceAuthorizePublicTrait;
+    use TestCaseExtensionTrait;
+    use Dependency\CentreonDbManagerDependencyTrait;
 
     protected function setUp()
     {
         // dependencies
-        $this->container = new Container;
-        $this->db = new CentreonDB;
+        $this->container = new Container();
+        $this->db = new CentreonDB();
         
         $this->setUpCentreonDbManager($this->container);
 

@@ -7,7 +7,7 @@ $help = array();
 $help['tip_knowledge_wiki_url'] = dgettext(
     'help',
     "Knowledge wiki url. "
-    ."Exemple: http://wiki/mywiki"
+    . "Exemple: http://wiki/mywiki"
 );
 $help['tip_knowledge_wiki_account'] = dgettext(
     'help',

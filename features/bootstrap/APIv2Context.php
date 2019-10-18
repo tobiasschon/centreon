@@ -1,4 +1,5 @@
 <?php
+
 /*
  ** Copyright 2019 Centreon
  **
@@ -63,11 +64,11 @@ class APIv2Context extends CentreonAPIContext
                     ],
                 ],
             ],
-        ]);
+            ]);
 
         $data = json_decode($response->getBody());
 
-        if (empty($data->security->token)){
+        if (empty($data->security->token)) {
             throw new \Exception('Could not get authentication token from API.');
         }
 

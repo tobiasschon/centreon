@@ -1,4 +1,5 @@
 <?php
+
 /*
  * Copyright 2005-2019 Centreon
  * Centreon is developed by : Julien Mathis and Romain Le Merlus under
@@ -54,7 +55,7 @@ class EntityPersisterTest extends TestCase
             return "{$value} with formatter";
         });
         
-        $entity = new EntityMock;
+        $entity = new EntityMock();
         $entity->setId(2);
         $entity->setName('test name with formatter');
 

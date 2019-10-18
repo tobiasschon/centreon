@@ -118,7 +118,8 @@ for ($im = 0; $metrics = $DBRESULT2->fetchRow(); $im++) {
     $metric["metric_name"] = str_replace("#S#", "/", $metric["metric_name"]);
     $metric["metric_name"] = str_replace("#BS#", "\\", $metric["metric_name"]);
     $metric["unit_name"] = $metrics["unit_name"];
-    if (!isset($metrics["data_source_type"]) ||
+    if (
+        !isset($metrics["data_source_type"]) ||
         isset($metrics["data_source_type"]) &&
         $metrics["data_source_type"] == null
     ) {

@@ -1,4 +1,5 @@
 <?php
+
 /*
  * Copyright 2005-2019 Centreon
  * Centreon is developped by : Julien Mathis and Romain Le Merlus under
@@ -51,9 +52,8 @@ use CentreonModule\Tests\Resource\Traits\SourceDependencyTrait;
 
 class CentreonModuleServiceTest extends TestCase
 {
-
-    use TestCaseExtensionTrait,
-        SourceDependencyTrait;
+    use TestCaseExtensionTrait;
+    use SourceDependencyTrait;
 
     protected function setUp()
     {
@@ -61,7 +61,7 @@ class CentreonModuleServiceTest extends TestCase
             ->setMethods([
                 'initSources',
             ])
-            ->setConstructorArgs([new ContainerWrap(new Container)])
+            ->setConstructorArgs([new ContainerWrap(new Container())])
             ->getMock()
         ;
 
@@ -253,10 +253,10 @@ class CentreonModuleServiceTest extends TestCase
      */
     public function testInitSources()
     {
-        $container = new Container;
+        $container = new Container();
         $container['finder'] = null;
         $container['configuration'] = $this->createMock(Configuration::class);
-        $container[\Centreon\ServiceProvider::CENTREON_DB_MANAGER] = new Mock\CentreonDBManagerService;
+        $container[\Centreon\ServiceProvider::CENTREON_DB_MANAGER] = new Mock\CentreonDBManagerService();
 
         // Data sets
         $queries = array_merge(ModuleSourceTest::$sqlQueryVsData, WidgetSourceTest::$sqlQueryVsData);
@@ -291,7 +291,7 @@ class CentreonModuleServiceTest extends TestCase
         ];
         $list = [
             (function () {
-                    $entity = new Module;
+                    $entity = new Module();
                     $entity->setName('B');
                     $entity->setInstalled(true);
                     $entity->setUpdated(true);
@@ -299,7 +299,7 @@ class CentreonModuleServiceTest extends TestCase
                     return $entity;
             })(),
             (function () {
-                    $entity = new Module;
+                    $entity = new Module();
                     $entity->setName('A');
                     $entity->setInstalled(true);
                     $entity->setUpdated(true);
@@ -307,7 +307,7 @@ class CentreonModuleServiceTest extends TestCase
                     return $entity;
             })(),
             (function () {
-                    $entity = new Module;
+                    $entity = new Module();
                     $entity->setName('B');
                     $entity->setInstalled(true);
                     $entity->setUpdated(false);
@@ -315,7 +315,7 @@ class CentreonModuleServiceTest extends TestCase
                     return $entity;
             })(),
             (function () {
-                    $entity = new Module;
+                    $entity = new Module();
                     $entity->setName('C');
                     $entity->setInstalled(true);
                     $entity->setUpdated(false);
@@ -323,7 +323,7 @@ class CentreonModuleServiceTest extends TestCase
                     return $entity;
             })(),
             (function () {
-                    $entity = new Module;
+                    $entity = new Module();
                     $entity->setName('D');
                     $entity->setInstalled(false);
                     $entity->setUpdated(false);
@@ -331,7 +331,7 @@ class CentreonModuleServiceTest extends TestCase
                     return $entity;
             })(),
             (function () {
-                    $entity = new Module;
+                    $entity = new Module();
                     $entity->setName('F');
                     $entity->setInstalled(false);
                     $entity->setUpdated(false);

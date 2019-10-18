@@ -65,7 +65,7 @@ if (isset($_GET["o"]) && $_GET["o"] == "r") {
                 if ($i) {
                     $query .= ", ";
                 }
-                $query .= "'".$key."'";
+                $query .= "'" . $key . "'";
                 $i++;
             }
         }
@@ -151,11 +151,11 @@ function setO(_i) {
 <?php
 foreach (array('o1', 'o2') as $option) {
     $attrs = array(
-        'onchange'=>"javascript: " .
+        'onchange' => "javascript: " .
             "if (this.form.elements['" . $option . "'].selectedIndex == 1) " .
             "{setO(this.form.elements['" . $option . "'].value); submit();} " .
             "this.form.elements['" . $option . "'].selectedIndex = 0");
-    $form->addElement('select', $option, null, array(null=>_("More actions..."), "u"=>_("Reload ACL")), $attrs);
+    $form->addElement('select', $option, null, array(null => _("More actions..."), "u" => _("Reload ACL")), $attrs);
     $o1 = $form->getElement($option);
     $o1->setValue(null);
 }

@@ -526,7 +526,8 @@ class ACLActionsAccessContext extends CentreonContext
                     $this->currentPage = new ACLGroupConfigurationListingPage($this);
                     $this->currentPage = $this->currentPage->inspect($this->adminAclGroup['group_name']);
                     $object = $this->currentPage->getProperties();
-                    if (count($object['actions']) == 1 &&
+                    if (
+                        count($object['actions']) == 1 &&
                         $object['actions'][0] != $this->initialProperties['acl_name']
                     ) {
                         $this->tableau[] = $this->adminAclGroup['group_name'];
@@ -534,7 +535,8 @@ class ACLActionsAccessContext extends CentreonContext
                     $this->currentPage = new ACLGroupConfigurationListingPage($this);
                     $this->currentPage = $this->currentPage->inspect($this->nonAdminAclGroup['group_name']);
                     $object = $this->currentPage->getProperties();
-                    if (count($object['actions']) == 1 &&
+                    if (
+                        count($object['actions']) == 1 &&
                         $object['actions'][0] != $this->initialProperties['acl_name']
                     ) {
                         $this->tableau[] = $this->nonAdminAclGroup['group_name'];
@@ -717,7 +719,8 @@ class ACLActionsAccessContext extends CentreonContext
                     $this->currentPage = new ACLGroupConfigurationListingPage($this);
                     $this->currentPage = $this->currentPage->inspect($this->nonAdminAclGroup['group_name']);
                     $object = $this->currentPage->getProperties();
-                    if (count($object['actions']) != 1 &&
+                    if (
+                        count($object['actions']) != 1 &&
                         $object['actions'][0] != $this->initialProperties['acl_name']
                     ) {
                         $this->tableau[] = $this->nonAdminAclGroup['group_name'];
@@ -814,7 +817,8 @@ class ACLActionsAccessContext extends CentreonContext
                     $this->currentPage = new ACLGroupConfigurationListingPage($this);
                     $this->currentPage = $this->currentPage->inspect($this->nonAdminAclGroup['group_name']);
                     $object = $this->currentPage->getProperties();
-                    if (count($object['actions']) != 1 &&
+                    if (
+                        count($object['actions']) != 1 &&
                         $object['actions'][0] != $this->initialProperties['acl_name']
                     ) {
                         $this->tableau[] = $this->nonAdminAclGroup['group_name'];

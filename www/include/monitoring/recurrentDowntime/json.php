@@ -1,4 +1,5 @@
 <?php
+
 /* vim: set expandtab tabstop=4 shiftwidth=4 softtabstop=4: */
 
 /**
@@ -521,8 +522,8 @@ class Services_JSON
                     // return (float)$str;
 
                     // Return float or int, as appropriate
-                    return ((float)$str == (integer)$str)
-                        ? (integer)$str
+                    return ((float)$str == (int)$str)
+                        ? (int)$str
                         : (float)$str;
                 } elseif (preg_match('/^("|\').*(\1)$/s', $str, $m) && $m[1] == $m[2]) {
                     // STRINGS RETURNED IN UTF-8 FORMAT
@@ -561,7 +562,8 @@ class Services_JSON
                             case $substr_chrs_c_2 == '\\\'':
                             case $substr_chrs_c_2 == '\\\\':
                             case $substr_chrs_c_2 == '\\/':
-                                if (($delim == '"' && $substr_chrs_c_2 != '\\\'') ||
+                                if (
+                                    ($delim == '"' && $substr_chrs_c_2 != '\\\'') ||
                                     ($delim == "'" && $substr_chrs_c_2 != '\\"')
                                 ) {
                                     $utf8 .= $chrs{++$c};
@@ -702,7 +704,8 @@ class Services_JSON
                                     }
                                 }
                             }
-                        } elseif ((($chrs{$c} == '"') || ($chrs{$c} == "'")) &&
+                        } elseif (
+                            (($chrs{$c} == '"') || ($chrs{$c} == "'")) &&
                             ($top['what'] != SERVICES_JSON_IN_STR)
                         ) {
                             // found a quote, and we are not inside a string
@@ -711,7 +714,8 @@ class Services_JSON
                                 array('what' => SERVICES_JSON_IN_STR, 'where' => $c, 'delim' => $chrs{$c})
                             );
                             //print("Found start of string at {$c}\n");
-                        } elseif (($chrs{$c} == $top['delim']) &&
+                        } elseif (
+                            ($chrs{$c} == $top['delim']) &&
                             ($top['what'] == SERVICES_JSON_IN_STR) &&
                             ((strlen(substr($chrs, 0, $c)) - strlen(rtrim(substr($chrs, 0, $c), '\\'))) % 2 != 1)
                         ) {
@@ -721,7 +725,8 @@ class Services_JSON
                             array_pop($stk);
                             //print("Found end of string at {$c}: ".substr($chrs, $top['where'],
                             // (1 + 1 + $c - $top['where']))."\n");
-                        } elseif (($chrs{$c} == '[') &&
+                        } elseif (
+                            ($chrs{$c} == '[') &&
                             in_array(
                                 $top['what'],
                                 array(SERVICES_JSON_SLICE, SERVICES_JSON_IN_ARR, SERVICES_JSON_IN_OBJ)
@@ -735,7 +740,8 @@ class Services_JSON
                             array_pop($stk);
                             //print("Found end of array at {$c}: "
                             //.substr($chrs, $top['where'], (1 + $c - $top['where']))."\n");
-                        } elseif (($chrs{$c} == '{') &&
+                        } elseif (
+                            ($chrs{$c} == '{') &&
                             in_array(
                                 $top['what'],
                                 array(SERVICES_JSON_SLICE, SERVICES_JSON_IN_ARR, SERVICES_JSON_IN_OBJ)
@@ -749,7 +755,8 @@ class Services_JSON
                             array_pop($stk);
                             //print("Found end of object at {$c}: ".substr($chrs, $top['where'],
                             // (1 + $c - $top['where']))."\n");
-                        } elseif (($substr_chrs_c_2 == '/*') &&
+                        } elseif (
+                            ($substr_chrs_c_2 == '/*') &&
                             in_array(
                                 $top['what'],
                                 array(SERVICES_JSON_SLICE, SERVICES_JSON_IN_ARR, SERVICES_JSON_IN_OBJ)
@@ -786,7 +793,8 @@ class Services_JSON
     {
         if (class_exists('pear')) {
             throw new \Exception($data, $code);
-        } elseif (is_object($data) && (get_class($data) == 'services_json_error' ||
+        } elseif (
+            is_object($data) && (get_class($data) == 'services_json_error' ||
                 is_subclass_of($data, 'services_json_error'))
         ) {
             return true;

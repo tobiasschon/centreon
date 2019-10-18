@@ -48,15 +48,15 @@ $DBRESULT->closeCursor();
 /*
  * Var information to format the element
  */
-$attrsText        = array("size"=>"40");
-$attrsText2        = array("size"=>"5");
+$attrsText        = array("size" => "40");
+$attrsText2        = array("size" => "5");
 $attrSelect    = array("style" => "width: 220px;");
 $attrSelect2    = array("style" => "width: 50px;");
 
 /*
  * Form begin
  */
-$form = new HTML_QuickFormCustom('Form', 'post', "?p=".$p);
+$form = new HTML_QuickFormCustom('Form', 'post', "?p=" . $p);
 $form->addElement('header', 'title', _("Modify General Options"));
 
 /*
@@ -90,7 +90,7 @@ $form->addRule('rrdtool_path_bin', _("Can't execute binary"), 'is_executable_bin
  * Smarty template Init
  */
 $tpl = new Smarty();
-$tpl = initSmartyTpl($path.'rrdtool/', $tpl);
+$tpl = initSmartyTpl($path . 'rrdtool/', $tpl);
 
 $version = '';
 if (isset($gopt['rrdtool_path_bin']) && trim($gopt['rrdtool_path_bin']) != '') {
@@ -134,21 +134,21 @@ if ($form->validate()) {
     $form->freeze();
 }
 if (!$form->validate() && isset($_POST["gopt_id"])) {
-    print("<div class='msg' align='center'>"._("Impossible to validate, one or more field is incorrect")."</div>");
+    print("<div class='msg' align='center'>" . _("Impossible to validate, one or more field is incorrect") . "</div>");
 }
 
 $form->addElement(
     "button",
     "change",
     _("Modify"),
-    array("onClick"=>"javascript:window.location.href='?p=".$p."&o=rrdtool'", 'class' => 'btc bt_info')
+    array("onClick" => "javascript:window.location.href='?p=" . $p . "&o=rrdtool'", 'class' => 'btc bt_info')
 );
 
 // prepare help texts
 $helptext = "";
 include_once("help.php");
 foreach ($help as $key => $text) {
-    $helptext .= '<span style="display:none" id="help:'.$key.'">'.$text.'</span>'."\n";
+    $helptext .= '<span style="display:none" id="help:' . $key . '">' . $text . '</span>' . "\n";
 }
 $tpl->assign("helptext", $helptext);
 

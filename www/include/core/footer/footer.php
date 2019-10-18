@@ -62,7 +62,8 @@ if (!$min) {
                     <a href="https://www.centreon.com" title='Centreon Services Overview' target='_blank'>Centreon</a> |
                     <a href="https://github.com/centreon/centreon.git" title='Follow and Fork us on Github' target='_blank'>Github Project</a> |
                     <a href="https://centreon.github.io" title='Give us your feedback' target='_blank'>Slack</a>
-                    <?php if (!empty($centreon->optGen["centreon_support_email"])) { ?> |
+                    <?php if (!empty($centreon->optGen["centreon_support_email"])) {
+                        ?> |
                         <a href='mailto:<?php print $oreon->optGen["centreon_support_email"]; ?>'><?php print _("Help Desk"); ?></a>
                     <?php } ?>
                 </td>
@@ -158,7 +159,8 @@ if (!$min) {
 </script>
 <?php
 
-if ((isset($_GET["mini"]) && $_GET["mini"] == 1) ||
+if (
+    (isset($_GET["mini"]) && $_GET["mini"] == 1) ||
     (isset($_SESSION['fullScreen']) &&
         isset($_SESSION['fullScreen']['value']) &&
         $_SESSION['fullScreen']['value']
@@ -283,7 +285,7 @@ foreach ($jsdata as $k => $val) {
         });
         <?php
     }
-?>
+    ?>
 </script>
 </body>
 </html>

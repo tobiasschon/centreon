@@ -1,4 +1,5 @@
 <?php
+
 /*
  * Copyright 2005 - 2019 Centreon (https://www.centreon.com/)
  *
@@ -93,7 +94,8 @@ class HostCategory extends AbstractObject
         $stmt->execute();
         foreach ($stmt->fetchAll(PDO::FETCH_ASSOC) as $value) {
             if (isset($this->hostLinkedCache[$value['host_host_id']])) {
-                if ($this->hostSeverityCache[$value['hc_id']]['level'] <
+                if (
+                    $this->hostSeverityCache[$value['hc_id']]['level'] <
                     $this->hostSeverityCache[$this->hostLinkedCache[$value['host_host_id']]]
                 ) {
                     $this->hostLinkedCache[$value['host_host_id']] = $value['hc_id'];

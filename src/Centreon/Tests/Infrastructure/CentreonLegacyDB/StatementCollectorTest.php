@@ -1,4 +1,5 @@
 <?php
+
 /*
  * Copyright 2005-2019 Centreon
  * Centreon is developed by : Julien Mathis and Romain Le Merlus under
@@ -50,7 +51,7 @@ class StatementCollectorTest extends TestCase
         $key = 'key';
         $dataType = PDO::PARAM_INT;
 
-        $collector = new StatementCollector;
+        $collector = new StatementCollector();
 
         $collector->addColumn($key, $value, $dataType);
 
@@ -68,7 +69,7 @@ class StatementCollectorTest extends TestCase
         $key = 'key';
         $dataType = PDO::PARAM_BOOL;
 
-        $collector = new StatementCollector;
+        $collector = new StatementCollector();
 
         $collector->addValue($key, $value, $dataType);
 
@@ -86,7 +87,7 @@ class StatementCollectorTest extends TestCase
         $key = 'key';
         $dataType = PDO::PARAM_STR;
 
-        $collector = new StatementCollector;
+        $collector = new StatementCollector();
 
         $collector->addParam($key, $value);
 
@@ -110,7 +111,7 @@ class StatementCollectorTest extends TestCase
             $this->assertEquals($dataType, $_dataType);
         };
 
-        $collector = new StatementCollector;
+        $collector = new StatementCollector();
         $collector->addColumn($key, $value, $dataType);
         $collector->addValue($key, $value, $dataType);
         $collector->addParam($key, $value, $dataType);

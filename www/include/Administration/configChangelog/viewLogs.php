@@ -397,7 +397,8 @@ $tpl->assign('p', $p);
 $tpl->assign('elemArray', $elemArray);
 
 
-if (isset($_POST['searchO'])
+if (
+    isset($_POST['searchO'])
     || isset($_POST['searchU'])
     || isset($_POST['otype'])
     || !isset($_GET['object_id'])

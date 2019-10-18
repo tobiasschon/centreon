@@ -1,4 +1,5 @@
 <?php
+
 /*
  * Copyright 2005-2019 Centreon
  * Centreon is developed by : Julien Mathis and Romain Le Merlus under
@@ -84,7 +85,7 @@ class ServiceProvider implements AutoloadServiceProviderInterface
             return $service;
         };
 
-        $pimple[static::SYMFONY_FINDER] = function (Container $container) : Finder {
+        $pimple[static::SYMFONY_FINDER] = function (Container $container): Finder {
             return new Finder();
         };
 

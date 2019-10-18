@@ -218,7 +218,7 @@ class LinkedPollerConfigurationService
             $statement->execute();
             $configGRoupId = $statement->fetchColumn('config_group_id') + 1;
 
-            $defaultBrokerOutput = (new OutputForwardMaster)->getConfiguration();
+            $defaultBrokerOutput = (new OutputForwardMaster())->getConfiguration();
             $defaultBrokerOutput[0]['config_value'] = 'forward-to-' . str_replace(' ', '-', $remote->getName());
 
             $this->db->beginTransaction();

@@ -56,7 +56,7 @@ $aclObj = new CentreonACL($centreon->user->get_id());
 if (!$is_admin) {
     $hostTab = explode(',', $centreon->user->access->getHostsString('NAME', $pearDBndo));
     foreach ($hostTab as $value) {
-        if ($value == "'".$host_name."'") {
+        if ($value == "'" . $host_name . "'") {
             $flag_acl = 1;
         }
     }
@@ -64,20 +64,20 @@ if (!$is_admin) {
 $hostTab = array();
 
 if ($is_admin || ($flag_acl && !$is_admin)) {
-    $form = new HTML_QuickFormCustom('select_form', 'GET', "?p=".$p);
+    $form = new HTML_QuickFormCustom('select_form', 'GET', "?p=" . $p);
     $form->addElement('header', 'title', _("Command Options"));
 
-    $hosts = array($host_name=>$host_name);
+    $hosts = array($host_name => $host_name);
 
-    $form->addElement('select', 'host_name', _("Host Name"), $hosts, array("onChange" =>"this.form.submit();"));
+    $form->addElement('select', 'host_name', _("Host Name"), $hosts, array("onChange" => "this.form.submit();"));
 
     $form->addRule('host_name', _("Required Field"), 'required');
 
     $return_code = array("0" => "UP", "1" => "DOWN", "2" => "UNREACHABLE");
 
     $form->addElement('select', 'return_code', _("Check result"), $return_code);
-    $form->addElement('text', 'output', _("Check output"), array("size"=>"100"));
-    $form->addElement('text', 'dataPerform', _("Performance data"), array("size"=>"100"));
+    $form->addElement('text', 'output', _("Check output"), array("size" => "100"));
+    $form->addElement('text', 'dataPerform', _("Performance data"), array("size" => "100"));
 
     $form->addElement('hidden', 'author', $centreon->user->get_alias());
     $form->addElement('hidden', 'cmd', $cmd);

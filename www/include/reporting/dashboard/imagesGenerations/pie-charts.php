@@ -34,8 +34,8 @@
  */
 
 require_once realpath(dirname(__FILE__) . "/../../../../../config/centreon.config.php");
-require_once _CENTREON_PATH_."www/class/centreonSession.class.php";
-require_once _CENTREON_PATH_."www/class/centreon.class.php";
+require_once _CENTREON_PATH_ . "www/class/centreonSession.class.php";
+require_once _CENTREON_PATH_ . "www/class/centreon.class.php";
 
 CentreonSession::start(1);
 if (!isset($_SESSION['centreon'])) {
@@ -47,14 +47,14 @@ $oreon = $_SESSION["centreon"];
 $value = $_GET["value"];
 foreach ($value as $key => $val) {
     if ($val) {
-        if (!isset($oreon->optGen["color_".strtolower($key)])) {
+        if (!isset($oreon->optGen["color_" . strtolower($key)])) {
             //$color[] = $oreon->optGen["color_undetermined"];
             $color[] = '#F0F0F0';
             $val = str_replace(",", ".", $val);
             $data[] = $val;
             $legend[] = "";
         } else {
-            $color[] = $oreon->optGen["color_".strtolower($key)];
+            $color[] = $oreon->optGen["color_" . strtolower($key)];
             $val = str_replace(",", ".", $val);
             $data[] = $val;
             $legend[] = "";

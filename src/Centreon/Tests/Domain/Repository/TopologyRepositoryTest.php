@@ -1,4 +1,5 @@
 <?php
+
 namespace Centreon\Tests\Domain\Repository;
 
 use PHPUnit\Framework\TestCase;
@@ -17,7 +18,7 @@ class TopologyRepositoryTest extends TestCase
 
     protected function setUp()
     {
-        $db = new CentreonDB;
+        $db = new CentreonDB();
         $this->datasets = [
             [
                 'query' => "SELECT topology_url "

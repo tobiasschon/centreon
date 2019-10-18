@@ -234,7 +234,8 @@ function updateTimeperiod($tp_id, $params = array())
         for ($i = 0; $i <= $my_tab['nbOfExceptions']; $i++) {
             $exInput = "exceptionInput_" . $i;
             $exValue = "exceptionTimerange_" . $i;
-            if (isset($my_tab[$exInput]) &&
+            if (
+                isset($my_tab[$exInput]) &&
                 !isset($already_stored[strtolower($my_tab[$exInput])]) &&
                 $my_tab[$exInput]
             ) {
@@ -332,7 +333,8 @@ function insertTimeperiod($ret = array(), $exceptions = null)
         for ($i = 0; $i <= $my_tab['nbOfExceptions']; $i++) {
             $exInput = "exceptionInput_" . $i;
             $exValue = "exceptionTimerange_" . $i;
-            if (isset($my_tab[$exInput]) && !isset($already_stored[strtolower($my_tab[$exInput])]) &&
+            if (
+                isset($my_tab[$exInput]) && !isset($already_stored[strtolower($my_tab[$exInput])]) &&
                 $my_tab[$exInput]
             ) {
                 $query = "INSERT INTO timeperiod_exceptions (`timeperiod_id`, `days`, `timerange`) " .

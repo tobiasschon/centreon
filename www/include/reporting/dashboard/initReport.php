@@ -62,9 +62,9 @@ $debug = 0;
 /*
  * QuickForm templates
  */
-$attrsTextI        = array("size"=>"3");
-$attrsText        = array("size"=>"30");
-$attrsTextarea    = array("rows"=>"5", "cols"=>"40");
+$attrsTextI        = array("size" => "3");
+$attrsText        = array("size" => "30");
+$attrsTextarea    = array("rows" => "5", "cols" => "40");
 
 
 /*
@@ -257,20 +257,20 @@ $tpl->assign('period_choice', $period_choice);
 /*
  * Period Selection form
  */
-$formPeriod = new HTML_QuickFormCustom('FormPeriod', 'post', "?p=".$p);
+$formPeriod = new HTML_QuickFormCustom('FormPeriod', 'post', "?p=" . $p);
 $formPeriod->addElement('select', 'period', "", $periodList, array("id" => "presetPeriod"));
 $formPeriod->addElement('hidden', 'timeline', "1");
 $formPeriod->addElement(
     'text',
     'StartDate',
     _("From"),
-    array("id"=>"StartDate", "size"=>10, "class"=>"datepicker", "onClick" => "javascript: togglePeriodType();")
+    array("id" => "StartDate", "size" => 10, "class" => "datepicker", "onClick" => "javascript: togglePeriodType();")
 );
 $formPeriod->addElement(
     'text',
     'EndDate',
     _("to"),
-    array("id"=>"EndDate", "size"=>10, "class"=>"datepicker", "onClick" => "javascript: togglePeriodType();")
+    array("id" => "EndDate", "size" => 10, "class" => "datepicker", "onClick" => "javascript: togglePeriodType();")
 );
 $formPeriod->addElement('submit', 'button', _("Apply period"), array('class' => 'btc bt_success'));
 $formPeriod->setDefaults(array('period' => $period, "StartDate" => $get_date_start, "EndDate" => $get_date_end));

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2005-2015 Centreon
  * Centreon is developped by : Julien Mathis and Romain Le Merlus under
@@ -42,8 +43,8 @@ try {
     $viewObj = new CentreonCustomView($centreon, $db);
 
     /*
-	 * Smarty
-	 */
+     * Smarty
+     */
     $path = "./include/home/customViews/";
 
     /*

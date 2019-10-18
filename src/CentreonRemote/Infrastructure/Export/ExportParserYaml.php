@@ -1,4 +1,5 @@
 <?php
+
 namespace CentreonRemote\Infrastructure\Export;
 
 use CentreonRemote\Infrastructure\Export\ExportParserInterface;

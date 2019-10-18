@@ -1,4 +1,5 @@
 <?php
+
 /*
  * Copyright 2005-2019 Centreon
  * Centreon is developed by : Julien Mathis and Romain Le Merlus under
@@ -46,7 +47,7 @@ class CentreonWebserviceServiceTest extends TestCase
 
     public function testAdd()
     {
-        $service = new CentreonWebserviceService;
+        $service = new CentreonWebserviceService();
         $this->assertInstanceOf(ContainerInterface::class, $service);
 
         // check if return this object and add webservice
@@ -65,7 +66,7 @@ class CentreonWebserviceServiceTest extends TestCase
      */
     public function testAddWithoutInterface()
     {
-        $service = new CentreonWebserviceService;
+        $service = new CentreonWebserviceService();
         $this->assertInstanceOf(ContainerInterface::class, $service);
 
         $service->add(\stdClass::class);
@@ -73,7 +74,7 @@ class CentreonWebserviceServiceTest extends TestCase
 
     public function testAll()
     {
-        $service = new CentreonWebserviceService;
+        $service = new CentreonWebserviceService();
         $service->add(WebserviceMock::class);
         
         $serviceId = strtolower(WebserviceMock::getName());
@@ -86,7 +87,7 @@ class CentreonWebserviceServiceTest extends TestCase
 
     public function testHas()
     {
-        $service = new CentreonWebserviceService;
+        $service = new CentreonWebserviceService();
         $service->add(WebserviceMock::class);
         
         $serviceId = strtolower(WebserviceMock::getName());
@@ -98,7 +99,7 @@ class CentreonWebserviceServiceTest extends TestCase
 
     public function testGet()
     {
-        $service = new CentreonWebserviceService;
+        $service = new CentreonWebserviceService();
         $service->add(WebserviceMock::class);
         
         $this->assertEquals(WebserviceMock::class, $service->get(WebserviceMock::getName()));
@@ -109,7 +110,7 @@ class CentreonWebserviceServiceTest extends TestCase
      */
     public function testGetWithNonExistsId()
     {
-        $service = new CentreonWebserviceService;
+        $service = new CentreonWebserviceService();
         
         $this->assertEquals(WebserviceMock::class, $service->get(WebserviceMock::getName()));
     }

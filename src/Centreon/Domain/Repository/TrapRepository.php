@@ -1,4 +1,5 @@
 <?php
+
 namespace Centreon\Domain\Repository;
 
 use Centreon\Infrastructure\CentreonLegacyDB\ServiceEntityRepository;
@@ -65,7 +66,7 @@ SQL;
      * @param int[] $pollerIds
      * @return string
      */
-    public static function exportFilterSql(array $pollerIds) : string
+    public static function exportFilterSql(array $pollerIds): string
     {
         $ids = join(',', $pollerIds);
         $sql = <<<SQL

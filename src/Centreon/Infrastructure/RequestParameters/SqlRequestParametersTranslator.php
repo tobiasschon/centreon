@@ -1,4 +1,5 @@
 <?php
+
 /*
  * Copyright 2005 - 2019 Centreon (https://www.centreon.com/)
  *
@@ -189,10 +190,11 @@ class SqlRequestParametersTranslator
         string $key,
         $valueOrArray
     ): string {
-        if ($this->requestParameters->getConcordanceStrictMode() === RequestParameters::CONCORDANCE_MODE_STRICT
+        if (
+            $this->requestParameters->getConcordanceStrictMode() === RequestParameters::CONCORDANCE_MODE_STRICT
             && !key_exists($key, $this->concordanceArray)
         ) {
-            throw new RequestParametersTranslatorException('The parameter \''. $key . '\' is not allowed');
+            throw new RequestParametersTranslatorException('The parameter \'' . $key . '\' is not allowed');
         }
         if (is_array($valueOrArray)) {
             $searchOperator = key($valueOrArray);
@@ -202,7 +204,8 @@ class SqlRequestParametersTranslator
             $mixedValue = $valueOrArray;
         }
 
-        if ($searchOperator === RequestParameters::OPERATOR_IN
+        if (
+            $searchOperator === RequestParameters::OPERATOR_IN
             || $searchOperator === RequestParameters::OPERATOR_NOT_IN
         ) {
             if (is_array($mixedValue)) {
@@ -232,7 +235,8 @@ class SqlRequestParametersTranslator
                 $bindKey = '(:value_' . (count($this->searchValues) + 1) . ')';
                 $this->searchValues[$bindKey] = [$type => $mixedValue];
             }
-        } elseif ($searchOperator === RequestParameters::OPERATOR_LIKE
+        } elseif (
+            $searchOperator === RequestParameters::OPERATOR_LIKE
             || $searchOperator === RequestParameters::OPERATOR_NOT_LIKE
         ) {
             $type = \PDO::PARAM_STR;

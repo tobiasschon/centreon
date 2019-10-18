@@ -1,4 +1,5 @@
 <?php
+
 /*
  * Copyright 2005 - 2019 Centreon (https://www.centreon.com/)
  *
@@ -90,7 +91,7 @@ class AuthenticationService implements AuthenticationServiceInterface
     /**
      * @inheritDoc
      */
-    public function getGeneratedToken():string
+    public function getGeneratedToken(): string
     {
         return $this->generatedToken;
     }

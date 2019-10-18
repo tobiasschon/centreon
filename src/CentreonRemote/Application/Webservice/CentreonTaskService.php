@@ -149,7 +149,8 @@ class CentreonTaskService extends CentreonWebServiceAbstract
      */
     public function postGetRemoteTaskStatusByParent(): array
     {
-        if (!isset($this->arguments['server_ip']) ||
+        if (
+            !isset($this->arguments['server_ip']) ||
             !isset($this->arguments['centreon_folder']) ||
             !isset($this->arguments['parent_id'])
         ) {

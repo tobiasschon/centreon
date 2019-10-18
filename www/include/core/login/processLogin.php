@@ -35,7 +35,8 @@
 
 require_once _CENTREON_PATH_ . 'bootstrap.php';
 
-if (isset($_POST["centreon_token"])
+if (
+    isset($_POST["centreon_token"])
     || (isset($_GET["autologin"]) && $_GET["autologin"]
         && isset($generalOptions["enable_autologin"])
         && $generalOptions["enable_autologin"])
@@ -117,7 +118,7 @@ if (isset($_POST["centreon_token"])
             }
             if (!empty($_GET["p"])) {
                 $headerRedirection .= "?p=" . $_GET["p"];
-            } else if (isset($centreon->user->default_page) && $centreon->user->default_page != '') {
+            } elseif (isset($centreon->user->default_page) && $centreon->user->default_page != '') {
                 $headerRedirection .= "?p=" . $centreon->user->default_page;
             }
         }

@@ -1,4 +1,5 @@
 <?php
+
 /*
  * Copyright 2005 - 2019 Centreon (https://www.centreon.com/)
  *
@@ -74,7 +75,7 @@ class AuthenticationController extends AbstractFOSRestController
         $contact = $this->auth->findContactByCredentials($username, $password);
         if (null !== $contact) {
             return [
-                'contact'=> [
+                'contact' => [
                     'id' => $contact->getId(),
                     'name' => $contact->getName(),
                     'alias' => $contact->getAlias(),

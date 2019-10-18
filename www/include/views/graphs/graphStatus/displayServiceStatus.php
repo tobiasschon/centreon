@@ -42,11 +42,11 @@ function escape_command($command)
 
     require_once realpath(__DIR__ . "/../../../../../config/centreon.config.php");
 
-    require_once _CENTREON_PATH_."/www/class/centreonDB.class.php";
-    require_once _CENTREON_PATH_."/www/class/centreonSession.class.php";
-    require_once _CENTREON_PATH_."/www/class/centreonGMT.class.php";
-    require_once _CENTREON_PATH_."/www/class/centreon.class.php";
-    require_once _CENTREON_PATH_."/www/include/common/common-Func.php";
+    require_once _CENTREON_PATH_ . "/www/class/centreonDB.class.php";
+    require_once _CENTREON_PATH_ . "/www/class/centreonSession.class.php";
+    require_once _CENTREON_PATH_ . "/www/class/centreonGMT.class.php";
+    require_once _CENTREON_PATH_ . "/www/class/centreon.class.php";
+    require_once _CENTREON_PATH_ . "/www/include/common/common-Func.php";
 
     $pearDB = new CentreonDB();
 
@@ -61,10 +61,10 @@ function getStatusDBDir($pearDBO)
 }
 
     /*
-	 * Verify if start and end date
-	 */
+     * Verify if start and end date
+     */
 
-    (!isset($_GET["start"])) ? $start = time() - (60*60*48): $start = $_GET["start"];
+    (!isset($_GET["start"])) ? $start = time() - (60 * 60 * 48) : $start = $_GET["start"];
     (!isset($_GET["end"])) ? $end = time() : $end = $_GET["end"];
 
 if (false === is_numeric($start) || false === is_numeric($end)) {
@@ -79,13 +79,13 @@ if (isset($_GET['template_id']) && false === is_numeric($_GET['template_id'])) {
     $len = $end - $start;
 
     /*
-	 * Verify if session is active
-	 */
+     * Verify if session is active
+     */
 
     $sid = session_id();
     //$sid = $pearDB->escape($_GET['session_id']);
 
-    $session = $pearDB->query("SELECT * FROM `session` WHERE session_id = '".$sid."'");
+    $session = $pearDB->query("SELECT * FROM `session` WHERE session_id = '" . $sid . "'");
 if (!$session->rowCount()) {
     $image = imagecreate(250, 100);
     $fond = imagecolorallocate($image, 0xEF, 0xF2, 0xFB);
@@ -133,7 +133,7 @@ if (!$session->rowCount()) {
     }
 
     $index_data_ODS = $DBRESULT->fetchRow();
-    if (!isset($_GET["template_id"])|| !$_GET["template_id"]) {
+    if (!isset($_GET["template_id"]) || !$_GET["template_id"]) {
         $host_id = getMyHostID($index_data_ODS["host_name"]);
         $svc_id = getMyServiceID($index_data_ODS["service_description"], $host_id);
         $template_id = getDefaultGraph($svc_id, 1);
@@ -153,7 +153,7 @@ if (!$session->rowCount()) {
         }
     }
 
-    $command_line = " graph - --start=".$start." --end=".$end;
+    $command_line = " graph - --start=" . $start . " --end=" . $end;
 
     /*
  * get all template infos
@@ -172,7 +172,7 @@ if (!$session->rowCount()) {
     }
         
     if (preg_match("/meta_([0-9]*)/", $index_data_ODS["service_description"], $matches)) {
-        $DBRESULT_meta = $pearDB->query("SELECT meta_name FROM meta_service WHERE `meta_id` = '".$matches[1]."'");
+        $DBRESULT_meta = $pearDB->query("SELECT meta_name FROM meta_service WHERE `meta_id` = '" . $matches[1] . "'");
         $meta = $DBRESULT_meta->fetchRow();
         $index_data_ODS["service_description"] = $meta["meta_name"];
     }
@@ -182,7 +182,7 @@ if (!$session->rowCount()) {
 
     $base = "";
     if (isset($GraphTemplate["base"]) && $GraphTemplate["base"]) {
-        $base = "-b ".$GraphTemplate["base"];
+        $base = "-b " . $GraphTemplate["base"];
     }
         
     if (!isset($GraphTemplate["width"]) || $GraphTemplate["width"] == "") {
@@ -197,8 +197,8 @@ if (!$session->rowCount()) {
         $GraphTemplate["vertical_label"] = "sds";
     }
 
-    $command_line .= " --interlaced $base --imgformat PNG --width=" 
-        . $GraphTemplate["width"] . " --height=".$GraphTemplate["height"] ." ";
+    $command_line .= " --interlaced $base --imgformat PNG --width="
+        . $GraphTemplate["width"] . " --height=" . $GraphTemplate["height"] . " ";
 
     $sdesc = $index_data_ODS['service_description'];
     $hname = $index_data_ODS['host_name'];
@@ -209,39 +209,39 @@ if (!$session->rowCount()) {
         $hname = utf8_encode($hname);
     }
 
-    $command_line .= "--title='".$sdesc." graph on ".$hname."' --vertical-label='Status' ";
+    $command_line .= "--title='" . $sdesc . " graph on " . $hname . "' --vertical-label='Status' ";
 
     /*
  * Init Graph Template Value
  */
     if (isset($GraphTemplate["bg_grid_color"]) && $GraphTemplate["bg_grid_color"]) {
-        $command_line .= "--color CANVAS".$GraphTemplate["bg_grid_color"]." ";
+        $command_line .= "--color CANVAS" . $GraphTemplate["bg_grid_color"] . " ";
     }
     if (isset($GraphTemplate["police_color"]) && $GraphTemplate["police_color"]) {
-        $command_line .= "--color FONT".$GraphTemplate["police_color"]." ";
+        $command_line .= "--color FONT" . $GraphTemplate["police_color"] . " ";
     }
     if (isset($GraphTemplate["grid_main_color"]) && $GraphTemplate["grid_main_color"]) {
-        $command_line .= "--color MGRID".$GraphTemplate["grid_main_color"]." ";
+        $command_line .= "--color MGRID" . $GraphTemplate["grid_main_color"] . " ";
     }
     if (isset($GraphTemplate["grid_sec_color"]) && $GraphTemplate["grid_sec_color"]) {
-        $command_line .= "--color GRID".$GraphTemplate["grid_sec_color"]." ";
+        $command_line .= "--color GRID" . $GraphTemplate["grid_sec_color"] . " ";
     }
     if (isset($GraphTemplate["contour_cub_color"]) && $GraphTemplate["contour_cub_color"]) {
-        $command_line .= "--color FRAME".$GraphTemplate["contour_cub_color"]." ";
+        $command_line .= "--color FRAME" . $GraphTemplate["contour_cub_color"] . " ";
     }
     if (isset($GraphTemplate["col_arrow"]) && $GraphTemplate["col_arrow"]) {
-        $command_line .= "--color ARROW".$GraphTemplate["col_arrow"]." ";
+        $command_line .= "--color ARROW" . $GraphTemplate["col_arrow"] . " ";
     }
     if (isset($GraphTemplate["col_top"]) && $GraphTemplate["col_top"]) {
-        $command_line .= "--color SHADEA".$GraphTemplate["col_top"]." ";
+        $command_line .= "--color SHADEA" . $GraphTemplate["col_top"] . " ";
     }
     if (isset($GraphTemplate["col_bot"]) && $GraphTemplate["col_bot"]) {
-        $command_line .= "--color SHADEB".$GraphTemplate["col_bot"]." ";
+        $command_line .= "--color SHADEB" . $GraphTemplate["col_bot"] . " ";
     }
 
     $command_line .= "--upper-limit 105 ";
     $command_line .= "--lower-limit 0 --rigid ";
-    $command_line .= " DEF:v1=".$RRDdatabase_path.$index.".rrd:value:AVERAGE ";
+    $command_line .= " DEF:v1=" . $RRDdatabase_path . $index . ".rrd:value:AVERAGE ";
 
     $command_line .= " CDEF:vname=v1,3600,TREND ";
     $command_line .= " CDEF:crit=v1,75,LT,100,0,IF ";
@@ -264,7 +264,7 @@ if (!$session->rowCount()) {
     $rrd_time2 = str_replace(":", "\:", $rrd_time2);
     $command_line .= " COMMENT:\" From $rrd_time to $rrd_time2 \\c\" ";
 
-    $command_line = $centreon->optGen["rrdtool_path_bin"].$command_line." 2>&1";
+    $command_line = $centreon->optGen["rrdtool_path_bin"] . $command_line . " 2>&1";
 
     $command_line .= " LINE1:ok#19EE11:\"Ok\" ";
     $command_line .= " LINE1:warn#F8C706:\"Warning\" ";
@@ -286,7 +286,7 @@ if (!$session->rowCount()) {
         $timezone = date_default_timezone_get();
     }
         
-    $command_line = "export TZ='".$timezone."' ; ".$command_line;
+    $command_line = "export TZ='" . $timezone . "' ; " . $command_line;
 
     /*
  * Escale special char
@@ -297,13 +297,13 @@ if (!$session->rowCount()) {
         error_log(
             "[" . date("d/m/Y H:s") . "] RDDTOOL : $command_line \n",
             3,
-            $centreon->optGen["debug_path"]."rrdtool.log"
+            $centreon->optGen["debug_path"] . "rrdtool.log"
         );
     }
 
     $fp = popen($command_line, 'r');
     if (isset($fp) && $fp) {
-        $str ='';
+        $str = '';
         while (!feof($fp)) {
             $buffer = fgets($fp, 4096);
             $str = $str . $buffer ;

@@ -175,10 +175,11 @@ for ($i = 0; $host = $DBRESULT->fetch(); $i++) {
     //Check icon
     if ((isset($ehiCache[$host["host_id"]]) && $ehiCache[$host["host_id"]])) {
         $host_icone = "./img/media/" . $mediaObj->getFilename($ehiCache[$host["host_id"]]);
-    } elseif ($icone = $host_method->replaceMacroInString(
-        $host["host_id"],
-        getMyHostExtendedInfoImage($host["host_id"], "ehi_icon_image", 1)
-    )
+    } elseif (
+        $icone = $host_method->replaceMacroInString(
+            $host["host_id"],
+            getMyHostExtendedInfoImage($host["host_id"], "ehi_icon_image", 1)
+        )
     ) {
         $host_icone = "./img/media/" . $icone;
     } else {

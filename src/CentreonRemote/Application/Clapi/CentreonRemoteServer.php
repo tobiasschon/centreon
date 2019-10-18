@@ -26,7 +26,7 @@ class CentreonRemoteServer implements CentreonClapiServiceInterface
         $this->di = $di;
     }
 
-    public static function getName() : string
+    public static function getName(): string
     {
         return (new \ReflectionClass(__CLASS__))->getShortName();
     }
@@ -144,7 +144,7 @@ class CentreonRemoteServer implements CentreonClapiServiceInterface
         $this->getDi()[\Centreon\ServiceProvider::CENTREON_DB_MANAGER]
             ->getRepository(InformationsRepository::class)
             ->toggleRemote('no');
-        echo 'Done'. "\n";
+        echo 'Done' . "\n";
 
         echo "Restore 'central' instance type...    ";
         system(

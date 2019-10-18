@@ -792,7 +792,7 @@ $form->addElement('select', 'esi_icon_image', _("Icon"), $extImg, array(
 $form->addElement('text', 'esi_icon_image_alt', _("Alt icon"), $attrsText);
 
 /*
- * Criticality 
+ * Criticality
  */
 $criticality = new CentreonCriticality($pearDB);
 $critList = $criticality->getList(null, "level", 'ASC', null, null, true);

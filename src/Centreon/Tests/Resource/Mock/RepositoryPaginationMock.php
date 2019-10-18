@@ -1,4 +1,5 @@
 <?php
+
 /*
  * Copyright 2005-2019 Centreon
  * Centreon is developed by : Julien Mathis and Romain Le Merlus under
@@ -64,7 +65,7 @@ class RepositoryPaginationMock extends ServiceEntityRepository implements Pagina
         $sql = 'SELECT SQL_CALC_FOUND_ROWS t.* '
             . 'FROM `' . $this->getClassMetadata()->getTableName() . '` AS `t`';
 
-        $collector = new StatementCollector;
+        $collector = new StatementCollector();
 
         $isWhere = false;
 

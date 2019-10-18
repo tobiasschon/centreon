@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2005-2019 Centreon
  * Centreon is developed by : Julien Mathis and Romain Le Merlus under
@@ -141,7 +142,7 @@ if (!$isAdmin) {
     $dbstorage = new CentreonDB('centstorage');
 
     $aclGroups = $acl->getAccessGroupsString();
-    $sql = "SELECT host_id, service_id FROM index_data WHERE id = " .$pearDB->escape($index);
+    $sql = "SELECT host_id, service_id FROM index_data WHERE id = " . $pearDB->escape($index);
     $res = $dbstorage->query($sql);
     if (!$res->rowCount()) {
         die('Graph not found');
@@ -173,7 +174,7 @@ $obj = new CentreonGraph($contactId, $index, 0, 1);
 /**
  * Set arguments from GET
  */
-$obj->setRRDOption("start", $obj->checkArgument("start", $_GET, time() - (60*60*48)));
+$obj->setRRDOption("start", $obj->checkArgument("start", $_GET, time() - (60 * 60 * 48)));
 $obj->setRRDOption("end", $obj->checkArgument("end", $_GET, time()));
 
 /**
@@ -225,6 +226,7 @@ $obj->displayImageFlow();
 if (isset($_GET['akey'])) {
     $dbResult = $pearDB->prepare(
         "DELETE FROM session
-        WHERE session_id = ? AND user_id = (SELECT contact_id from contact where contact_autologin_key = ?)");
+        WHERE session_id = ? AND user_id = (SELECT contact_id from contact where contact_autologin_key = ?)"
+    );
     $dbResult = $pearDB->execute($dbResult, array($mySessionId, $_GET['akey']));
 }

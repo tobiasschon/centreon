@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Centreon
  *
@@ -70,8 +71,8 @@ class LicenseTest extends TestCase
         $this->container[ServiceProvider::CENTREON_LEGACY_MODULE_HEALTHCHECK]
             ->method('check')
             ->will($this->returnCallback(function () {
-                    throw new \Exception;
-                }));
+                    throw new \Exception();
+            }));
 
         $result = $this->service->getLicenseExpiration($module);
 
@@ -94,7 +95,7 @@ class LicenseTest extends TestCase
             ->method('getLicenseExpiration')
             ->will($this->returnCallback(function () use ($value) {
                     return new \DateTime($value);
-                }));
+            }));
 
         $result = $this->service->getLicenseExpiration($module);
 

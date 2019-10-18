@@ -183,7 +183,8 @@ function getNotifiedInfosForService($serviceId, $hostId, $dependencyInjector)
     $listServicesContact = $serviceInstance->listServicesWithContacts($serviceInfo);
     $listServicesContactGroup = $serviceInstance->listServicesWithContactGroups($serviceInfo);
 
-    if ((empty($listServicesContact) && empty($listServicesContactGroup))
+    if (
+        (empty($listServicesContact) && empty($listServicesContactGroup))
         || $serviceInfo['service_use_only_contacts_from_host']
     ) {
         $results = getNotifiedInfosForHost($hostId, $dependencyInjector);

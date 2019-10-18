@@ -81,7 +81,8 @@ $serviceId = filter_var(
 $services = $centreon->user->access->getHostServiceAclConf($hostId, 'broker', null);
 
 //checking if the user has ACL rights for this resource
-if (!$centreon->user->admin
+if (
+    !$centreon->user->admin
     && $serviceId !== null
     && (!array_key_exists($serviceId, $services))
 ) {

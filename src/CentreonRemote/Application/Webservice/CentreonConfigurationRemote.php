@@ -255,7 +255,7 @@ class CentreonConfigurationRemote extends CentreonWebServiceAbstract
         $noCheckCertificate = isset($this->arguments['no_check_certificate'])
             && $this->arguments['no_check_certificate'] === true;
         $noProxy = isset($this->arguments['no_proxy']) && $this->arguments['no_proxy'] === true;
-        $serverWizardIdentity = new ServerWizardIdentity;
+        $serverWizardIdentity = new ServerWizardIdentity();
         $isRemoteConnection = $serverWizardIdentity->requestConfigurationIsRemote();
         $configurationServiceName = $isRemoteConnection ?
             'centreon_remote.remote_connection_service' :
@@ -306,11 +306,13 @@ class CentreonConfigurationRemote extends CentreonWebServiceAbstract
         if ($isRemoteConnection) {
             $serverConfigurationService->setDbUser($this->arguments['db_user']);
             $serverConfigurationService->setDbPassword($this->arguments['db_password']);
-            if ($serverWizardIdentity->checkBamOnRemoteServer(
-                $httpMethod . '://' . $serverIP . ':' . $httpPort . '/' . trim($centreonPath, '/'),
-                $noCheckCertificate,
-                $noProxy
-            )) {
+            if (
+                $serverWizardIdentity->checkBamOnRemoteServer(
+                    $httpMethod . '://' . $serverIP . ':' . $httpPort . '/' . trim($centreonPath, '/'),
+                    $noCheckCertificate,
+                    $noProxy
+                )
+            ) {
                 $serverConfigurationService->shouldInsertBamBrokers();
             }
         }
@@ -480,7 +482,7 @@ class CentreonConfigurationRemote extends CentreonWebServiceAbstract
      */
     private function createExportTask($params)
     {
-        $result = $this->getDi()['centreon.taskservice']->addTask(Task::TYPE_EXPORT, array('params'=>$params));
+        $result = $this->getDi()['centreon.taskservice']->addTask(Task::TYPE_EXPORT, array('params' => $params));
         return $result;
     }
 }

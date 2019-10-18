@@ -1,4 +1,5 @@
 <?php
+
 /*
  * Copyright 2005-2019 Centreon
  * Centreon is developed by : Julien Mathis and Romain Le Merlus under
@@ -72,7 +73,7 @@ class FileLoader implements DispatcherLoaderInterface
      *
      * @throws \Exception
      */
-    public function load():void
+    public function load(): void
     {
         if (! is_dir($this->pathModules)) {
             throw new \Exception("The path does not exist");
@@ -81,7 +82,8 @@ class FileLoader implements DispatcherLoaderInterface
 
         foreach ($modules as $module) {
             $fileToInclude = $this->pathModules . '/' . $module . '/' . $this->filename;
-            if (preg_match('/^(?!\.)/', $module)
+            if (
+                preg_match('/^(?!\.)/', $module)
                 && is_dir($this->pathModules . '/' . $module)
                 && file_exists($fileToInclude)
             ) {

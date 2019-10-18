@@ -1,4 +1,5 @@
 <?php
+
 /*
  * Copyright 2005-2019 Centreon
  * Centreon is developed by : Julien Mathis and Romain Le Merlus under
@@ -117,7 +118,8 @@ class TopologyRepository extends ServiceEntityRepository
                             } else {
                                 if ($topo_page["access_right"] == self::ACL_ACCESS_READ_WRITE) {
                                     $tmp_topo_page[$topo_page["topology_topology_id"]] = $topo_page["access_right"];
-                                } elseif ($topo_page["access_right"] == self::ACL_ACCESS_READ_ONLY
+                                } elseif (
+                                    $topo_page["access_right"] == self::ACL_ACCESS_READ_ONLY
                                     && $tmp_topo_page[$topo_page["topology_topology_id"]] == self::ACL_ACCESS_NONE
                                 ) {
                                     $tmp_topo_page[$topo_page["topology_topology_id"]] =
@@ -184,7 +186,7 @@ class TopologyRepository extends ServiceEntityRepository
     public function findOneBy($params = []): ?Topology
     {
         $sql = static::baseSqlQueryForEntity();
-        $collector = new StatementCollector;
+        $collector = new StatementCollector();
         $isWhere = false;
         foreach ($params as $column => $value) {
             $key = ":{$column}Val";

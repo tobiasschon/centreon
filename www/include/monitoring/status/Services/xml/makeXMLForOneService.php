@@ -1,4 +1,5 @@
 <?php
+
 /*
  * Copyright 2005-2015 Centreon
  * Centreon is developped by : Julien Mathis and Romain Le Merlus under
@@ -36,6 +37,7 @@
 /**
  * Require Centreon Config file
  */
+
 require_once realpath(dirname(__FILE__) . "/../../../../../../config/centreon.config.php");
 require_once realpath(__DIR__ . "/../../../../../../bootstrap.php");
 
@@ -214,8 +216,8 @@ if ($data = $DBRESULT->fetchRow()) {
     $obj->XML->endElement();
 
     /*
-	 * Long Output
-	 */
+     * Long Output
+     */
     $obj->XML->writeElement("long_name", _("Extended Status Information"), 0);
     foreach ($longOutput as $val) {
         if ($val != "") {

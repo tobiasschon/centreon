@@ -1,4 +1,5 @@
 <?php
+
 /*
  * Copyright 2005-2019 Centreon
  * Centreon is developped by : Julien Mathis and Romain Le Merlus under
@@ -59,7 +60,7 @@ class UpdateActionTest extends TestCase
             ],
         ];
 
-        $this->entity = new Module;
+        $this->entity = new Module();
         $this->entity->setId($data['id']);
         $this->entity->setType($data['type']);
         $this->entity->setName($data['name']);
@@ -95,7 +96,7 @@ class UpdateActionTest extends TestCase
             'message' => null,
         ];
 
-        $dataRepresenter = new UpdateAction;
+        $dataRepresenter = new UpdateAction();
         $result = $dataRepresenter->jsonSerialize();
 
         $this->assertEquals($result, $controlResult);

@@ -230,11 +230,12 @@ for ($i = 0; $config = $dbResult->fetch(); $i++) {
         ? _('Remote Server')
         : $serverType;
 
-    if (isset($nagiosInfo[$config['id']]['is_currently_running'])
+    if (
+        isset($nagiosInfo[$config['id']]['is_currently_running'])
         && $nagiosInfo[$config['id']]['is_currently_running'] == 1
     ) {
-        $now = new DateTime;
-        $startDate = (new DateTime)->setTimestamp($nagiosInfo[$config['id']]['program_start_time']);
+        $now = new DateTime();
+        $startDate = (new DateTime())->setTimestamp($nagiosInfo[$config['id']]['program_start_time']);
         $interval = date_diff($now, $startDate);
         if (intval($interval->format('%a')) >= 2) {
             $uptime = $interval->format('%a days');

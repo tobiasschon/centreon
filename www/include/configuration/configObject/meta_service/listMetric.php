@@ -111,12 +111,12 @@ if ($in_statement != "") {
         "AND m.index_id=i.id ORDER BY i.host_name, i.service_description, m.metric_name";
     $DBRESULTO = $pearDBO->query($query);
     /*
-	 * Different style between each lines
-	 */
+     * Different style between each lines
+     */
     $style = "one";
     /*
-	 * Fill a tab with a mutlidimensionnal Array we put in $tpl
-	 */
+     * Fill a tab with a mutlidimensionnal Array we put in $tpl
+     */
     $elemArr1 = array();
     $i = 0;
     while ($metric = $DBRESULTO->fetchRow()) {

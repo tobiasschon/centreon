@@ -73,9 +73,9 @@ if ($centreon->user->access->checkAction("service_comment")) {
     }
 
     /*
-	 * Database retrieve information for differents
-	 * elements list we need on the page
-	 */
+     * Database retrieve information for differents
+     * elements list we need on the page
+     */
     $query = "SELECT host_id, host_name FROM `host` WHERE (host_register = '1'  OR host_register = '2' )" .
         $centreon->user->access->queryBuilder("AND", "host_id", $hostStr) . "ORDER BY host_name";
     $DBRESULT = $pearDB->query($query);
@@ -96,14 +96,14 @@ if ($centreon->user->access->checkAction("service_comment")) {
     $attrsTextarea = array("rows" => "7", "cols" => "100");
 
     /*
-	 * Form begin
-	 */
+     * Form begin
+     */
     $form = new HTML_QuickFormCustom('Form', 'post', "?p=" . $p);
     $form->addElement('header', 'title', _("Add a comment for Service"));
 
     /*
-	 * Indicator basic information
-	 */
+     * Indicator basic information
+     */
     $redirect = $form->addElement('hidden', 'o');
     $redirect->setValue($o);
 

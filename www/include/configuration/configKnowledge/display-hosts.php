@@ -60,7 +60,8 @@ if (isset($_POST['searchHost'])) {
 
 $order = "ASC";
 $orderby = "host_name";
-if (isset($_REQUEST['order'])
+if (
+    isset($_REQUEST['order'])
     && $_REQUEST['order']
     && isset($_REQUEST['orderby'])
     && $_REQUEST['orderby']

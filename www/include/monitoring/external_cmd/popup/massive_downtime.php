@@ -262,7 +262,8 @@ $form->accept($renderer);
 $tpl->assign('form', $renderer->toArray());
 
 $defaultFixed = "";
-if (isset($centreon->optGen['monitoring_dwt_fixed']) &&
+if (
+    isset($centreon->optGen['monitoring_dwt_fixed']) &&
     $centreon->optGen['monitoring_dwt_fixed']
 ) {
     $defaultFixed = "checked";
@@ -270,7 +271,8 @@ if (isset($centreon->optGen['monitoring_dwt_fixed']) &&
 $tpl->assign('defaultFixed', $defaultFixed);
 
 $defaultSetDwtOnSvc = "";
-if (isset($centreon->optGen['monitoring_dwt_svc']) &&
+if (
+    isset($centreon->optGen['monitoring_dwt_svc']) &&
     $centreon->optGen['monitoring_dwt_svc']
 ) {
     $defaultSetDwtOnSvc = "checked";

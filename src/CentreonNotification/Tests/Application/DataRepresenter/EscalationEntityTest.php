@@ -1,4 +1,5 @@
 <?php
+
 /*
  * Copyright 2005-2019 Centreon
  * Centreon is developed by : Julien Mathis and Romain Le Merlus under
@@ -49,7 +50,7 @@ class EscalationEntityTest extends TestCase
 
     public function testJsonSerialize()
     {
-        $entity = new Escalation;
+        $entity = new Escalation();
         $entity->setId(121);
         $entity->setName('...');
 

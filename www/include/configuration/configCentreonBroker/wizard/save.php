@@ -310,7 +310,7 @@ switch ($wizard->getValue(1, 'configtype')) {
         $iExist = $cBroker->isExist($sName);
 
         if ($iExist > 0) {
-            $msgErr[] = _("The config name already exists") . ": ".$sName;
+            $msgErr[] = _("The config name already exists") . ": " . $sName;
             break;
         }
         

@@ -1,4 +1,5 @@
 <?php
+
 namespace Centreon\Infrastructure\Service;
 
 use Psr\Container\ContainerInterface;

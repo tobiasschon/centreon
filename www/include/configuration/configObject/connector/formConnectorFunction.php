@@ -52,18 +52,19 @@ function return_plugin($rep)
         $handle[$rep] = opendir($rep);
         while (false != ($filename = readdir($handle[$rep]))) {
             if ($filename != "." && $filename != "..") {
-                if (is_dir($rep.$filename)) {
-                    $plg_tmp = return_plugin($rep."/".$filename, $handle[$rep]);
+                if (is_dir($rep . $filename)) {
+                    $plg_tmp = return_plugin($rep . "/" . $filename, $handle[$rep]);
                     $availableConnectors = array_merge($availableConnectors, $plg_tmp);
                     unset($plg_tmp);
-                } elseif (!isset($is_not_a_plugin[$filename])
-                    && substr($filename, -1)!= "~"
+                } elseif (
+                    !isset($is_not_a_plugin[$filename])
+                    && substr($filename, -1) != "~"
                     && substr($filename, -1) != "#"
                 ) {
                     if (isset($oreon)) {
-                        $key = substr($rep."/".$filename, strlen($oreon->optGen["cengine_path_connectors"]));
+                        $key = substr($rep . "/" . $filename, strlen($oreon->optGen["cengine_path_connectors"]));
                     } else {
-                        $key = substr($rep."/".$filename, 0);
+                        $key = substr($rep . "/" . $filename, 0);
                     }
 
                     $availableConnectors[$key] = $key;

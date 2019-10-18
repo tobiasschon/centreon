@@ -156,10 +156,10 @@ function parseStatsFile($statfile)
 
                 /* manage failover output */
                 if (isset($json_stats[$key]['failover'])) {
-                    $result['io'][$matches[1].'-failover'] = createArrayStats($json_stats[$key]['failover']);
-                    $result['io'][$matches[1].'-failover']['type'] = 'output';
-                    $result['io'][$matches[1].'-failover']['class'] = 'stats_lv2';
-                    $result['io'][$matches[1].'-failover']['id'] = $matches[1].'-failover';
+                    $result['io'][$matches[1] . '-failover'] = createArrayStats($json_stats[$key]['failover']);
+                    $result['io'][$matches[1] . '-failover']['type'] = 'output';
+                    $result['io'][$matches[1] . '-failover']['class'] = 'stats_lv2';
+                    $result['io'][$matches[1] . '-failover']['id'] = $matches[1] . '-failover';
                 }
 
                 /* manage peers input */
@@ -170,7 +170,7 @@ function parseStatsFile($statfile)
                         $id = str_replace(':', '_', $peerName);
                         $id = str_replace('.', '_', $id);
                         $result['io'][$matches[1]]['peers'][$i] = $peerName;
-                        $result['io'][$peerName] = createArrayStats($json_stats[$key][$matches[1].'-'.$i]);
+                        $result['io'][$peerName] = createArrayStats($json_stats[$key][$matches[1] . '-' . $i]);
                         $result['io'][$peerName]['type'] = 'input';
                         $result['io'][$peerName]['class'] = 'stats_lv2';
                         $result['io'][$peerName]['id'] = $id . '-peers';

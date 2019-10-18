@@ -1,4 +1,5 @@
 <?php
+
 /*
  * Copyright 2005-2019 Centreon
  * Centreon is developped by : Julien Mathis and Romain Le Merlus under
@@ -88,7 +89,8 @@ class CentreonModulesWebservice extends CentreonWebServiceAbstract
         $moduleInfoObj = $this->getDi()[\CentreonLegacy\ServiceProvider::CENTREON_LEGACY_MODULE_INFORMATION];
         $modules = $moduleInfoObj->getList();
 
-        if (array_key_exists('centreon-bam-server', $modules) &&
+        if (
+            array_key_exists('centreon-bam-server', $modules) &&
             $modules['centreon-bam-server']['is_installed']
         ) {
             return ['enabled' => true];

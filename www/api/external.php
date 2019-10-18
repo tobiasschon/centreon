@@ -40,6 +40,6 @@ require_once dirname(__FILE__) . '/../../bootstrap.php';
 require_once _CENTREON_PATH_ . '/www/class/centreonDB.class.php';
 require_once dirname(__FILE__) . '/class/webService.class.php';
 
-$pearDB = new CentreonDB;
+$pearDB = new CentreonDB();
 
 CentreonWebService::router($dependencyInjector, null, false);

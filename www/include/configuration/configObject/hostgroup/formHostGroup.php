@@ -51,7 +51,7 @@ $initialValues = array();
 
 /*
  * Database retrieve information for HostGroup
-	 */
+     */
 $hg = array();
 if (($o == "c" || $o == "w") && $hg_id) {
     $DBRESULT = $pearDB->query("SELECT * FROM hostgroup WHERE hg_id = '" . $hg_id . "' LIMIT 1");

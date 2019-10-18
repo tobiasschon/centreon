@@ -361,7 +361,7 @@ function updateDebugConfigData($gopt_id = null)
     updateOption(
         $pearDB,
         "debug_path",
-        isset($ret["debug_path"]) && $ret["debug_path"] != null ? $ret["debug_path"]: "NULL"
+        isset($ret["debug_path"]) && $ret["debug_path"] != null ? $ret["debug_path"] : "NULL"
     );
     updateOption($pearDB, "debug_auth", isset($ret["debug_auth"]) && $ret['debug_auth'] ? 1 : 0);
     updateOption(
@@ -394,73 +394,73 @@ function updateLdapConfigData($gopt_id = null)
         $pearDB,
         "ldap_host",
         isset($ret["ldap_host"]) && $ret["ldap_host"] != null
-            ? htmlentities($ret["ldap_host"], ENT_QUOTES, "UTF-8"): "NULL"
+            ? htmlentities($ret["ldap_host"], ENT_QUOTES, "UTF-8") : "NULL"
     );
     updateOption(
         $pearDB,
         "ldap_port",
         isset($ret["ldap_port"]) && $ret["ldap_port"] != null
-            ? htmlentities($ret["ldap_port"], ENT_QUOTES, "UTF-8"): "NULL"
+            ? htmlentities($ret["ldap_port"], ENT_QUOTES, "UTF-8") : "NULL"
     );
     updateOption(
         $pearDB,
         "ldap_base_dn",
         isset($ret["ldap_base_dn"]) && $ret["ldap_base_dn"] != null
-            ? htmlentities($ret["ldap_base_dn"], ENT_QUOTES, "UTF-8"): "NULL"
+            ? htmlentities($ret["ldap_base_dn"], ENT_QUOTES, "UTF-8") : "NULL"
     );
     updateOption(
         $pearDB,
         "ldap_login_attrib",
         isset($ret["ldap_login_attrib"]) && $ret["ldap_login_attrib"] != null
-            ? htmlentities($ret["ldap_login_attrib"], ENT_QUOTES, "UTF-8"): ""
+            ? htmlentities($ret["ldap_login_attrib"], ENT_QUOTES, "UTF-8") : ""
     );
     updateOption(
         $pearDB,
         "ldap_ssl",
         isset($ret["ldap_ssl"]["ldap_ssl"]) && $ret["ldap_ssl"]["ldap_ssl"] != null
-            ? htmlentities($ret["ldap_ssl"]["ldap_ssl"], ENT_QUOTES, "UTF-8"): "NULL"
+            ? htmlentities($ret["ldap_ssl"]["ldap_ssl"], ENT_QUOTES, "UTF-8") : "NULL"
     );
     updateOption(
         $pearDB,
         "ldap_auth_enable",
         isset($ret["ldap_auth_enable"]["ldap_auth_enable"]) && $ret["ldap_auth_enable"]["ldap_auth_enable"] != null
-            ? htmlentities($ret["ldap_auth_enable"]["ldap_auth_enable"], ENT_QUOTES, "UTF-8"): "NULL"
+            ? htmlentities($ret["ldap_auth_enable"]["ldap_auth_enable"], ENT_QUOTES, "UTF-8") : "NULL"
     );
     updateOption(
         $pearDB,
         "ldap_search_user",
         isset($ret["ldap_search_user"]) && $ret["ldap_search_user"] != null
-            ? htmlentities($ret["ldap_search_user"], ENT_QUOTES, "UTF-8"): ""
+            ? htmlentities($ret["ldap_search_user"], ENT_QUOTES, "UTF-8") : ""
     );
     updateOption(
         $pearDB,
         "ldap_search_user_pwd",
         isset($ret["ldap_search_user_pwd"]) && $ret["ldap_search_user_pwd"] != null
-            ? htmlentities($ret["ldap_search_user_pwd"], ENT_QUOTES, "UTF-8"): ""
+            ? htmlentities($ret["ldap_search_user_pwd"], ENT_QUOTES, "UTF-8") : ""
     );
     updateOption(
         $pearDB,
         "ldap_search_filter",
         isset($ret["ldap_search_filter"]) && $ret["ldap_search_filter"] != null
-            ? htmlentities($ret["ldap_search_filter"], ENT_QUOTES, "UTF-8"): "NULL"
+            ? htmlentities($ret["ldap_search_filter"], ENT_QUOTES, "UTF-8") : "NULL"
     );
     updateOption(
         $pearDB,
         "ldap_search_timeout",
         isset($ret["ldap_search_timeout"]) && $ret["ldap_search_timeout"] != null
-            ? htmlentities($ret["ldap_search_timeout"], ENT_QUOTES, "UTF-8"): "NULL"
+            ? htmlentities($ret["ldap_search_timeout"], ENT_QUOTES, "UTF-8") : "NULL"
     );
     updateOption(
         $pearDB,
         "ldap_search_limit",
         isset($ret["ldap_search_limit"]) && $ret["ldap_search_limit"] != null
-            ? htmlentities($ret["ldap_search_limit"], ENT_QUOTES, "UTF-8"): "NULL"
+            ? htmlentities($ret["ldap_search_limit"], ENT_QUOTES, "UTF-8") : "NULL"
     );
     updateOption(
         $pearDB,
         "ldap_protocol_version",
         isset($ret["ldap_protocol_version"]) && $ret["ldap_protocol_version"] != null
-            ? htmlentities($ret["ldap_protocol_version"], ENT_QUOTES, "UTF-8"): "NULL"
+            ? htmlentities($ret["ldap_protocol_version"], ENT_QUOTES, "UTF-8") : "NULL"
     );
 
     $centreon->initOptGen($pearDB);
@@ -481,19 +481,19 @@ function updateGeneralConfigData($gopt_id = null)
         $pearDB,
         "oreon_path",
         isset($ret["oreon_path"]) && $ret["oreon_path"] != null
-            ? htmlentities($ret["oreon_path"], ENT_QUOTES, "UTF-8"): "NULL"
+            ? htmlentities($ret["oreon_path"], ENT_QUOTES, "UTF-8") : "NULL"
     );
     updateOption(
         $pearDB,
         "oreon_web_path",
         isset($ret["oreon_web_path"]) && $ret["oreon_web_path"] != null
-            ? htmlentities($ret["oreon_web_path"], ENT_QUOTES, "UTF-8"): "NULL"
+            ? htmlentities($ret["oreon_web_path"], ENT_QUOTES, "UTF-8") : "NULL"
     );
     updateOption(
         $pearDB,
         "oreon_refresh",
         isset($ret["oreon_refresh"]) && $ret["oreon_refresh"] != null
-            ? htmlentities($ret["oreon_refresh"], ENT_QUOTES, "UTF-8"): "NULL"
+            ? htmlentities($ret["oreon_refresh"], ENT_QUOTES, "UTF-8") : "NULL"
     );
     updateOption(
         $pearDB,
@@ -506,126 +506,126 @@ function updateGeneralConfigData($gopt_id = null)
         $pearDB,
         "session_expire",
         isset($ret["session_expire"]) && $ret["session_expire"] != null
-            ? htmlentities($ret["session_expire"], ENT_QUOTES, "UTF-8"): "NULL"
+            ? htmlentities($ret["session_expire"], ENT_QUOTES, "UTF-8") : "NULL"
     );
     updateOption(
         $pearDB,
         "maxViewMonitoring",
         isset($ret["maxViewMonitoring"]) && $ret["maxViewMonitoring"] != null
-            ? htmlentities($ret["maxViewMonitoring"], ENT_QUOTES, "UTF-8"): "NULL"
+            ? htmlentities($ret["maxViewMonitoring"], ENT_QUOTES, "UTF-8") : "NULL"
     );
     updateOption(
         $pearDB,
         "maxViewConfiguration",
         isset($ret["maxViewConfiguration"]) && $ret["maxViewConfiguration"] != null
-            ? htmlentities($ret["maxViewConfiguration"], ENT_QUOTES, "UTF-8"): "NULL"
+            ? htmlentities($ret["maxViewConfiguration"], ENT_QUOTES, "UTF-8") : "NULL"
     );
     updateOption(
         $pearDB,
         "maxGraphPerformances",
         isset($ret["maxGraphPerformances"]) && $ret["maxGraphPerformances"] != null
-            ? htmlentities($ret["maxGraphPerformances"], ENT_QUOTES, "UTF-8"): "NULL"
+            ? htmlentities($ret["maxGraphPerformances"], ENT_QUOTES, "UTF-8") : "NULL"
     );
     updateOption(
         $pearDB,
         "selectPaginationSize",
         isset($ret["selectPaginationSize"]) && $ret["selectPaginationSize"] != null
-            ? htmlentities($ret["selectPaginationSize"], ENT_QUOTES, "UTF-8"): "NULL"
+            ? htmlentities($ret["selectPaginationSize"], ENT_QUOTES, "UTF-8") : "NULL"
     );
     updateOption(
         $pearDB,
         "AjaxTimeReloadMonitoring",
         isset($ret["AjaxTimeReloadMonitoring"]) && $ret["AjaxTimeReloadMonitoring"] != null
-            ? htmlentities($ret["AjaxTimeReloadMonitoring"], ENT_QUOTES, "UTF-8"): "NULL"
+            ? htmlentities($ret["AjaxTimeReloadMonitoring"], ENT_QUOTES, "UTF-8") : "NULL"
     );
     updateOption(
         $pearDB,
         "AjaxTimeReloadStatistic",
         isset($ret["AjaxTimeReloadStatistic"]) && $ret["AjaxTimeReloadStatistic"] != null
-            ? htmlentities($ret["AjaxTimeReloadStatistic"], ENT_QUOTES, "UTF-8"): "NULL"
+            ? htmlentities($ret["AjaxTimeReloadStatistic"], ENT_QUOTES, "UTF-8") : "NULL"
     );
     updateOption(
         $pearDB,
         "enable_gmt",
         isset($ret["enable_gmt"]["yes"]) && $ret["enable_gmt"]["yes"] != null
-            ? htmlentities($ret["enable_gmt"]["yes"], ENT_QUOTES, "UTF-8"): "0"
+            ? htmlentities($ret["enable_gmt"]["yes"], ENT_QUOTES, "UTF-8") : "0"
     );
     updateOption(
         $pearDB,
         "gmt",
-        isset($ret["gmt"]) && $ret["gmt"] != null ? htmlentities($ret["gmt"], ENT_QUOTES, "UTF-8"): "NULL"
+        isset($ret["gmt"]) && $ret["gmt"] != null ? htmlentities($ret["gmt"], ENT_QUOTES, "UTF-8") : "NULL"
     );
     updateOption(
         $pearDB,
         "global_sort_type",
         isset($ret["global_sort_type"]) && $ret["global_sort_type"] != null
-            ? htmlentities($ret["global_sort_type"], ENT_QUOTES, "UTF-8"): "NULL"
+            ? htmlentities($ret["global_sort_type"], ENT_QUOTES, "UTF-8") : "NULL"
     );
     updateOption(
         $pearDB,
         "global_sort_order",
         isset($ret["global_sort_order"]) && $ret["global_sort_order"] != null
-            ? htmlentities($ret["global_sort_order"], ENT_QUOTES, "UTF-8"): "NULL"
+            ? htmlentities($ret["global_sort_order"], ENT_QUOTES, "UTF-8") : "NULL"
     );
     updateOption(
         $pearDB,
         "problem_sort_type",
         isset($ret["problem_sort_type"]) && $ret["problem_sort_type"] != null
-            ? htmlentities($ret["problem_sort_type"], ENT_QUOTES, "UTF-8"): "NULL"
+            ? htmlentities($ret["problem_sort_type"], ENT_QUOTES, "UTF-8") : "NULL"
     );
     updateOption(
         $pearDB,
         "problem_sort_order",
         isset($ret["problem_sort_order"]) && $ret["problem_sort_order"] != null
-            ? htmlentities($ret["problem_sort_order"], ENT_QUOTES, "UTF-8"): "NULL"
+            ? htmlentities($ret["problem_sort_order"], ENT_QUOTES, "UTF-8") : "NULL"
     );
     updateOption(
         $pearDB,
         'proxy_url',
         isset($ret["proxy_url"]) && $ret["proxy_url"] != null
-            ? htmlentities($ret["proxy_url"], ENT_QUOTES, "UTF-8"): "NULL"
+            ? htmlentities($ret["proxy_url"], ENT_QUOTES, "UTF-8") : "NULL"
     );
     updateOption(
         $pearDB,
         'proxy_port',
         isset($ret["proxy_port"]) && $ret["proxy_port"] != null
-            ? htmlentities($ret["proxy_port"], ENT_QUOTES, "UTF-8"): "NULL"
+            ? htmlentities($ret["proxy_port"], ENT_QUOTES, "UTF-8") : "NULL"
     );
     updateOption(
         $pearDB,
         'proxy_user',
         isset($ret["proxy_user"]) && $ret["proxy_user"] != null
-            ? htmlentities($ret["proxy_user"], ENT_QUOTES, "UTF-8"): "NULL"
+            ? htmlentities($ret["proxy_user"], ENT_QUOTES, "UTF-8") : "NULL"
     );
     updateOption(
         $pearDB,
         'proxy_password',
         isset($ret["proxy_password"]) && $ret["proxy_password"] != null
-            ? htmlentities($ret["proxy_password"], ENT_QUOTES, "UTF-8"): "NULL"
+            ? htmlentities($ret["proxy_password"], ENT_QUOTES, "UTF-8") : "NULL"
     );
     updateOption(
         $pearDB,
         'display_downtime_chart',
         isset($ret["display_downtime_chart"]["yes"]) && $ret["display_downtime_chart"]["yes"] != null
-            ? htmlentities($ret["display_downtime_chart"]["yes"], ENT_QUOTES, "UTF-8"): "0"
+            ? htmlentities($ret["display_downtime_chart"]["yes"], ENT_QUOTES, "UTF-8") : "0"
     );
     updateOption(
         $pearDB,
         'display_comment_chart',
         isset($ret["display_comment_chart"]["yes"]) && $ret["display_comment_chart"]["yes"] != null
-            ? htmlentities($ret["display_comment_chart"]["yes"], ENT_QUOTES, "UTF-8"): "0"
+            ? htmlentities($ret["display_comment_chart"]["yes"], ENT_QUOTES, "UTF-8") : "0"
     );
     updateOption(
         $pearDB,
         "enable_autologin",
         isset($ret["enable_autologin"]["yes"]) && $ret["enable_autologin"]["yes"] != null
-            ? htmlentities($ret["enable_autologin"]["yes"], ENT_QUOTES, "UTF-8"): "0"
+            ? htmlentities($ret["enable_autologin"]["yes"], ENT_QUOTES, "UTF-8") : "0"
     );
     updateOption(
         $pearDB,
         "display_autologin_shortcut",
         isset($ret["display_autologin_shortcut"]["yes"]) && $ret["display_autologin_shortcut"]["yes"] != null
-            ? htmlentities($ret["display_autologin_shortcut"]["yes"], ENT_QUOTES, "UTF-8"): "0"
+            ? htmlentities($ret["display_autologin_shortcut"]["yes"], ENT_QUOTES, "UTF-8") : "0"
     );
     updateOption(
         $pearDB,
@@ -725,13 +725,13 @@ function updateGeneralConfigData($gopt_id = null)
         $pearDB,
         "centreon_support_email",
         isset($ret["centreon_support_email"]) && $ret["centreon_support_email"] != null
-            ? htmlentities($ret["centreon_support_email"], ENT_QUOTES, "UTF-8"): "NULL"
+            ? htmlentities($ret["centreon_support_email"], ENT_QUOTES, "UTF-8") : "NULL"
     );
     updateOption(
         $pearDB,
         "send_statistics",
         isset($ret["send_statistics"]["yes"]) && $ret["send_statistics"]["yes"] != null
-            ? htmlentities($ret["send_statistics"]["yes"], ENT_QUOTES, "UTF-8"): "0"
+            ? htmlentities($ret["send_statistics"]["yes"], ENT_QUOTES, "UTF-8") : "0"
     );
 
     $centreon->initOptGen($pearDB);
@@ -851,7 +851,7 @@ function updateODSConfigData()
         $pearDB,
         "centstorage",
         isset($ret["enable_centstorage"]) && $ret["enable_centstorage"] != null
-            ? htmlentities($ret["enable_centstorage"], ENT_QUOTES, "UTF-8"): "0"
+            ? htmlentities($ret["enable_centstorage"], ENT_QUOTES, "UTF-8") : "0"
     );
     updateOption($pearDB, "centstorage_auto_drop", isset($ret['centstorage_auto_drop']) ? '1' : '0');
     updateOption(

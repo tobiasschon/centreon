@@ -61,7 +61,7 @@ $path = "./include/configuration/configObject/service/";
 /*
  * PHP functions
  */
-require_once $path."DB-Func.php";
+require_once $path . "DB-Func.php";
 require_once "./include/common/common-Func.php";
 
 /*
@@ -73,7 +73,7 @@ $linkType = '';
 /*
  * Check if a service is a service by hostgroup or not
  */
-$request = "SELECT * FROM host_service_relation WHERE service_service_id = '".(int)$service_id."'";
+$request = "SELECT * FROM host_service_relation WHERE service_service_id = '" . (int)$service_id . "'";
 $DBRESULT = $pearDB->query($request);
 while ($data = $DBRESULT->fetchRow()) {
     if (isset($data["hostgroup_hg_id"]) && $data["hostgroup_hg_id"] != "") {
@@ -104,46 +104,46 @@ $aclDbName = $acl->getNameDBAcl();
 
 switch ($o) {
     case "a":
-        require_once($path."formService.php");
+        require_once($path . "formService.php");
         break; #Add a service
     case "w":
-        require_once($path."formService.php");
+        require_once($path . "formService.php");
         break; #Watch a service
     case "c":
-        require_once($path."formService.php");
+        require_once($path . "formService.php");
         break; #Modify a service
     case "mc":
-        require_once($path."formService.php");
+        require_once($path . "formService.php");
         break; #Massive change
     case "dv":
         divideGroupedServiceInDB(null, isset($select) ? $select : array());
-        require_once($path."listServiceByHost$linkType.php");
+        require_once($path . "listServiceByHost$linkType.php");
         break; # Divide service linked to n hosts
     case "s":
         enableServiceInDB($service_id);
-        require_once($path."listServiceByHost$linkType.php");
+        require_once($path . "listServiceByHost$linkType.php");
         break; #Activate a service
     case "ms":
         enableServiceInDB(null, isset($select) ? $select : array());
-        require_once($path."listServiceByHost$linkType.php");
+        require_once($path . "listServiceByHost$linkType.php");
         break;
     case "u":
         disableServiceInDB($service_id);
-        require_once($path."listServiceByHost$linkType.php");
+        require_once($path . "listServiceByHost$linkType.php");
         break; #Desactivate a service
     case "mu":
         disableServiceInDB(null, isset($select) ? $select : array());
-        require_once($path."listServiceByHost$linkType.php");
+        require_once($path . "listServiceByHost$linkType.php");
         break;
     case "m":
         multipleServiceInDB(isset($select) ? $select : array(), $dupNbr);
-        require_once($path."listServiceByHost$linkType.php");
+        require_once($path . "listServiceByHost$linkType.php");
         break; #Duplicate n services
     case "d":
         deleteServiceInDB(isset($select) ? $select : array());
-        require_once($path."listServiceByHost$linkType.php");
+        require_once($path . "listServiceByHost$linkType.php");
         break; #Delete n services
     default:
-        require_once($path."listServiceByHost$linkType.php");
+        require_once($path . "listServiceByHost$linkType.php");
         break;
 }

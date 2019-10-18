@@ -1,4 +1,5 @@
 <?php
+
 /*
  * Copyright 2005-2019 Centreon
  * Centreon is developed by : Julien Mathis and Romain Le Merlus under
@@ -64,9 +65,9 @@ class ServiceProviderTest extends TestCase
     protected function setUp()
     {
         $this->provider = new ServiceProvider();
-        $this->container = new Container;
-        $this->container['realtime_db'] = $this->container['configuration_db'] = new Mock\CentreonDB;
-        $this->container['translator'] = $this->container['configuration_db'] = new Mock\CentreonDB;
+        $this->container = new Container();
+        $this->container['realtime_db'] = $this->container['configuration_db'] = new Mock\CentreonDB();
+        $this->container['translator'] = $this->container['configuration_db'] = new Mock\CentreonDB();
         $this->container[LegacyServiceProvider::CENTREON_LEGACY_MODULE_INFORMATION] =
             $this->createMock(Information::class);
         $this->container['finder'] = $this->createMock(Finder::class);

@@ -235,8 +235,10 @@ abstract class Centreon_Object_Relation
             throw new Exception("Not a relation table");
         }
         if (preg_match('/^get([a-zA-Z0-9_]+)From([a-zA-Z0-9_]+)/', $name, $matches)) {
-            if (($matches[1] != $this->firstKey && $matches[1] != $this->secondKey) ||
-                ($matches[2] != $this->firstKey && $matches[2] != $this->secondKey)) {
+            if (
+                ($matches[1] != $this->firstKey && $matches[1] != $this->secondKey) ||
+                ($matches[2] != $this->firstKey && $matches[2] != $this->secondKey)
+            ) {
                 throw new Exception('Unknown field');
             }
             return $this->getTargetIdFromSourceId($matches[1], $matches[2], $args);

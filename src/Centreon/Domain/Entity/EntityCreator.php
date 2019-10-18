@@ -1,4 +1,5 @@
 <?php
+
 /*
  * Copyright 2005 - 2019 Centreon (https://www.centreon.com/)
  *
@@ -80,7 +81,7 @@ class EntityCreator
         }
         $this->readPublicMethod();
         $this->readAnnotations();
-        $objectToSet = new $this->className;
+        $objectToSet = new $this->className();
         foreach ($data as $column => $value) {
             if (array_key_exists($column, $this->entityDescriptors)) {
                 $descriptor = $this->entityDescriptors[$column];

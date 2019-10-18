@@ -1,4 +1,5 @@
 <?php
+
 /*
  * Copyright 2005 - 2019 Centreon (https://www.centreon.com/)
  *
@@ -195,7 +196,8 @@ class RequestParameters implements RequestParametersInterface
         $search = $this->search;
 
         if (!empty($search)) {
-            if ((
+            if (
+                (
                     !isset($search[RequestParameters::AGGREGATE_OPERATOR_AND])
                     && !isset($search[RequestParameters::AGGREGATE_OPERATOR_OR])
                 )
@@ -225,10 +227,10 @@ class RequestParameters implements RequestParametersInterface
             self::NAME_FOR_LIMIT => $this->limit,
             self::NAME_FOR_SEARCH => !empty($this->search)
                 ? json_decode(json_encode($this->search), true)
-                : new \stdClass,
+                : new \stdClass(),
             self::NAME_FOR_SORT => !empty($this->sort)
                 ? json_decode(json_encode($this->sort), true)
-                : new \stdClass,
+                : new \stdClass(),
             self::NAME_FOR_TOTAL => $this->total
         ];
     }

@@ -1,4 +1,5 @@
 <?php
+
 /*
  * Copyright 2005-2019 Centreon
  * Centreon is developped by : Julien Mathis and Romain Le Merlus under
@@ -51,7 +52,7 @@ class CentreonModuleWebserviceTest extends TestCase
     protected function setUp()
     {
         // dependencies
-        $container = new Container;
+        $container = new Container();
         $container[ServiceProvider::CENTREON_MODULE] = $this->createMock(CentreonModuleService::class, [
             'getList',
             'getDetail',
@@ -71,7 +72,7 @@ class CentreonModuleWebserviceTest extends TestCase
                     $funcArgs[3] = $funcArgs[3] ? implode('|', $funcArgs[3]) : '-';
                     $name = implode(',', $funcArgs);
 
-                    $module = new Module;
+                    $module = new Module();
                     $module->setId(ModuleSourceTest::$moduleName);
                     $module->setName($name);
                     $module->setAuthor('');
@@ -100,7 +101,7 @@ class CentreonModuleWebserviceTest extends TestCase
 
                     $name = implode(',', $funcArgs);
 
-                    $module = new Module;
+                    $module = new Module();
                     $module->setId(ModuleSourceTest::$moduleName);
                     $module->setName($name);
                     $module->setAuthor('');
@@ -129,7 +130,7 @@ class CentreonModuleWebserviceTest extends TestCase
 
                     $name = implode(',', $funcArgs);
 
-                    $module = new Module;
+                    $module = new Module();
                     $module->setId(ModuleSourceTest::$moduleName);
                     $module->setName($name);
                     $module->setAuthor('');
@@ -158,7 +159,7 @@ class CentreonModuleWebserviceTest extends TestCase
 
                     $name = implode(',', $funcArgs);
 
-                    $module = new Module;
+                    $module = new Module();
                     $module->setId(ModuleSourceTest::$moduleName);
                     $module->setName($name);
                     $module->setAuthor('');

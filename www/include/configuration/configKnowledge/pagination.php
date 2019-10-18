@@ -71,7 +71,8 @@ if (isset($_GET["search_type_host"])) {
     $search_type_host = null;
 }
 
-if (!isset($_GET["search_type_host"])
+if (
+    !isset($_GET["search_type_host"])
     && !isset($centreon->search_type_host)
     && !isset($_GET["search_type_service"])
     && !isset($centreon->search_type_service)

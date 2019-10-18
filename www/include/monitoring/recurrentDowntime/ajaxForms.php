@@ -55,8 +55,8 @@ if (isset($_GET['period_form'])) {
     $path = "./include/monitoring/recurrentDowntime/";
 
     /*
-	 * Smarty template Init
-	 */
+     * Smarty template Init
+     */
     $tpl = new Smarty();
     $tpl = initSmartyTpl($path, $tpl, 'templates/');
 

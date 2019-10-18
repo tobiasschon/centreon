@@ -115,8 +115,10 @@ $next = '';
 if ($handle = opendir('../../php')) {
     while (false !== ($file = readdir($handle))) {
         if (preg_match('/Update-([a-zA-Z0-9\-\.]+)\.php/', $file, $matches)) {
-            if ((version_compare($current, $matches[1]) < 0) &&
-                (empty($next) || (version_compare($matches[1], $next) < 0))) {
+            if (
+                (version_compare($current, $matches[1]) < 0) &&
+                (empty($next) || (version_compare($matches[1], $next) < 0))
+            ) {
                 $next = $matches[1];
             }
         }

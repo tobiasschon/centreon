@@ -1,4 +1,5 @@
 <?php
+
 /*
  * Copyright 2005-2019 Centreon
  * Centreon is developped by : Julien Mathis and Romain Le Merlus under
@@ -52,9 +53,8 @@ use CentreonModule\Tests\Resource\Traits\SourceDependencyTrait;
 
 class ModuleSourceTest extends TestCase
 {
-
-    use TestCaseExtensionTrait,
-        SourceDependencyTrait;
+    use TestCaseExtensionTrait;
+    use SourceDependencyTrait;
 
     public static $moduleName = 'test-module';
     public static $moduleNameMissing = 'missing-module';
@@ -99,12 +99,12 @@ class ModuleSourceTest extends TestCase
         ;
 
         // provide services
-        $container = new Container;
-        $container['finder'] = new Finder;
+        $container = new Container();
+        $container['finder'] = new Finder();
         $container['configuration'] = $this->createMock(Configuration::class);
 
         // DB service
-        $container[\Centreon\ServiceProvider::CENTREON_DB_MANAGER] = new Mock\CentreonDBManagerService;
+        $container[\Centreon\ServiceProvider::CENTREON_DB_MANAGER] = new Mock\CentreonDBManagerService();
         foreach (static::$sqlQueryVsData as $query => $data) {
             $container[\Centreon\ServiceProvider::CENTREON_DB_MANAGER]->addResultSet($query, $data);
         }

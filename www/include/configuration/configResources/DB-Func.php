@@ -226,7 +226,8 @@ function updateResource($resourceId)
     $submitedValues = $form->getSubmitValues();
         
     $isActivate = false;
-    if (isset($submitedValues["resource_activate"])
+    if (
+        isset($submitedValues["resource_activate"])
         && isset($submitedValues["resource_activate"]["resource_activate"])
         && $submitedValues["resource_activate"]["resource_activate"] == '1'
     ) {
@@ -260,7 +261,7 @@ function updateResource($resourceId)
        
     $prepare->bindValue(
         ':is_activate',
-        ($isActivate ? '1': '0'),
+        ($isActivate ? '1' : '0'),
         \PDO::PARAM_STR
     );
  

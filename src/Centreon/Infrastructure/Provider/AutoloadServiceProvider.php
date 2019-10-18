@@ -1,4 +1,5 @@
 <?php
+
 /*
  * Copyright 2005-2019 Centreon
  * Centreon is developed by : Julien Mathis and Romain Le Merlus under
@@ -61,7 +62,7 @@ class AutoloadServiceProvider
         $providers = static::getProviders($dependencyInjector['finder']);
 
         foreach ($providers as $provider) {
-            $dependencyInjector->register(new $provider);
+            $dependencyInjector->register(new $provider());
         }
     }
 

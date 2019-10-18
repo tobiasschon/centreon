@@ -85,7 +85,8 @@ $hostgroupId = filter_var(
 $allowedHostgroups = $centreon->user->access->getHostGroupAclConf(null, 'broker');
 
 //checking if the user has ACL rights for this resource
-if (!$centreon->user->admin
+if (
+    !$centreon->user->admin
     && $hostgroupId !== null
     && !array_key_exists($hostgroupId, $allowedHostgroups)
 ) {
@@ -152,9 +153,9 @@ echo _("Hosts") . ";"
     . _("Down") . " " . _("Alert") . ";"
     . _("Unreachable") . " %;"
     . _("Unreachable Mean Time") . " %;"
-    . _("Unreachable") ." " . _("Alert") . ";"
+    . _("Unreachable") . " " . _("Alert") . ";"
     . _("Scheduled Downtimes") . " %;"
-    . _("Undetermined") ." %;\n";
+    . _("Undetermined") . " %;\n";
 
 foreach ($hostgroupStats as $key => $tab) {
     if ($key != "average") {
@@ -164,12 +165,12 @@ foreach ($hostgroupStats as $key => $tab) {
             . $tab["UP_A"] . ";"
             . $tab["DOWN_TP"] . "%;"
             . $tab["DOWN_MP"] . "%;"
-            . $tab["DOWN_A"] .";"
+            . $tab["DOWN_A"] . ";"
             . $tab["UNREACHABLE_TP"] . "%;"
             . $tab["UNREACHABLE_MP"] . "%;"
             . $tab["UNREACHABLE_A"] . ";"
             . $tab["MAINTENANCE_TP"] . "%;"
-            . $tab["UNDETERMINED_TP"]."%;\n";
+            . $tab["UNDETERMINED_TP"] . "%;\n";
     }
 }
 echo "\n";

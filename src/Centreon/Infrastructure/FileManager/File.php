@@ -1,4 +1,5 @@
 <?php
+
 /*
  * Copyright 2005-2019 Centreon
  * Centreon is developed by : Julien Mathis and Romain Le Merlus under
@@ -56,32 +57,32 @@ class File
         }
     }
 
-    public function getName() : string
+    public function getName(): string
     {
         return $this->name;
     }
 
-    public function getType() : string
+    public function getType(): string
     {
         return $this->type;
     }
 
-    public function getExtension() : string
+    public function getExtension(): string
     {
         return $this->extension;
     }
 
-    public function getTmpName() : string
+    public function getTmpName(): string
     {
         return $this->tmp_name;
     }
 
-    public function getError() : string
+    public function getError(): string
     {
         return $this->error;
     }
 
-    public function getSize() : string
+    public function getSize(): string
     {
         return $this->size;
     }

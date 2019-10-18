@@ -1,4 +1,5 @@
 <?php
+
 /*
  * Copyright 2005-2019 Centreon
  * Centreon is developed by : Julien Mathis and Romain Le Merlus under
@@ -98,7 +99,7 @@ abstract class ServiceEntityRepository
     {
         $this->db = $db;
         $this->manager = $manager;
-        $this->classMetadata = new Mapping\ClassMetadata;
+        $this->classMetadata = new Mapping\ClassMetadata();
 
         // load metadata for Entity implemented MetadataInterface
         $this->loadMetadata();

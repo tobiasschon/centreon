@@ -117,7 +117,8 @@ if (isset($_GET['svc'])) {
     $serviceObj = new CentreonService($pearDB);
     $serviceArray = $serviceObj->getServicesDescr($svc);
     foreach ($serviceArray as $defaultService) {
-        if ($defaultService['host_name'] == '_Module_Meta'
+        if (
+            $defaultService['host_name'] == '_Module_Meta'
             && preg_match('/^meta_(\d+)/', $defaultService['description'], $matches)
         ) {
             $defaultService['host_name'] = 'Meta';

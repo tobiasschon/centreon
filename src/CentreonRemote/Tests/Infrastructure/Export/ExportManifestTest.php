@@ -1,4 +1,5 @@
 <?php
+
 /*
  * Copyright 2005 - 2019 Centreon (https://www.centreon.com/)
  *
@@ -32,7 +33,6 @@ use DateTime;
  */
 class ExportManifestTest extends TestCase
 {
-
     use TestCaseExtensionTrait;
 
     /**

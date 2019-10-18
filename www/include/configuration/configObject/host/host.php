@@ -59,7 +59,7 @@ $path = "./include/configuration/configObject/host/";
 /*
  * PHP functions
  */
-require_once $path."DB-Func.php";
+require_once $path . "DB-Func.php";
 require_once "./include/common/common-Func.php";
 
 if (isset($_POST["o1"]) && isset($_POST["o2"])) {
@@ -87,49 +87,49 @@ $aclPollerString = $acl->getPollerString();
 
 switch ($o) {
     case "a":
-        require_once($path."formHost.php");
+        require_once($path . "formHost.php");
         break; #Add a host
     case "w":
-        require_once($path."formHost.php");
+        require_once($path . "formHost.php");
         break; #Watch a host
     case "c":
-        require_once($path."formHost.php");
+        require_once($path . "formHost.php");
         break; #Modify a host
     case "mc":
-        require_once($path."formHost.php");
+        require_once($path . "formHost.php");
         break; # Massive Change
     case "s":
         enableHostInDB($host_id);
-        require_once($path."listHost.php");
+        require_once($path . "listHost.php");
         break; #Activate a host
     case "ms":
         enableHostInDB(null, isset($select) ? $select : array());
-        require_once($path."listHost.php");
+        require_once($path . "listHost.php");
         break;
     case "u":
         disableHostInDB($host_id);
-        require_once($path."listHost.php");
+        require_once($path . "listHost.php");
         break; #Desactivate a host
     case "mu":
         disableHostInDB(null, isset($select) ? $select : array());
-        require_once($path."listHost.php");
+        require_once($path . "listHost.php");
         break;
     case "m":
         multipleHostInDB(isset($select) ? $select : array(), $dupNbr);
         $hgs = $acl->getHostGroupAclConf(null, 'broker');
         $aclHostString = $acl->getHostsString('ID', $dbmon);
         $aclPollerString = $acl->getPollerString();
-        require_once($path."listHost.php");
+        require_once($path . "listHost.php");
         break; #Duplicate n hosts
     case "d":
         deleteHostInDB(isset($select) ? $select : array());
-        require_once($path."listHost.php");
+        require_once($path . "listHost.php");
         break; #Delete n hosts
     case "dp":
         applytpl(isset($select) ? $select : array());
-        require_once($path."listHost.php");
+        require_once($path . "listHost.php");
         break; #Deploy service n hosts
     default:
-        require_once($path."listHost.php");
+        require_once($path . "listHost.php");
         break;
 }

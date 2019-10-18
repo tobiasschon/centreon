@@ -328,11 +328,13 @@ class DowntimeDSTContext extends CentreonContext
                     'web'
                 );
                 $output = $return['output'];
-                if (preg_match_all(
-                    '/SCHEDULE_SVC_DOWNTIME;' . $context->host . ';' . $context->service . ';(\d+);(\d+);.+/',
-                    $output,
-                    $matches
-                )) {
+                if (
+                    preg_match_all(
+                        '/SCHEDULE_SVC_DOWNTIME;' . $context->host . ';' . $context->service . ';(\d+);(\d+);.+/',
+                        $output,
+                        $matches
+                    )
+                ) {
                     $startTimestamp = (int)end($matches[1]);
                     $endTimestamp = (int)end($matches[2]);
 
@@ -341,9 +343,11 @@ class DowntimeDSTContext extends CentreonContext
                     $dateEnd = new DateTime('now', new \DateTimeZone('Europe/Paris'));
                     $dateEnd->setTimestamp($endTimestamp);
 
-                    if ($dateStart->format('Y-m-d H:i') != $context->downtimeProperties['expected_start'] ||
+                    if (
+                        $dateStart->format('Y-m-d H:i') != $context->downtimeProperties['expected_start'] ||
                         $dateEnd->format('Y-m-d H:i') != $context->downtimeProperties['expected_end'] ||
-                        ($endTimestamp - $startTimestamp) != (int)$context->downtimeProperties['expected_duration']) {
+                        ($endTimestamp - $startTimestamp) != (int)$context->downtimeProperties['expected_duration']
+                    ) {
                         throw new \Exception('Downtime external command parameters are wrong (start, end or duration)');
                     }
                     $storageDb = $context->getStorageDatabase();
@@ -379,10 +383,12 @@ class DowntimeDSTContext extends CentreonContext
                     'web'
                 );
                 $output = $return['output'];
-                if (preg_match(
-                    '/SCHEDULE_SVC_DOWNTIME;' . $this->host . ';' . $this->service . ';(\d+);(\d+);.+/',
-                    $output
-                )) {
+                if (
+                    preg_match(
+                        '/SCHEDULE_SVC_DOWNTIME;' . $this->host . ';' . $this->service . ';(\d+);(\d+);.+/',
+                        $output
+                    )
+                ) {
                     $scheduled = false;
                 }
 

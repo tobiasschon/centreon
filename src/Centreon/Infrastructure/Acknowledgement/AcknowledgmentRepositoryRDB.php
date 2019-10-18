@@ -1,4 +1,5 @@
 <?php
+
 /*
  * Copyright 2005 - 2019 Centreon (https://www.centreon.com/)
  *
@@ -267,7 +268,7 @@ final class AcknowledgmentRepositoryRDB extends AbstractRepositoryDRB implements
                 . $accessGroupFilter
                 . 'WHERE ack2.service_id IS '
                 . (($type === self::TYPE_HOST_ACKNOWLEDGEMENT) ? 'NULL' : 'NOT NULL')
-                .' GROUP BY ack2.host_id, ack2.service_id)';
+                . ' GROUP BY ack2.host_id, ack2.service_id)';
 
         // Added the sub request of the search parameter
         $searchRequest = $this->sqlRequestTranslator->translateSearchParameterToSql();

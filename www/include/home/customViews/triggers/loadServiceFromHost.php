@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2005-2015 Centreon
  * Centreon is developped by : Julien Mathis and Romain Le Merlus under
@@ -77,7 +78,7 @@ try {
         $sql .= " SELECT service_id, service_description
         		FROM service s, host_service_relation hsr, hostgroup_relation hgr
         		WHERE hsr.hostgroup_hg_id = hgr.hostgroup_hg_id
-        		AND hgr.host_host_id = ".$db->escape($data)."
+        		AND hgr.host_host_id = " . $db->escape($data) . "
         		AND hsr.service_service_id = s.service_id ";
         $sql .= $aclString;
         $sql .= " ORDER BY service_description ";

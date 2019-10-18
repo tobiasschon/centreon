@@ -64,7 +64,8 @@ if (isset($_POST['searchServiceTemplate'])) {
 
 $order = "ASC";
 $orderby = "service_description";
-if (isset($_REQUEST['order'])
+if (
+    isset($_REQUEST['order'])
     && $_REQUEST['order']
     && isset($_REQUEST['orderby'])
     && $_REQUEST['orderby']
@@ -146,7 +147,8 @@ try {
         }
 
         if (isset($_REQUEST['searchTemplatesWithNoProcedure'])) {
-            if ($diff[$key] == 1
+            if (
+                $diff[$key] == 1
                 || $proc->serviceTemplateHasProcedure($key, $tplArr, PROCEDURE_INHERITANCE_MODE) == true
             ) {
                 $rows--;

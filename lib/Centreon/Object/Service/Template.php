@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2005-2015 CENTREON
  * Centreon is developped by : Julien Mathis and Romain Le Merlus under
@@ -70,7 +71,7 @@ class Centreon_Object_Service_Template extends Centreon_Object
         }
         if ($condition) {
             $sql .= $condition;
-            $sql .= " AND ".$this->table.".service_register = '0' ";
+            $sql .= " AND " . $this->table . ".service_register = '0' ";
             $rows = $this->getResult($sql, $paramValues, "fetchAll");
             $tab = array();
             foreach ($rows as $val) {

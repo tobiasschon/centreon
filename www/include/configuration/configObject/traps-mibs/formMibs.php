@@ -127,8 +127,8 @@ if ($form->validate()) {
 
     if ($fileObj->isUploadedFile()) {
         /*
-		 * Upload File
-		 */
+         * Upload File
+         */
         $values = $fileObj->getValue();
         $msg .= str_replace("\n", "<br />", $stdout);
         $msg .= "<br />Moving traps in DataBase...";

@@ -1,4 +1,5 @@
 <?php
+
 /*
  * Copyright 2005 - 2019 Centreon (https://www.centreon.com/)
  *
@@ -90,7 +91,7 @@ class HostGroup
      * @param Host $host
      * @return HostGroup
      */
-    public function addHost(Host $host):HostGroup
+    public function addHost(Host $host): HostGroup
     {
         $this->hosts[] = $host;
         return $this;

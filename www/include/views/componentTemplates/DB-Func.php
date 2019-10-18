@@ -173,7 +173,8 @@ function insertComponentTemplate()
         noDefaultOreonGraph();
     }
 
-    if ((isset($ret["ds_filled"]) && $ret["ds_filled"] == 1) &&
+    if (
+        (isset($ret["ds_filled"]) && $ret["ds_filled"] == 1) &&
         ($ret["ds_color_area"] == "" || !isset($ret["ds_color_area"]))
     ) {
         $ret["ds_color_area"] = $ret["ds_color_line"];
@@ -291,7 +292,8 @@ function updateComponentTemplate($compo_id = null)
         noDefaultOreonGraph();
     }
 
-    if (isset($ret["ds_filled"]) &&
+    if (
+        isset($ret["ds_filled"]) &&
         $ret["ds_filled"] == 1 &&
         ($ret["ds_color_area"] == "" || !isset($ret["ds_color_area"]))
     ) {

@@ -1,4 +1,5 @@
 <?php
+
 /*
  * Copyright 2005 - 2019 Centreon (https://www.centreon.com/)
  *
@@ -49,7 +50,7 @@ interface AuthenticationRepositoryInterface
      *
      * @return int Returns the number of tokens deleted
      */
-    public function deleteExpiredTokens():int;
+    public function deleteExpiredTokens(): int;
 
     /**
      * Find a session.

@@ -1,4 +1,5 @@
 <?php
+
 namespace Centreon\Infrastructure\Provider;
 
 use Pimple\ServiceProviderInterface;

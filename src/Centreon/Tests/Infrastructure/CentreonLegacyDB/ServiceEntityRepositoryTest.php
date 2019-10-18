@@ -1,4 +1,5 @@
 <?php
+
 /*
  * Copyright 2005-2019 Centreon
  * Centreon is developed by : Julien Mathis and Romain Le Merlus under
@@ -52,8 +53,8 @@ class ServiceEntityRepositoryTest extends TestCase
 
     public function setUp()
     {
-        $this->db = new CentreonDB;
-        $this->manager = new CentreonDBManagerService;
+        $this->db = new CentreonDB();
+        $this->manager = new CentreonDBManagerService();
         $this->repository = new Mock\RepositoryMock($this->db, $this->manager);
     }
 
@@ -83,7 +84,7 @@ class ServiceEntityRepositoryTest extends TestCase
         $tableName = $this->repository->getClassMetadata()->getTableName();
         $columnA = 'id_a';
         $columnB = 'id_b';
-        $checkPoint = (new CheckPoint)
+        $checkPoint = (new CheckPoint())
             ->add('select')
             ->add('delete')
             ->add('insert');

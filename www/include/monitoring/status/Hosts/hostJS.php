@@ -37,7 +37,8 @@ if (!isset($centreon)) {
     exit();
 }
 
-if (!isset($centreon->optGen["AjaxFirstTimeReloadMonitoring"])
+if (
+    !isset($centreon->optGen["AjaxFirstTimeReloadMonitoring"])
     || $centreon->optGen["AjaxFirstTimeReloadMonitoring"] == 0
 ) {
     $tFM = 10;
@@ -45,7 +46,8 @@ if (!isset($centreon->optGen["AjaxFirstTimeReloadMonitoring"])
     $tFM = $centreon->optGen["AjaxFirstTimeReloadMonitoring"] * 1000;
 }
 
-if (!isset($centreon->optGen["AjaxFirstTimeReloadStatistic"])
+if (
+    !isset($centreon->optGen["AjaxFirstTimeReloadStatistic"])
     || $centreon->optGen["AjaxFirstTimeReloadStatistic"] == 0
 ) {
     $tFS = 10;

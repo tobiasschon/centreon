@@ -39,7 +39,8 @@ if (!isset($centreon)) {
 
 $tS = $centreon->optGen["AjaxTimeReloadStatistic"] * 1000;
 $tM = $centreon->optGen["AjaxTimeReloadMonitoring"] * 1000;
-if (!isset($centreon->optGen["AjaxFirstTimeReloadMonitoring"]) ||
+if (
+    !isset($centreon->optGen["AjaxFirstTimeReloadMonitoring"]) ||
     $centreon->optGen["AjaxFirstTimeReloadMonitoring"] == 0
 ) {
     $tFM = 10;

@@ -254,7 +254,8 @@ class ACLMenusAccessContext extends CentreonContext
                             $this->tableau[] = $key;
                         }
                     }
-                    if (count($object['acl_groups']) != 2 || $object['acl_groups'][0] != $this->aclGroup1['group_name']
+                    if (
+                        count($object['acl_groups']) != 2 || $object['acl_groups'][0] != $this->aclGroup1['group_name']
                         || $object['acl_groups'][1] != $this->aclGroup2['group_name']
                     ) {
                         $this->tableau[] = $this->updatedProperties['acl_name'];
@@ -262,7 +263,8 @@ class ACLMenusAccessContext extends CentreonContext
                     $this->currentPage = new ACLGroupConfigurationListingPage($this);
                     $this->currentPage = $this->currentPage->inspect($this->aclGroup1['group_name']);
                     $object = $this->currentPage->getProperties();
-                    if ($object['menu'][0] != $this->initialProperties['acl_name']
+                    if (
+                        $object['menu'][0] != $this->initialProperties['acl_name']
                         || $object['menu'][1] != $this->updatedProperties['acl_name']
                     ) {
                         $this->tableau[] = $this->aclGroup1['group_name'];
@@ -270,7 +272,8 @@ class ACLMenusAccessContext extends CentreonContext
                     $this->currentPage = new ACLGroupConfigurationListingPage($this);
                     $this->currentPage = $this->currentPage->inspect($this->aclGroup2['group_name']);
                     $object = $this->currentPage->getProperties();
-                    if (count($object['menu']) != 2 || $object['menu'][0] != $this->initialProperties['acl_name']
+                    if (
+                        count($object['menu']) != 2 || $object['menu'][0] != $this->initialProperties['acl_name']
                         || $object['menu'][1] != $this->updatedProperties['acl_name']
                     ) {
                         $this->tableau[] = $this->aclGroup2['group_name'];
@@ -307,7 +310,8 @@ class ACLMenusAccessContext extends CentreonContext
             'table[class="ListTable"] tr'
         );
         foreach ($options as $element) {
-            if ($this->assertFindIn($element, 'css', 'td:nth-child(2)')->getText() ==
+            if (
+                $this->assertFindIn($element, 'css', 'td:nth-child(2)')->getText() ==
                 $this->initialProperties['acl_name']
             ) {
                 $this->assertFindIn($element, 'css', 'img[src="img/icons/disabled.png"]')->click();

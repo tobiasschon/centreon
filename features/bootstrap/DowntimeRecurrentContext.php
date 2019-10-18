@@ -118,7 +118,8 @@ class DowntimeRecurrentContext extends CentreonContext
                 $this->currentPage = new DowntimeConfigurationListingPage($context);
                 $this->currentPage->displayDowntimeCycle();
                 foreach ($this->currentPage->getEntries() as $entry) {
-                    if ($entry['host'] == $context->host['name'] &&
+                    if (
+                        $entry['host'] == $context->host['name'] &&
                         $entry['service'] == $context->service['description'] &&
                         $entry['started'] == true
                     ) {

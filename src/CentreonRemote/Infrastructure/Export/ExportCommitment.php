@@ -1,4 +1,5 @@
 <?php
+
 /*
  * Copyright 2005 - 2019 Centreon (https://www.centreon.com/)
  *
@@ -83,7 +84,7 @@ final class ExportCommitment
             $this->path = _CENTREON_CACHEDIR_ . '/config/export/' . $this->remote;
         }
 
-        $this->parser = $parser ?? new ExportParserJson;
+        $this->parser = $parser ?? new ExportParserJson();
     }
 
     public function getRemote(): int

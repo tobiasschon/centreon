@@ -1,4 +1,5 @@
 <?php
+
 /*
  * Copyright 2005 - 2019 Centreon (https://www.centreon.com/)
  *
@@ -95,7 +96,8 @@ class ServiceCategory extends AbstractObject
         $stmt->execute();
         foreach ($stmt->fetchAll(PDO::FETCH_ASSOC) as $value) {
             if (isset($this->serviceLinkedCache[$value['service_service_id']])) {
-                if ($this->serviceSeverityCache[$value['sc_id']]['level'] <
+                if (
+                    $this->serviceSeverityCache[$value['sc_id']]['level'] <
                     $this->serviceSeverityCache[$this->serviceLinkedCache[$value['service_service_id']]]
                 ) {
                     $this->serviceLinkedCache[$value['service_service_id']] = $value['sc_id'];

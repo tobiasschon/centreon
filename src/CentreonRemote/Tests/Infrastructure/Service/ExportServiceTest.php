@@ -1,4 +1,5 @@
 <?php
+
 /*
  * Copyright 2005 - 2019 Centreon (https://www.centreon.com/)
  *
@@ -40,14 +41,13 @@ use Centreon\Test\Traits\TestCaseExtensionTrait;
  */
 class ExportServiceTest extends TestCase
 {
-
     use TestCaseExtensionTrait;
 
     private $aclReload = false;
 
     protected function setUp()
     {
-        $container = new Container;
+        $container = new Container();
 
         // Exporter
         $container['centreon_remote.exporter'] = $this->getMockBuilder(ExporterService::class)
@@ -85,7 +85,7 @@ class ExportServiceTest extends TestCase
             }));
 
         // DB service
-        $container[\Centreon\ServiceProvider::CENTREON_DB_MANAGER] = new Mock\CentreonDBManagerService;
+        $container[\Centreon\ServiceProvider::CENTREON_DB_MANAGER] = new Mock\CentreonDBManagerService();
         $container[\Centreon\ServiceProvider::CENTREON_DB_MANAGER]
             ->addResultSet(
                 "SELECT * FROM informations WHERE `key` = :key LIMIT 1",
@@ -143,7 +143,7 @@ class ExportServiceTest extends TestCase
         // mount VFS
         $this->fs = FileSystem::factory('vfs://');
         $this->fs->mount();
-        $this->fs->get('/')->add('export', new Directory);
+        $this->fs->get('/')->add('export', new Directory());
 
         // Export
         $this->export = new ExportService(new ContainerWrap($container));

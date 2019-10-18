@@ -222,8 +222,8 @@ $tpl = initSmartyTpl($path, $tpl);
 
 if ($o == "w") {
     /*
-	 * Just watch a host information
-	 */
+     * Just watch a host information
+     */
     if (!$min && $centreon->user->access->page($p) != 2) {
         $form->addElement("button", "change", _("Modify"), array(
             "onClick" => "javascript:window.location.href='?p=" . $p . "&o=c&dt_id=" . $id . "'",
@@ -234,8 +234,8 @@ if ($o == "w") {
     $form->freeze();
 } elseif ($o == "c") {
     /*
-	 * Modify a service information
-	 */
+     * Modify a service information
+     */
     require_once _CENTREON_PATH_ . "/www/class/centreonACL.class.php";
 
     $userId = $centreon->user->user_id;
@@ -284,8 +284,8 @@ if ($o == "w") {
     $form->setDefaults($default_dt);
 } elseif ($o == "a") {
     /*
-	 * Add a service information
-	 */
+     * Add a service information
+     */
     $subA = $form->addElement(
         'button',
         'submitA',
@@ -326,7 +326,8 @@ if ($form->validate()) {
             $tpl->assign('period_err', _("The end time must be greater than the start time."));
         }
     }
-    if ((!isset($values['host_relation']) || count($values['host_relation']) == 0)
+    if (
+        (!isset($values['host_relation']) || count($values['host_relation']) == 0)
         && (!isset($values['hostgroup_relation']) || count($values['hostgroup_relation']) == 0)
         && (!isset($values['svc_relation']) || count($values['svc_relation']) == 0)
         && (!isset($values['svcgroup_relation']) || count($values['svcgroup_relation']) == 0)

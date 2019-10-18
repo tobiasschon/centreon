@@ -1,4 +1,5 @@
 <?php
+
 /*
  * Copyright 2005-2019 Centreon
  * Centreon is developed by : Julien Mathis and Romain Le Merlus under
@@ -176,7 +177,7 @@ class CentreonPaginationService
     {
         $order = (!empty($order) && (strtoupper($order) == "DESC")) ? $order : 'ASC';
 
-        $this->ordering = ['field' => $field, 'order'=> $order];
+        $this->ordering = ['field' => $field, 'order' => $order];
 
         return $this;
     }

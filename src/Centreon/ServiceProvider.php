@@ -1,4 +1,5 @@
 <?php
+
 /*
  * Copyright 2005-2019 Centreon
  * Centreon is developed by : Julien Mathis and Romain Le Merlus under
@@ -103,7 +104,7 @@ class ServiceProvider implements AutoloadServiceProviderInterface
         };
 
         $pimple[static::CENTREON_WEBSERVICE] = function (Container $container): CentreonWebserviceService {
-            $service = new CentreonWebserviceService;
+            $service = new CentreonWebserviceService();
 
             return $service;
         };
@@ -144,7 +145,7 @@ class ServiceProvider implements AutoloadServiceProviderInterface
         };
 
         $pimple[static::CENTREON_CLAPI] = function (Container $container): CentreonClapiService {
-            $service = new CentreonClapiService;
+            $service = new CentreonClapiService();
 
             return $service;
         };
@@ -183,26 +184,26 @@ class ServiceProvider implements AutoloadServiceProviderInterface
             return $_SESSION['centreon']->user; // @codeCoverageIgnoreEnd
         };
 
-        $pimple['centreon.keygen'] = function (Container $container) : AppKeyGeneratorService {
+        $pimple['centreon.keygen'] = function (Container $container): AppKeyGeneratorService {
             $service = new AppKeyGeneratorService();
 
             return $service;
         };
 
-        $pimple[static::CENTREON_ACL] = function (Container $container) : CentreonACL {
+        $pimple[static::CENTREON_ACL] = function (Container $container): CentreonACL {
             $service = new CentreonACL($container);
 
             return $service;
         };
 
 
-        $pimple[static::CENTREON_GLOBAL_ACL] = function (Container $container) : CACL {
+        $pimple[static::CENTREON_GLOBAL_ACL] = function (Container $container): CACL {
             $service = new CACL($_SESSION['centreon']->user->user_id, $_SESSION['centreon']->user->admin);
 
             return $service;
         };
 
-        $pimple['centreon.config'] = function (Container $container) : CentcoreConfigService {
+        $pimple['centreon.config'] = function (Container $container): CentcoreConfigService {
             $service = new CentcoreConfigService();
 
             return $service;
@@ -248,7 +249,7 @@ class ServiceProvider implements AutoloadServiceProviderInterface
             return $service;
         };
 
-        $pimple[static::CENTREON_EVENT_DISPATCHER] = function (Container $container) : Event\EventDispatcher {
+        $pimple[static::CENTREON_EVENT_DISPATCHER] = function (Container $container): Event\EventDispatcher {
             $eventDispatcher = new Event\EventDispatcher();
             $eventDispatcher->setDispatcherLoader(
                 new Event\FileLoader(
@@ -287,7 +288,7 @@ class ServiceProvider implements AutoloadServiceProviderInterface
 
         $pimple[static::CENTREON_VALIDATOR_TRANSLATOR] =
             function (Container $container): Validation\CentreonValidatorTranslator {
-                return new Validation\CentreonValidatorTranslator;
+                return new Validation\CentreonValidatorTranslator();
             };
 
         $pimple[static::VALIDATOR_EXPRESSION] = function (): Constraints\ExpressionValidator {

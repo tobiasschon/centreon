@@ -189,8 +189,8 @@ function multipleGroupInDB($groups = array(), $nbrDup = array())
                 $dbResult->closeCursor();
 
                 /*
-				 * Duplicate Links
-				 */
+                 * Duplicate Links
+                 */
                 duplicateContacts($key, $maxId["MAX(acl_group_id)"], $pearDB);
                 duplicateContactGroups($key, $maxId["MAX(acl_group_id)"], $pearDB);
                 duplicateResources($key, $maxId["MAX(acl_group_id)"], $pearDB);
@@ -249,7 +249,8 @@ function insertGroup($groupInfos)
     }
 
     $isAclGroupActivate = false;
-    if (isset($groupInfos['acl_group_activate'])
+    if (
+        isset($groupInfos['acl_group_activate'])
         && isset($groupInfos['acl_group_activate']['acl_group_activate'])
         && $groupInfos['acl_group_activate']['acl_group_activate'] == '1'
     ) {
@@ -278,7 +279,7 @@ function insertGroup($groupInfos)
     );
     $prepare->bindValue(
         ':is_activate',
-        ($isAclGroupActivate ? '1': '0'),
+        ($isAclGroupActivate ? '1' : '0'),
         \PDO::PARAM_STR
     );
     return $prepare->execute()
@@ -328,7 +329,8 @@ function updateGroup($aclGroupId = null)
     $groupInfos = $form->getSubmitValues();
 
     $isAclGroupActivate = false;
-    if (isset($groupInfos['acl_group_activate'])
+    if (
+        isset($groupInfos['acl_group_activate'])
         && isset($groupInfos['acl_group_activate']['acl_group_activate'])
         && $groupInfos['acl_group_activate']['acl_group_activate'] == '1'
     ) {
@@ -354,7 +356,7 @@ function updateGroup($aclGroupId = null)
     );
     $prepare->bindValue(
         ':is_activate',
-        ($isAclGroupActivate ? '1': '0'),
+        ($isAclGroupActivate ? '1' : '0'),
         \PDO::PARAM_STR
     );
     $prepare->bindValue(

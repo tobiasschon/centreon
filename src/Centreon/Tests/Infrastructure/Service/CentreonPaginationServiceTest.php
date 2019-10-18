@@ -1,4 +1,5 @@
 <?php
+
 /*
  * Copyright 2005-2019 Centreon
  * Centreon is developed by : Julien Mathis and Romain Le Merlus under
@@ -56,7 +57,7 @@ class CentreonPaginationServiceTest extends TestCase
 
     public function setUp()
     {
-        $this->container = new Container;
+        $this->container = new Container();
         $this->setUpCentreonDbManager($this->container);
 
         $this->service = new CentreonPaginationService(new ContainerWrap($this->container));

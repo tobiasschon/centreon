@@ -1,4 +1,5 @@
 <?php
+
 /*
  * Copyright 2005 - 2019 Centreon (https://www.centreon.com/)
  *
@@ -24,7 +25,8 @@ require dirname(__DIR__) . '/vendor/autoload.php';
 
 // Load cached env vars if the .env.local.php file exists
 // Run "composer dump-env prod" to create it (requires symfony/flex >=1.2)
-if (file_exists(dirname(__DIR__) . '/.env.local.php')
+if (
+    file_exists(dirname(__DIR__) . '/.env.local.php')
     && is_array($env = @include dirname(__DIR__) . '/.env.local.php')
 ) {
     $_ENV += $env;

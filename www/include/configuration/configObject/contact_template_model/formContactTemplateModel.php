@@ -1,4 +1,5 @@
 <?php
+
 /*
  * Copyright 2005-2019 Centreon
  * Centreon is developed by : Julien Mathis and Romain Le Merlus under
@@ -455,7 +456,8 @@ if ($o != "mc") {
     $form->addRule('contact_name', _("Compulsory Name"), 'required');
     $form->addRule('contact_alias', _("Compulsory Alias"), 'required');
 
-    if (isset($ret["contact_enable_notifications"]["contact_enable_notifications"]) &&
+    if (
+        isset($ret["contact_enable_notifications"]["contact_enable_notifications"]) &&
         $ret["contact_enable_notifications"]["contact_enable_notifications"] == 1
     ) {
         if (isset($ret["contact_template_id"]) && $ret["contact_template_id"] == '') {

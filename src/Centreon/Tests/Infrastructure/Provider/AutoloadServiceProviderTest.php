@@ -1,4 +1,5 @@
 <?php
+
 /*
  * Copyright 2005-2019 Centreon
  * Centreon is developed by : Julien Mathis and Romain Le Merlus under
@@ -48,7 +49,7 @@ class AutoloadServiceProviderTest extends TestCase
 {
     public function setUp()
     {
-        $this->checkPoint = (new CheckPoint)
+        $this->checkPoint = (new CheckPoint())
             ->add('finder.files')
             ->add('finder.name')
             ->add('finder.depth')
@@ -116,7 +117,7 @@ class AutoloadServiceProviderTest extends TestCase
                 ]);
             }));
 
-        $container = new Container;
+        $container = new Container();
         $container['finder'] = $this->finder;
         
         
@@ -146,7 +147,7 @@ class AutoloadServiceProviderTest extends TestCase
                 ]);
             }));
 
-        $container = new Container;
+        $container = new Container();
         $container['finder'] = $this->finder;
         
         

@@ -37,8 +37,10 @@ if (!isset($centreon)) {
     exit();
 }
 
-if (!$centreon->user->admin && isset($_GET['id'])
-    && count($allowedBrokerConf) && !isset($allowedBrokerConf[$_GET['id']])) {
+if (
+    !$centreon->user->admin && isset($_GET['id'])
+    && count($allowedBrokerConf) && !isset($allowedBrokerConf[$_GET['id']])
+) {
     $msg = new CentreonMsg();
     $msg->setImage("./img/icons/warning.png");
     $msg->setTextStyle("bold");
@@ -65,15 +67,15 @@ $DBRESULT->closeCursor();
 /*
  * Var information to format the element
  */
-$attrsText      = array("size"=>"120");
-$attrsText2     = array("size"=>"50");
-$attrsText3     = array("size"=>"10");
-$attrsTextarea  = array("rows"=>"5", "cols"=>"40");
+$attrsText      = array("size" => "120");
+$attrsText2     = array("size" => "50");
+$attrsText3     = array("size" => "10");
+$attrsTextarea  = array("rows" => "5", "cols" => "40");
 
 /*
  * Form begin
  */
-$form = new HTML_QuickFormCustom('Form', 'post', "?p=".$p, '', array('onsubmit' => 'return formValidate()'));
+$form = new HTML_QuickFormCustom('Form', 'post', "?p=" . $p, '', array('onsubmit' => 'return formValidate()'));
 if ($o == "a") {
     $form->addElement('header', 'title', _("Add a Centreon-Broker Configuration"));
 } elseif ($o == "c") {
@@ -193,7 +195,7 @@ if ($o == "w") {
             "button",
             "change",
             _("Modify"),
-            array("onClick"=>"javascript:window.location.href='?p=".$p."&o=c&id=".$ndo2db_id."'")
+            array("onClick" => "javascript:window.location.href='?p=" . $p . "&o=c&id=" . $ndo2db_id . "'")
         );
     }
     $form->freeze();
@@ -223,7 +225,7 @@ if ($form->validate()) {
     $valid = true;
 }
 if ($valid) {
-    require_once($path."listCentreonBroker.php");
+    require_once($path . "listCentreonBroker.php");
 } else {
     /*
      * Apply a template definition

@@ -1,4 +1,5 @@
 <?php
+
 /*
  * Copyright 2005 - 2019 Centreon (https://www.centreon.com/)
  *
@@ -119,8 +120,10 @@ class Curves extends AbstractObject
                 continue;
             }
 
-            if (is_null($value['service_id']) ||
-                $instanceService->checkGenerate($value['host_id'] . '.' . $value['service_id'])) {
+            if (
+                is_null($value['service_id']) ||
+                $instanceService->checkGenerate($value['host_id'] . '.' . $value['service_id'])
+            ) {
                 $value['compo_id'] = $id;
                 $this->generateObjectInFile($value, $id);
             }

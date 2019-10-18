@@ -51,7 +51,8 @@ $centreon = $_SESSION['centreon'];
 $centreonLang = new CentreonLang(_CENTREON_PATH_, $centreon);
 $centreonLang->bindLang();
 
-if (!isset($centreon) ||
+if (
+    !isset($centreon) ||
     !isset($_GET['o']) ||
     !isset($_GET['cmd']) ||
     !isset($_GET['p'])

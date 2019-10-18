@@ -893,7 +893,8 @@ function updateContact_MC($contact_id = null)
         ? $rq .= "'" . htmlentities($ret["contact_lang"], ENT_QUOTES, "UTF-8") . "', "
         : $rq .= "'browser', ";
 
-    if (isset($ret['contact_enable_notifications']['contact_enable_notifications']) &&
+    if (
+        isset($ret['contact_enable_notifications']['contact_enable_notifications']) &&
         $ret['contact_enable_notifications']['contact_enable_notifications'] != null
     ) {
         $rq .= "contact_enable_notifications = '" .
@@ -1205,7 +1206,8 @@ function insertLdapContactInDB($tmpContacts = array())
         );
         $arId = $tmpContacts["ar_id"][$select_key];
 
-        if (isset($tmpContacts["contact_name"][$select_key]) &&
+        if (
+            isset($tmpContacts["contact_name"][$select_key]) &&
             testContactExistence($tmpContacts["contact_name"][$select_key])
         ) {
             $tmpConf["contact_name"] = $tmpContacts["contact_name"][$select_key];

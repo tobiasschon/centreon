@@ -251,7 +251,7 @@ if ($arId) {
 }
 
 /*
- * LDAP servers 
+ * LDAP servers
  */
 $cloneSet = array();
 $cloneSet[] = $form->addElement(
@@ -259,7 +259,7 @@ $cloneSet[] = $form->addElement(
     'address[#index#]',
     _("Host address"),
     array(
-        "size"=>"30",
+        "size" => "30",
         "id" => "address_#index#"
     )
 );
@@ -268,7 +268,7 @@ $cloneSet[] = $form->addElement(
     'port[#index#]',
     _("Port"),
     array(
-        "size"=>"10",
+        "size" => "10",
         "id" => "port_#index#"
     )
 );
@@ -362,13 +362,15 @@ if ($form->validate()) {
         $values['ar_sync_base_date'] = $currentTime;
 
         // updating the next expected auto-sync at login if the admin has changed the sync options or it never occurred
-        if ($gopt['ldap_auto_sync'] === $values['ldap_auto_sync']['ldap_auto_sync']
+        if (
+            $gopt['ldap_auto_sync'] === $values['ldap_auto_sync']['ldap_auto_sync']
             && !empty($gopt['ar_sync_base_date'])
             && ($gopt['ar_sync_base_date'] + ($values['ldap_sync_interval'] * 3600)) > $currentTime
             && $currentTime > $gopt['ar_sync_base_date']
         ) {
             // distinguishing the enabled and disabled cases
-            if ($values['ldap_auto_sync']['ldap_auto_sync'] == 0
+            if (
+                $values['ldap_auto_sync']['ldap_auto_sync'] == 0
                 || ($values['ldap_auto_sync']['ldap_auto_sync'] == 1
                     && $gopt['ldap_sync_interval'] == $values['ldap_sync_interval'])
             ) {
@@ -405,7 +407,7 @@ $form->addElement(
     "button",
     "change",
     _("Modify"),
-    array("onClick" => "javascript:window.location.href='?p=" . $p . "&o=ldap&ar_id=" . $arId ."'")
+    array("onClick" => "javascript:window.location.href='?p=" . $p . "&o=ldap&ar_id=" . $arId . "'")
 );
 
 /*

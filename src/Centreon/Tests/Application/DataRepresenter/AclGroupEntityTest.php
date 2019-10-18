@@ -1,4 +1,5 @@
 <?php
+
 /*
  * Copyright 2005-2019 Centreon
  * Centreon is developed by : Julien Mathis and Romain Le Merlus under
@@ -57,8 +58,8 @@ class AclGroupEntityTest extends TestCase
             'id' => $entity->getId(),
             'name' => $entity->getName(),
             'alias' => $entity->getAlias(),
-            'changed'=> $entity->getChanged(),
-            'activate'=> $entity->getActivate(),
+            'changed' => $entity->getChanged(),
+            'activate' => $entity->getActivate(),
         ];
 
         $dataRepresenter = new AclGroupEntity($entity);

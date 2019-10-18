@@ -549,7 +549,8 @@ function multipleServiceInDB(
                 $hgPars = getMyServiceHostGroups($key);
             }
 
-            if (($row["service_register"] && testServiceExistence($service_description, $hPars, $hgPars, $params)) ||
+            if (
+                ($row["service_register"] && testServiceExistence($service_description, $hPars, $hgPars, $params)) ||
                 (!$row["service_register"] && testServiceTemplateExistence($service_description))
             ) {
                 $hPars = array();
@@ -809,11 +810,13 @@ function updateServiceInDB($service_id = null, $from_MC = false, $params = array
     // 1 - MC with deletion of existing options (Replacement)
     // 2 - MC with addition of new options (incremental)
     // 3 - Normal update
-    if (isset($ret["mc_mod_notifopt_notification_interval"]["mc_mod_notifopt_notification_interval"])
+    if (
+        isset($ret["mc_mod_notifopt_notification_interval"]["mc_mod_notifopt_notification_interval"])
         && $ret["mc_mod_notifopt_notification_interval"]["mc_mod_notifopt_notification_interval"]
     ) {
         updateServiceNotifOptionInterval($service_id);
-    } elseif (isset($ret["mc_mod_notifopt_notification_interval"]["mc_mod_notifopt_notification_interval"])
+    } elseif (
+        isset($ret["mc_mod_notifopt_notification_interval"]["mc_mod_notifopt_notification_interval"])
         && !$ret["mc_mod_notifopt_notification_interval"]["mc_mod_notifopt_notification_interval"]
     ) {
         updateServiceNotifOptionInterval_MC($service_id);
@@ -825,11 +828,13 @@ function updateServiceInDB($service_id = null, $from_MC = false, $params = array
     // 1 - MC with deletion of existing options (Replacement)
     // 2 - MC with addition of new options (incremental)
     // 3 - Normal update, default behavior
-    if (isset($ret["mc_mod_notifopt_first_notification_delay"]["mc_mod_notifopt_first_notification_delay"])
+    if (
+        isset($ret["mc_mod_notifopt_first_notification_delay"]["mc_mod_notifopt_first_notification_delay"])
         && $ret["mc_mod_notifopt_first_notification_delay"]["mc_mod_notifopt_first_notification_delay"]
     ) {
         updateServiceNotifOptionFirstNotificationDelay($service_id);
-    } elseif (isset($ret["mc_mod_notifopt_first_notification_delay"]["mc_mod_notifopt_first_notification_delay"])
+    } elseif (
+        isset($ret["mc_mod_notifopt_first_notification_delay"]["mc_mod_notifopt_first_notification_delay"])
         && !$ret["mc_mod_notifopt_first_notification_delay"]["mc_mod_notifopt_first_notification_delay"]
     ) {
         updateServiceNotifOptionFirstNotificationDelay_MC($service_id);
@@ -842,11 +847,13 @@ function updateServiceInDB($service_id = null, $from_MC = false, $params = array
     // 1 - MC with deletion of existing options (Replacement)
     // 2 - MC with addition of new options (incremental)
     // 3 - Normal update
-    if (isset($ret["mc_mod_notifopt_timeperiod"]["mc_mod_notifopt_timeperiod"])
+    if (
+        isset($ret["mc_mod_notifopt_timeperiod"]["mc_mod_notifopt_timeperiod"])
         && $ret["mc_mod_notifopt_timeperiod"]["mc_mod_notifopt_timeperiod"]
     ) {
         updateServiceNotifOptionTimeperiod($service_id);
-    } elseif (isset($ret["mc_mod_notifopt_timeperiod"]["mc_mod_notifopt_timeperiod"])
+    } elseif (
+        isset($ret["mc_mod_notifopt_timeperiod"]["mc_mod_notifopt_timeperiod"])
         && !$ret["mc_mod_notifopt_timeperiod"]["mc_mod_notifopt_timeperiod"]
     ) {
         updateServiceNotifOptionTimeperiod_MC($service_id);
@@ -1098,7 +1105,8 @@ function insertService($ret = array(), $macro_on_demand = null)
             for ($i = 0; $i <= $my_tab['nbOfMacro']; $i++) {
                 $macInput = "macroInput_" . $i;
                 $macValue = "macroValue_" . $i;
-                if (isset($my_tab[$macInput])
+                if (
+                    isset($my_tab[$macInput])
                     && !isset($already_stored[strtolower($my_tab[$macInput])]) && $my_tab[$macInput]
                 ) {
                     $my_tab[$macInput] = str_replace("\$_SERVICE", "", $my_tab[$macInput]);
@@ -1474,7 +1482,8 @@ function updateService_MC($service_id = null, $params = array())
     if (isset($ret["service_alias"]) && $ret["service_alias"] != null) {
         $rq .= "service_alias = '" . $ret["service_alias"] . "', ";
     }
-    if (isset($ret["service_is_volatile"]["service_is_volatile"])
+    if (
+        isset($ret["service_is_volatile"]["service_is_volatile"])
         && $ret["service_is_volatile"]["service_is_volatile"] != 2
     ) {
         $rq .= "service_is_volatile = '" . $ret["service_is_volatile"]["service_is_volatile"] . "', ";
@@ -1538,13 +1547,15 @@ function updateService_MC($service_id = null, $params = array())
     if (isset($ret["service_recovery_notification_delay"]) && $ret["service_recovery_notification_delay"] != null) {
         $rq .= "service_recovery_notification_delay = '" . $ret["service_recovery_notification_delay"] . "', ";
     }
-    if (isset($ret["mc_contact_additive_inheritance"]["mc_contact_additive_inheritance"])
+    if (
+        isset($ret["mc_contact_additive_inheritance"]["mc_contact_additive_inheritance"])
         && in_array($ret["mc_contact_additive_inheritance"]["mc_contact_additive_inheritance"], array('0', '1'))
     ) {
         $rq .= "contact_additive_inheritance = '" .
             $ret["mc_contact_additive_inheritance"]["mc_contact_additive_inheritance"] . "', ";
     }
-    if (isset($ret["mc_cg_additive_inheritance"]["mc_cg_additive_inheritance"])
+    if (
+        isset($ret["mc_cg_additive_inheritance"]["mc_cg_additive_inheritance"])
         && in_array($ret["mc_cg_additive_inheritance"]["mc_cg_additive_inheritance"], array('0', '1'))
     ) {
         $rq .= "cg_additive_inheritance = '" . $ret["mc_cg_additive_inheritance"]["mc_cg_additive_inheritance"] . "', ";

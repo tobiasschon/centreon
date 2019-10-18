@@ -312,7 +312,8 @@ $elemArr = array();
 $search = str_replace('\_', "_", $search);
 
 for ($i = 0; $host = $dbResult->fetch(); $i++) {
-    if (!isset($poller)
+    if (
+        !isset($poller)
         || $poller == 0
         || ($poller != 0 && $poller == $tab_relation_id[$host["host_id"]])
     ) {
@@ -363,7 +364,8 @@ for ($i = 0; $host = $dbResult->fetch(); $i++) {
 
         // Check icon
         $host_icone = "./img/icons/host.png";
-        if (isset($ehiCache[$host["host_id"]])
+        if (
+            isset($ehiCache[$host["host_id"]])
             && $ehiCache[$host["host_id"]]
         ) {
             $host_icone = "./img/media/" . $mediaObj->getFilename($ehiCache[$host["host_id"]]);

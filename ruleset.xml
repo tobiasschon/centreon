@@ -10,7 +10,7 @@
   <exclude-pattern>*/lib/HTML/QuickForm/**/*.php</exclude-pattern>
   <exclude-pattern>*\.(?!(php$))</exclude-pattern>
 
-  <rule ref="PSR2"/>
+  <rule ref="PSR12"/>
   <rule ref="Squiz.WhiteSpace.SuperfluousWhitespace"/>
   <rule ref="PSR1.Files.SideEffects.FoundWithSymbols">
     <exclude-pattern>www</exclude-pattern>

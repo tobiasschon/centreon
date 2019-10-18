@@ -1,4 +1,5 @@
 <?php
+
 /*
  * Copyright 2005-2019 Centreon
  * Centreon is developed by : Julien Mathis and Romain Le Merlus under
@@ -54,12 +55,11 @@ use Pimple\Psr11\Container as Psr11Container;
  */
 class RepositoryCallbackValidatorTest extends TestCase
 {
-
     use Dependency\CentreonDbManagerDependencyTrait;
 
     public function setUp()
     {
-        $this->container = new Container;
+        $this->container = new Container();
         $this->executionContext = $this->createMock(ExecutionContext::class);
 
         // dependency
@@ -105,7 +105,7 @@ class RepositoryCallbackValidatorTest extends TestCase
         $constraint->repoMethod = 'validateEntity';
         $constraint->fieldAccessor = 'getName';
 
-        $entity = new Mock\EntityMock;
+        $entity = new Mock\EntityMock();
         $entity->setId(1);
         $entity->setName('my name');
 

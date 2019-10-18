@@ -57,7 +57,7 @@ $path = "./include/configuration/configObject/escalation/";
 /*
  * PHP functions
  */
-require_once $path."DB-Func.php";
+require_once $path . "DB-Func.php";
 require_once "./include/common/common-Func.php";
 
 /* Set the real page */
@@ -75,23 +75,23 @@ if ($ret['topology_page'] != "" && $p != $ret['topology_page']) {
 
 switch ($o) {
     case "a":
-        require_once($path."formEscalation.php");
+        require_once($path . "formEscalation.php");
         break; #Add a Escalation
     case "w":
-        require_once($path."formEscalation.php");
+        require_once($path . "formEscalation.php");
         break; #Watch a Escalation
     case "c":
-        require_once($path."formEscalation.php");
+        require_once($path . "formEscalation.php");
         break; #Modify a Escalation
     case "m":
         multipleEscalationInDB(isset($select) ? $select : array(), $dupNbr);
-        require_once($path."listEscalation.php");
+        require_once($path . "listEscalation.php");
         break; #Duplicate n Escalations
     case "d":
         deleteEscalationInDB(isset($select) ? $select : array());
-        require_once($path."listEscalation.php");
+        require_once($path . "listEscalation.php");
         break; #Delete n Escalation
     default:
-        require_once($path."listEscalation.php");
+        require_once($path . "listEscalation.php");
         break;
 }

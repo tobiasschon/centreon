@@ -321,10 +321,11 @@ for ($i = 0; $service = $dbResult->fetch(); $i++) {
 
     if ((isset($ehiCache[$service["host_id"]]) && $ehiCache[$service["host_id"]])) {
         $host_icone = "./img/media/" . $mediaObj->getFilename($ehiCache[$service["host_id"]]);
-    } elseif ($icone = $host_method->replaceMacroInString(
-        $service["host_id"],
-        getMyHostExtendedInfoImage($service["host_id"], "ehi_icon_image", 1)
-    )
+    } elseif (
+        $icone = $host_method->replaceMacroInString(
+            $service["host_id"],
+            getMyHostExtendedInfoImage($service["host_id"], "ehi_icon_image", 1)
+        )
     ) {
         $host_icone = "./img/media/" . $icone;
     } else {
@@ -333,12 +334,13 @@ for ($i = 0; $service = $dbResult->fetch(); $i++) {
 
     if (isset($service['esi_icon_image']) && $service['esi_icon_image']) {
         $svc_icon = "./img/media/" . $mediaObj->getFilename($service['esi_icon_image']);
-    } elseif ($icone = $mediaObj->getFilename(
-        getMyServiceExtendedInfoField(
-            $service["service_id"],
-            "esi_icon_image"
+    } elseif (
+        $icone = $mediaObj->getFilename(
+            getMyServiceExtendedInfoField(
+                $service["service_id"],
+                "esi_icon_image"
+            )
         )
-    )
     ) {
         $svc_icon = "./img/media/" . $icone;
     } else {

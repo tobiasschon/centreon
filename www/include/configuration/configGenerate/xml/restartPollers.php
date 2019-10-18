@@ -205,7 +205,8 @@ try {
 
     /* Find restart / reload action from modules */
     foreach ($centreon->modules as $key => $value) {
-        if ($value["restart"]
+        if (
+            $value["restart"]
             && $files = glob(_CENTREON_PATH_ . "www/modules/" . $key . "/restart_pollers/*.php")
         ) {
             foreach ($files as $filename) {

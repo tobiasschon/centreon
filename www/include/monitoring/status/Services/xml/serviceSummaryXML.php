@@ -107,7 +107,8 @@ $rq1 .= "WHERE hosts.name NOT LIKE '_Module_%' "
     . $obj->access->queryBuilder("AND", "hosts.host_id", "centreon_acl.host_id") . " "
     . $obj->access->queryBuilder("AND", "group_id", $obj->grouplistStr) . " ";
 
-if ($o == "svcgrid_pb" ||
+if (
+    $o == "svcgrid_pb" ||
     $o == "svcOV_pb" ||
     $o == "svcSum_pb" ||
     $o == "svcgrid_ack_0" ||

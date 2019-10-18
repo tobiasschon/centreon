@@ -1,4 +1,5 @@
 <?php
+
 /*
  * Copyright 2005 - 2019 Centreon (https://www.centreon.com/)
  *
@@ -54,7 +55,7 @@ class ServiceProviderTest extends TestCase
             ->disableOriginalConstructor()
             ->getMock();
 
-        $this->container['realtime_db'] = $this->container['configuration_db'] = new Mock\CentreonDB;
+        $this->container['realtime_db'] = $this->container['configuration_db'] = new Mock\CentreonDB();
         $this->container['configuration_db']->addResultSet("SELECT * FROM informations WHERE `key` = :key LIMIT 1", []);
 
         $this->container['rest_http'] = $this->getMockBuilder(CentreonRestHttp::class)

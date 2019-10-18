@@ -106,7 +106,8 @@ function getAvailableSuffixIds(
 function testAdditionalRemoteServer(array $values)
 {
     # If remote_additional_id select2 is not empty
-    if (isset($values[0])
+    if (
+        isset($values[0])
         && is_array($values[0])
         && count($values[0]) >= 1
     ) {
@@ -518,10 +519,10 @@ function insertServer(array $data): int
     isset($data["remote_server_centcore_ssh_proxy"]["remote_server_centcore_ssh_proxy"])
         && $data["remote_server_centcore_ssh_proxy"]["remote_server_centcore_ssh_proxy"] != null
         ? $rq .= "'" . htmlentities(
-            $data["remote_server_centcore_ssh_proxy"]["remote_server_centcore_ssh_proxy"],
-            ENT_QUOTES,
-            "UTF-8"
-        ) . "'  " : $rq .= "NULL";
+        $data["remote_server_centcore_ssh_proxy"]["remote_server_centcore_ssh_proxy"],
+        ENT_QUOTES,
+        "UTF-8"
+    ) . "'  " : $rq .= "NULL";
     $rq .= ")";
 
     $pearDB->query($rq);
@@ -651,45 +652,45 @@ function updateServer(int $id, $data): void
         : $rq .= "ssh_port = '22', ";
     isset($data["engine_start_command"]) && $data["engine_start_command"] != null
         ? $rq .= "engine_start_command = '" . htmlentities(
-            trim($data["engine_start_command"]),
-            ENT_QUOTES,
-            "UTF-8"
-        ) . "',  "
+        trim($data["engine_start_command"]),
+        ENT_QUOTES,
+        "UTF-8"
+    ) . "',  "
         : $rq .= "engine_start_command = NULL, ";
     isset($data["engine_stop_command"]) && $data["engine_stop_command"] != null
         ? $rq .= "engine_stop_command = '" . htmlentities(
-            trim($data["engine_stop_command"]),
-            ENT_QUOTES,
-            "UTF-8"
-        ) . "',  "
+        trim($data["engine_stop_command"]),
+        ENT_QUOTES,
+        "UTF-8"
+    ) . "',  "
         : $rq .= "engine_stop_command = NULL, ";
     isset($data["engine_restart_command"]) && $data["engine_restart_command"] != null
         ? $rq .= "engine_restart_command = '" . htmlentities(
-            trim($data["engine_restart_command"]),
-            ENT_QUOTES,
-            "UTF-8"
-        ) . "',  "
+        trim($data["engine_restart_command"]),
+        ENT_QUOTES,
+        "UTF-8"
+    ) . "',  "
         : $rq .= "engine_restart_command = NULL, ";
     isset($data["engine_reload_command"]) && $data["engine_reload_command"] != null
         ? $rq .= "engine_reload_command = '" . htmlentities(
-            trim($data["engine_reload_command"]),
-            ENT_QUOTES,
-            "UTF-8"
-        ) . "',  "
+        trim($data["engine_reload_command"]),
+        ENT_QUOTES,
+        "UTF-8"
+    ) . "',  "
         : $rq .= "engine_reload_command = NULL, ";
     isset($data["init_script_centreontrapd"]) && $data["init_script_centreontrapd"] != null
         ? $rq .= "init_script_centreontrapd = '" . htmlentities(
-            trim($data["init_script_centreontrapd"]),
-            ENT_QUOTES,
-            "UTF-8"
-        ) . "',  "
+        trim($data["init_script_centreontrapd"]),
+        ENT_QUOTES,
+        "UTF-8"
+    ) . "',  "
         : $rq .= "init_script_centreontrapd = NULL, ";
     isset($data["snmp_trapd_path_conf"]) && $data["snmp_trapd_path_conf"] != null
         ? $rq .= "snmp_trapd_path_conf = '" . htmlentities(
-            trim($data["snmp_trapd_path_conf"]),
-            ENT_QUOTES,
-            "UTF-8"
-        ) . "',  "
+        trim($data["snmp_trapd_path_conf"]),
+        ENT_QUOTES,
+        "UTF-8"
+    ) . "',  "
         : $rq .= "snmp_trapd_path_conf = NULL, ";
     isset($data["nagios_bin"]) && $data["nagios_bin"] != null
         ? $rq .= "nagios_bin = '" . htmlentities(trim($data["nagios_bin"]), ENT_QUOTES, "UTF-8") . "',  "
@@ -702,31 +703,31 @@ function updateServer(int $id, $data): void
         : $rq .= "nagios_perfdata = NULL, ";
     isset($data["broker_reload_command"]) && $data["broker_reload_command"] != null
         ? $rq .= "broker_reload_command = '" . htmlentities(
-            trim($data["broker_reload_command"]),
-            ENT_QUOTES,
-            "UTF-8"
-        ) . "',  "
+        trim($data["broker_reload_command"]),
+        ENT_QUOTES,
+        "UTF-8"
+    ) . "',  "
         : $rq .= "broker_reload_command = NULL, ";
     isset($data["centreonbroker_cfg_path"]) && $data["centreonbroker_cfg_path"] != null
         ? $rq .= "centreonbroker_cfg_path = '" . htmlentities(
-            trim($data["centreonbroker_cfg_path"]),
-            ENT_QUOTES,
-            "UTF-8"
-        ) . "',  "
+        trim($data["centreonbroker_cfg_path"]),
+        ENT_QUOTES,
+        "UTF-8"
+    ) . "',  "
         : $rq .= "centreonbroker_cfg_path = NULL, ";
     isset($data["centreonbroker_module_path"]) && $data["centreonbroker_module_path"] != null
         ? $rq .= "centreonbroker_module_path = '" . htmlentities(
-            trim($data["centreonbroker_module_path"]),
-            ENT_QUOTES,
-            "UTF-8"
-        ) . "',  "
+        trim($data["centreonbroker_module_path"]),
+        ENT_QUOTES,
+        "UTF-8"
+    ) . "',  "
         : $rq .= "centreonbroker_module_path = NULL, ";
     isset($data["centreonconnector_path"]) && $data["centreonconnector_path"] != null
         ? $rq .= "centreonconnector_path = '" . htmlentities(
-            trim($data["centreonconnector_path"]),
-            ENT_QUOTES,
-            "UTF-8"
-        ) . "',  "
+        trim($data["centreonconnector_path"]),
+        ENT_QUOTES,
+        "UTF-8"
+    ) . "',  "
         : $rq .= "centreonconnector_path = NULL, ";
     isset($data["ssh_private_key"]) && $data["ssh_private_key"] != null
         ? $rq .= "ssh_private_key = '" . htmlentities(trim($data["ssh_private_key"]), ENT_QUOTES, "UTF-8") . "',  "
@@ -736,10 +737,10 @@ function updateServer(int $id, $data): void
         : $rq .= "is_default = NULL, ";
     isset($data["centreonbroker_logs_path"]) && $data["centreonbroker_logs_path"] != null
         ? $rq .= "centreonbroker_logs_path = '" . htmlentities(
-            trim($data["centreonbroker_logs_path"]),
-            ENT_QUOTES,
-            "UTF-8"
-        ) . "',  "
+        trim($data["centreonbroker_logs_path"]),
+        ENT_QUOTES,
+        "UTF-8"
+    ) . "',  "
         : $rq .= "centreonbroker_logs_path = NULL, ";
     isset($data["remote_id"]) && $data["remote_id"] != null
         ? $rq .= "remote_id = '" . htmlentities(trim($data["remote_id"]), ENT_QUOTES, "UTF-8") . "',  "

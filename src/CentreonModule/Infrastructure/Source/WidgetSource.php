@@ -1,4 +1,5 @@
 <?php
+
 /*
  * Copyright 2005-2019 Centreon
  * Centreon is developped by : Julien Mathis and Romain Le Merlus under
@@ -86,7 +87,7 @@ class WidgetSource extends SourceAbstract
         ;
     }
 
-    public function getList(string $search = null, bool $installed = null, bool $updated = null) : array
+    public function getList(string $search = null, bool $installed = null, bool $updated = null): array
     {
         $files = $this->finder
             ->files()
@@ -138,7 +139,7 @@ class WidgetSource extends SourceAbstract
     {
         $xml = simplexml_load_file($configFile);
 
-        $entity = new Module;
+        $entity = new Module();
         $entity->setId(basename(dirname($configFile)));
         $entity->setPath(dirname($configFile));
         $entity->setType(static::TYPE);

@@ -190,7 +190,8 @@ function getLogInDbForHostGroup($hostgroup_id, $start_date, $end_date, $reportTi
 
     /* the hostgroup availability is the average availability of all host from the the hostgroup */
     foreach ($hostStatsLabels as $name) {
-        if ($name == "UP_T" || $name == "DOWN_T" || $name == "UNREACHABLE_T"
+        if (
+            $name == "UP_T" || $name == "DOWN_T" || $name == "UNREACHABLE_T"
             || $name == "UNDETERMINED_T" || $name == "MAINTENANCE_T"
         ) {
             $hostgroupStats["average"][$name] /= $count;
@@ -236,7 +237,7 @@ function getLogInDbForHostGroup($hostgroup_id, $start_date, $end_date, $reportTi
 }
 
 /*
- * Return a table a (which reference is given in parameter) 
+ * Return a table a (which reference is given in parameter)
  * that contains stats on services for a given host defined by $host_id
  */
 function getLogInDbForHostSVC($host_id, $start_date, $end_date, $reportTimePeriod)
@@ -404,7 +405,7 @@ function getLogInDbForHostSVC($host_id, $start_date, $end_date, $reportTimePerio
 }
 
 /*
- * Return a table a (which reference is given in parameter) that contains stats 
+ * Return a table a (which reference is given in parameter) that contains stats
  * on services for a given host defined by $host_id and $service_id
  * me must specify the host id because one service can be linked to many hosts
  */
@@ -548,7 +549,8 @@ function getLogInDbForServicesGroup($servicegroup_id, $start_date, $end_date, $r
      * Average time for all status (OK, Critical, Warning, Unknown)
      */
     foreach ($serviceStatsLabels as $name) {
-        if ($name == "OK_T" || $name == "WARNING_T" || $name == "CRITICAL_T"
+        if (
+            $name == "OK_T" || $name == "WARNING_T" || $name == "CRITICAL_T"
             || $name == "UNKNOWN_T" || $name == "UNDETERMINED_T" || $name == "MAINTENANCE_T"
         ) {
             if ($count) {

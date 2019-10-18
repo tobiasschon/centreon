@@ -70,7 +70,7 @@ $selHost = $formHost->addElement(
     _("Host"),
     $hosts,
     array(
-        "onChange" =>"this.form.submit();"
+        "onChange" => "this.form.submit();"
     )
 );
 $formHost->addElement(
@@ -201,7 +201,7 @@ if (isset($id) && $id != "NULL") {
      * Status colors
      */
     $color = substr($colors["up"], 1)
-        . ':'.substr($colors["down"], 1)
+        . ':' . substr($colors["down"], 1)
         . ':' . substr($colors["unreachable"], 1)
         . ':' . substr($colors["undetermined"], 1)
         . ':' . substr($colors["maintenance"], 1);

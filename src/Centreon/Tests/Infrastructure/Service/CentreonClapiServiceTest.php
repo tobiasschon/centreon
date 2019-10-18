@@ -1,4 +1,5 @@
 <?php
+
 /*
  * Copyright 2005-2019 Centreon
  * Centreon is developed by : Julien Mathis and Romain Le Merlus under
@@ -46,7 +47,7 @@ class CentreonClapiServiceTest extends TestCase
 
     public function testAdd()
     {
-        $service = new CentreonClapiService;
+        $service = new CentreonClapiService();
         $this->assertInstanceOf(ContainerInterface::class, $service);
 
         // check if return this object and add webservice
@@ -65,7 +66,7 @@ class CentreonClapiServiceTest extends TestCase
      */
     public function testAddWithoutInterface()
     {
-        $service = new CentreonClapiService;
+        $service = new CentreonClapiService();
         $this->assertInstanceOf(ContainerInterface::class, $service);
 
         $service->add(\stdClass::class);

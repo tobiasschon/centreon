@@ -1,7 +1,7 @@
 <?php
 /*
  * Copyright 2005 - 2019 Centreon (https://www.centreon.com/)
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -46,7 +46,7 @@ if ($row = $result->fetch()) {
 $centreonLicensesDir = "/etc/centreon/license.d/";
 if (is_dir($centreonLicensesDir)) {
     if ($dh = opendir($centreonLicensesDir)) {
-       $dateNow = new DateTime('NOW');
+        $dateNow = new DateTime('NOW');
         while (($file = readdir($dh)) !== false) {
             if (is_file($centreonLicensesDir . $file)) {
                 $licenseContent = file_get_contents($centreonLicensesDir . $file);

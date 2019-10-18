@@ -559,7 +559,7 @@ function submitHostPassiveCheck()
 function notify_svc_host_hostgroup($arg, $type)
 {
     global $tab, $pearDB, $is_admin;
-    /* 	$res = $pearDB->query("SELECT host_host_id FROM hostgroup_relation WHERE hostgroup_hg_id = '".$arg."'");
+    /*  $res = $pearDB->query("SELECT host_host_id FROM hostgroup_relation WHERE hostgroup_hg_id = '".$arg."'");
       while ($r = $res->fetchRow()){
       $resH = $pearDB->query("SELECT host_name FROM host WHERE host_id = '".$r["host_host_id"]."'");
       $rH = $resH->fetchRow();

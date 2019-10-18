@@ -53,7 +53,7 @@ $cG ? $dupNbr = $cG : $dupNbr = $cP;
 $path = "./include/configuration/configObject/service_categories/";
 
 #PHP functions
-require_once $path."DB-Func.php";
+require_once $path . "DB-Func.php";
 require_once "./include/common/common-Func.php";
 
 /* Set the real page */
@@ -68,44 +68,44 @@ $scString = $acl->getServiceCategoriesString();
 
 switch ($o) {
     case "mc":
-        require_once($path."formServiceCategories.php");
+        require_once($path . "formServiceCategories.php");
         break; # Massive Change
     case "a":
-        require_once($path."formServiceCategories.php");
+        require_once($path . "formServiceCategories.php");
         break; #Add a contact
     case "w":
-        require_once($path."formServiceCategories.php");
+        require_once($path . "formServiceCategories.php");
         break; #Watch a contact
     case "c":
-        require_once($path."formServiceCategories.php");
+        require_once($path . "formServiceCategories.php");
         break; #Modify a contact
     case "s":
         enableServiceCategorieInDB($sc_id);
-        require_once($path."listServiceCategories.php");
+        require_once($path . "listServiceCategories.php");
         break; #Activate a ServiceCategories
     case "ms":
         enableServiceCategorieInDB(null, isset($select) ? $select : array());
-        require_once($path."listServiceCategories.php");
+        require_once($path . "listServiceCategories.php");
         break;
     case "u":
         disableServiceCategorieInDB($sc_id);
-        require_once($path."listServiceCategories.php");
+        require_once($path . "listServiceCategories.php");
         break; #Desactivate a contact
     case "mu":
         disableServiceCategorieInDB(null, isset($select) ? $select : array());
-        require_once($path."listServiceCategories.php");
+        require_once($path . "listServiceCategories.php");
         break;
 
     case "m":
         multipleServiceCategorieInDB(isset($select) ? $select : array(), $dupNbr);
-        require_once($path."listServiceCategories.php");
+        require_once($path . "listServiceCategories.php");
         break; #Duplicate n contacts
 
     case "d":
         deleteServiceCategorieInDB(isset($select) ? $select : array());
-        require_once($path."listServiceCategories.php");
+        require_once($path . "listServiceCategories.php");
         break; #Delete n contacts
     default:
-        require_once($path."listServiceCategories.php");
+        require_once($path . "listServiceCategories.php");
         break;
 }

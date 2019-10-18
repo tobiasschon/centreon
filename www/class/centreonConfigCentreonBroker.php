@@ -1,4 +1,5 @@
 <?php
+
 /*
  * Copyright 2005-2015 Centreon
  * Centreon is developped by : Julien Mathis and Romain Le Merlus under
@@ -774,8 +775,10 @@ class CentreonConfigCentreonBroker
                                 foreach ($value as $fieldname2 => $value2) {
                                     if (is_array($value2)) {
                                         $explodedFieldname2 = explode('__', $fieldname2);
-                                        if (isset($fieldtype[$explodedFieldname2[1]]) &&
-                                            $fieldtype[$explodedFieldname2[1]] == 'radio') {
+                                        if (
+                                            isset($fieldtype[$explodedFieldname2[1]]) &&
+                                            $fieldtype[$explodedFieldname2[1]] == 'radio'
+                                        ) {
                                             $value2 = $value2[$explodedFieldname2[1]];
                                         }
                                     }
@@ -1392,10 +1395,10 @@ class CentreonConfigCentreonBroker
             }
             $row = $res->fetchRow();
             $elemStr = $this->getConfigFieldName(
-                    $configId,
-                    $configGroup,
-                    $row
-                ) . '__' . $info['parent_grp_id'] . '__' . $elemStr;
+                $configId,
+                $configGroup,
+                $row
+            ) . '__' . $info['parent_grp_id'] . '__' . $elemStr;
         }
         return $elemStr;
     }

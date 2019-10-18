@@ -1,4 +1,5 @@
 <?php
+
 /*
  * Copyright 2005-2019 Centreon
  * Centreon is developed by : Julien Mathis and Romain Le Merlus under
@@ -48,13 +49,12 @@ use Centreon\Test\Traits\TestCaseExtensionTrait;
 
 class CentreonDBAdapterTest extends TestCase
 {
-
     use TestCaseExtensionTrait;
 
     public function setUp()
     {
-        $this->db = new CentreonDB;
-        $this->manager = new CentreonDBManagerService;
+        $this->db = new CentreonDB();
+        $this->manager = new CentreonDBManagerService();
         $this->dbAdapter = new CentreonDBAdapter($this->db, $this->manager);
     }
 
@@ -84,7 +84,7 @@ class CentreonDBAdapterTest extends TestCase
 
     public function testQuery()
     {
-        $checkPoint = new CheckPoint;
+        $checkPoint = new CheckPoint();
         $checkPoint->add('select');
 
         $id = 1;
@@ -185,7 +185,7 @@ class CentreonDBAdapterTest extends TestCase
 
     public function testInsert()
     {
-        $checkPoint = new CheckPoint;
+        $checkPoint = new CheckPoint();
         $checkPoint->add('insert');
 
         $name = 'test name';
@@ -248,7 +248,7 @@ class CentreonDBAdapterTest extends TestCase
 
     public function testUpdate()
     {
-        $checkPoint = new CheckPoint;
+        $checkPoint = new CheckPoint();
         $checkPoint->add('update');
 
         $id = 1;
@@ -326,7 +326,7 @@ class CentreonDBAdapterTest extends TestCase
 
     public function testTransaction()
     {
-        $checkPoint = new CheckPoint;
+        $checkPoint = new CheckPoint();
         $checkPoint->add('beginTransaction');
         $checkPoint->add('commit');
         $checkPoint->add('rollBack');

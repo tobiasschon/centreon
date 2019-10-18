@@ -1,4 +1,5 @@
 <?php
+
 /*
  * Copyright 2005-2019 Centreon
  * Centreon is developped by : Julien Mathis and Romain Le Merlus under
@@ -193,7 +194,7 @@ class SourceAbstractTest extends TestCase
 
     public function testIsEligible()
     {
-        $entity = new Module;
+        $entity = new Module();
         $entity->setName('tesat');
         $entity->setKeywords('test,module,lorem');
         $entity->setInstalled(true);

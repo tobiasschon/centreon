@@ -35,7 +35,7 @@
 
 function get_error($str)
 {
-    echo $str."<br />";
+    echo $str . "<br />";
     exit(0);
 }
 
@@ -50,7 +50,7 @@ session_write_close();
 
 $sid = session_id();
 if (isset($sid)) {
-    $res = $pearDB->query("SELECT * FROM session WHERE session_id = '".$sid."'");
+    $res = $pearDB->query("SELECT * FROM session WHERE session_id = '" . $sid . "'");
     if (!$session = $res->fetchRow()) {
         get_error('bad session id');
     }
@@ -68,12 +68,12 @@ $period = (isset($_POST["period"])) ? htmlentities($_POST["period"], ENT_QUOTES,
 $period = (isset($_GET["period"])) ? htmlentities($_GET["period"], ENT_QUOTES, "UTF-8") : $period;
 
 header("Content-Type: application/csv-tab-delimited-table");
-header("Content-disposition: filename=".$mhost.".csv");
+header("Content-disposition: filename=" . $mhost . ".csv");
 
 print "Date;value\n";
 $begin = time() - 26000;
 
-$res = $pearDB->query("SELECT ctime, value FROM data_bin WHERE id_metric = '".$mtrcs."' AND CTIME >= '".$begin."'");
+$res = $pearDB->query("SELECT ctime, value FROM data_bin WHERE id_metric = '" . $mtrcs . "' AND CTIME >= '" . $begin . "'");
 while ($data = $res->fetchRow()) {
-    print $data["ctime"].";".$data["value"].";".date("Y-m-d H:i:s", $data["ctime"])."\n";
+    print $data["ctime"] . ";" . $data["value"] . ";" . date("Y-m-d H:i:s", $data["ctime"]) . "\n";
 }

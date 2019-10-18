@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Centreon
  *
@@ -45,7 +46,7 @@ class UtilsTest extends TestCase
 
         $this->container = new ServiceContainer();
         $this->container[ServiceProvider::CONFIGURATION] = $this->createMock(Configuration::class);
-        $this->container['configuration_db'] = new Mock\CentreonDB;
+        $this->container['configuration_db'] = new Mock\CentreonDB();
         $this->container['configuration_db']->addResultSet("SELECT 'OK';", []);
 
         $this->service = new Utils\Utils(new Container($this->container));
@@ -104,7 +105,7 @@ class UtilsTest extends TestCase
      */
     public function testObjectIntoArrayWithEmptyObject()
     {
-        $result = $this->service->objectIntoArray(new \stdClass);
+        $result = $this->service->objectIntoArray(new \stdClass());
 
         $this->assertEmpty($result);
     }

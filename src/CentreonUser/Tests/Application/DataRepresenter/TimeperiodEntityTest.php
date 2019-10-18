@@ -1,4 +1,5 @@
 <?php
+
 /*
  * Copyright 2005-2019 Centreon
  * Centreon is developed by : Julien Mathis and Romain Le Merlus under
@@ -49,7 +50,7 @@ class TimeperiodEntityTest extends TestCase
 
     public function testJsonSerialize()
     {
-        $entity = new Timeperiod;
+        $entity = new Timeperiod();
         $entity->setId(121);
         $entity->setName('...');
         $entity->setAlias('###');

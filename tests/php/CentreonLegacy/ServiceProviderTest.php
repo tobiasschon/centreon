@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Centreon
  *
@@ -39,8 +40,8 @@ class ServiceProviderTest extends TestCase
         $centreon_path = '_PATH_';
 
         $this->provider = new ServiceProvider();
-        $this->container = new Container;
-        $this->container['configuration_db'] = new Mock\CentreonDB;
+        $this->container = new Container();
+        $this->container['configuration_db'] = new Mock\CentreonDB();
 
         $this->provider->register($this->container);
     }

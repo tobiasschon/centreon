@@ -54,19 +54,22 @@ function getPeriodToReport($alternate = null)
     $start_date = (isset($_GET["start"])) ? $_GET["start"] : $start_date;
     $end_date = (isset($_GET["end"])) ? $_GET["end"] : $end_date;
     $interval = array(0, 0);
-    if ($period_choice == "custom" &&
+    if (
+        $period_choice == "custom" &&
         $start_date != "" &&
         $end_date != ""
     ) {
         $period = "";
     }
-    if ($period == "" &&
+    if (
+        $period == "" &&
         $start_date == "" &&
         $end_date == ""
     ) {
         $period = "yesterday";
     }
-    if ($period == "" &&
+    if (
+        $period == "" &&
         $start_date != ""
     ) {
         $interval = getDateSelectCustomized($start_date, $end_date);
@@ -158,7 +161,7 @@ function getDateSelectPredefined($period)
             $start_date = mktime(0, 0, 0, $month, $day - 30, $year);
             $end_date = mktime(24, 0, 0, $month, $day - 1, $year);
         } elseif ($period == "lastyear") {
-            $start_date = mktime(0, 0, 0, 1, 1, $year-1);
+            $start_date = mktime(0, 0, 0, 1, 1, $year - 1);
             $end_date = mktime(0, 0, 0, 1, 1, $year);
         } elseif ($period == "thismonth") {
             $start_date = mktime(0, 0, 0, $month, 1, $year);
@@ -197,7 +200,8 @@ function getDateSelectCustomized($start, $end)
             $end_time = $end;
         }
     }
-    if (!is_numeric($start) &&
+    if (
+        !is_numeric($start) &&
         isset($start) &&
         $start != ""
     ) {
@@ -245,7 +249,8 @@ function getTotalTimeFromInterval($start, $end, $reportTimePeriod)
         if ($day_duration > $end - $start) {
             $day_duration  = $end - $start;
         }
-        if (isset($reportTimePeriod["report_" . date("l", $start)]) &&
+        if (
+            isset($reportTimePeriod["report_" . date("l", $start)]) &&
             $reportTimePeriod["report_" . date("l", $start)]
         ) {
             $reportTime += $day_duration;
@@ -285,16 +290,16 @@ function createDateTimelineFormat($time_unix)
     $tab_month = array(
     "01" => "Jan",
     "02" => "Feb",
-    "03"=> "Mar",
-    "04"=> "Apr",
+    "03" => "Mar",
+    "04" => "Apr",
     "05" => "May",
-    "06"=> "Jun",
-    "07"=> "Jul",
-    "08"=> "Aug",
-    "09"=> "Sep",
-    "10"=> "Oct",
-    "11"=> "Nov",
-    "12"=> "Dec");
+    "06" => "Jun",
+    "07" => "Jul",
+    "08" => "Aug",
+    "09" => "Sep",
+    "10" => "Oct",
+    "11" => "Nov",
+    "12" => "Dec");
     $date = $tab_month[date('m', $time_unix)] . date(" d Y G:i:s", $time_unix);
     return $date;
 }
@@ -337,6 +342,6 @@ function formatData($state, $time, $timeTOTAL, $time_none, $nb_alert, $color)
         $tab["pourcentkTime"] = null;
     }
     $tab["nbAlert"] = $nb_alert;
-    $tab["style"] = "class='ListColCenter' style='background:" . $color."'";
+    $tab["style"] = "class='ListColCenter' style='background:" . $color . "'";
     return $tab;
 }

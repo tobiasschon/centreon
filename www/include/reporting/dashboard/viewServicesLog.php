@@ -70,7 +70,7 @@ $select = $form->addElement(
     _("Service"),
     $items,
     array(
-        "onChange" =>"this.form.submit();"
+        "onChange" => "this.form.submit();"
     )
 );
 $form->addElement(

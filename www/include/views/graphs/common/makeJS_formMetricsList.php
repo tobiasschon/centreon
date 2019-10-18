@@ -37,8 +37,8 @@
  */
  
     /*
-	 * Lang file
-	 */
+     * Lang file
+     */
     $locale = $oreon->user->get_lang();
     putenv("LANG=$locale");
     setlocale(LC_ALL, $locale);
@@ -167,7 +167,7 @@ function update_select_list(host_service_id, def_id){
 
     xhr.onreadystatechange = function() { get_select_options(xhr, def_id); };
     xhr.open("GET", "./include/views/graphs/common/makeXML_ListMetrics.php?host_id="
-	    + host_id + "&service_id="  + service_id + "&vdef=" + _vdef,
+        + host_id + "&service_id="  + service_id + "&vdef=" + _vdef,
         true);
     xhr.send(null);
 }

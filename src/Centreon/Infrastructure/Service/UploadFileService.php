@@ -1,4 +1,5 @@
 <?php
+
 /*
  * Copyright 2005-2019 Centreon
  * Centreon is developed by : Julien Mathis and Romain Le Merlus under
@@ -62,7 +63,7 @@ class UploadFileService
      *
      * @return array
      */
-    public function getFiles(string $fieldName, array $withExtension = null) : array
+    public function getFiles(string $fieldName, array $withExtension = null): array
     {
         $filesFromRequest = $this->prepare($fieldName);
 
@@ -80,7 +81,7 @@ class UploadFileService
         return $result;
     }
 
-    public function prepare(string $fieldName) : array
+    public function prepare(string $fieldName): array
     {
         $result = [];
 

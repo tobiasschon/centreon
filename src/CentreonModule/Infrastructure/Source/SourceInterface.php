@@ -1,4 +1,5 @@
 <?php
+
 /*
  * Copyright 2005-2019 Centreon
  * Centreon is developped by : Julien Mathis and Romain Le Merlus under
@@ -43,7 +44,7 @@ interface SourceInterface
 
     public function initInfo();
 
-    public function getList(string $search = null, bool $installed = null, bool $updated = null) : array;
+    public function getList(string $search = null, bool $installed = null, bool $updated = null): array;
 
     public function getDetail(string $id): ?Module;
 

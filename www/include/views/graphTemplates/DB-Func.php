@@ -50,13 +50,13 @@ function testExistence($name = null)
     $res = $pearDB->query($query);
     $graph = $res->fetch();
     /*
-	 * Modif case
-	 */
+     * Modif case
+     */
     if ($res->rowCount() >= 1 && $graph["graph_id"] == $id) {
         return true;
     } /*
-	 * Duplicate entry
-	 */
+     * Duplicate entry
+     */
     elseif ($res->rowCount() >= 1 && $graph["graph_id"] != $id) {
         return false;
     } else {

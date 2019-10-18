@@ -1,4 +1,5 @@
 <?php
+
 /*
  * Copyright 2005 - 2019 Centreon (https://www.centreon.com/)
  *
@@ -101,7 +102,7 @@ class AuthenticationRepositoryRDB implements AuthenticationRepositoryInterface
     /**
      * @inheritDoc
      */
-    public function deleteExpiredTokens():int
+    public function deleteExpiredTokens(): int
     {
         $statement = $this->db->query(
             'DELETE FROM ws_token WHERE generate_date < DATE_SUB(NOW(), INTERVAL 1 HOUR)'
@@ -151,7 +152,8 @@ class AuthenticationRepositoryRDB implements AuthenticationRepositoryInterface
             'SELECT * FROM session WHERE session_id = :session_id LIMIT 1'
         );
         $statement->bindValue(':session_id', $sessionId, \PDO::PARAM_STR);
-        if ($statement->execute()
+        if (
+            $statement->execute()
             && $result = $statement->fetch(\PDO::FETCH_ASSOC)
         ) {
             return EntityCreator::createEntityByArray(

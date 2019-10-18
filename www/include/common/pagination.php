@@ -75,7 +75,8 @@ if (isset($_GET["search_type_host"])) {
     $search_type_host = null;
 }
 
-if (!isset($_GET["search_type_host"])
+if (
+    !isset($_GET["search_type_host"])
     && !isset($centreon->search_type_host)
     && !isset($_GET["search_type_service"])
     && !isset($centreon->search_type_service)
@@ -255,7 +256,7 @@ if ($rows != 0) {
             document.forms['form'].elements['limit'].value = _this;
             _l[0].value = _this;
             _l[1].value = _this;
-            window.history.replaceState('', '', '?p=<?= $p.$type ?>');
+            window.history.replaceState('', '', '?p=<?= $p . $type ?>');
         }
     </script>
 <?php

@@ -1,4 +1,5 @@
 <?php
+
 /*
  * Copyright 2005-2019 Centreon
  * Centreon is developped by : Julien Mathis and Romain Le Merlus under
@@ -118,7 +119,7 @@ class ModuleSource extends SourceAbstract
         return $this->getDetail($id);
     }
 
-    public function getList(string $search = null, bool $installed = null, bool $updated = null) : array
+    public function getList(string $search = null, bool $installed = null, bool $updated = null): array
     {
         $files = $this->finder
             ->files()
@@ -174,7 +175,7 @@ class ModuleSource extends SourceAbstract
 
         $info = current($module_conf);
 
-        $entity = new Module;
+        $entity = new Module();
         $entity->setId(basename(dirname($configFile)));
         $entity->setPath(dirname($configFile));
         $entity->setType(static::TYPE);
@@ -203,7 +204,7 @@ class ModuleSource extends SourceAbstract
             }
 
             foreach ($info['images'] as $image) {
-                $entity->addImage(static::PATH_WEB . $entity->getId() . '/'. $image);
+                $entity->addImage(static::PATH_WEB . $entity->getId() . '/' . $image);
             }
         }
 
@@ -242,7 +243,7 @@ class ModuleSource extends SourceAbstract
      * @param array $info the info of the module from conf.php
      * @return array the license information (required, expiration_date)
      */
-    protected function processLicense(string $moduleId, array $info) : array
+    protected function processLicense(string $moduleId, array $info): array
     {
         $license = [
             'required' => false

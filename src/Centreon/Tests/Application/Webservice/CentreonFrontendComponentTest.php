@@ -1,4 +1,5 @@
 <?php
+
 /*
  * Copyright 2005-2019 Centreon
  * Centreon is developed by : Julien Mathis and Romain Le Merlus under
@@ -64,7 +65,7 @@ class CentreonFrontendComponentTest extends TestCase
     protected function setUp()
     {
         // dependencies
-        $container = new Container;
+        $container = new Container();
         $container[ServiceProvider::CENTREON_FRONTEND_COMPONENT_SERVICE] =
             $this->createMock(FrontendComponentService::class);
 

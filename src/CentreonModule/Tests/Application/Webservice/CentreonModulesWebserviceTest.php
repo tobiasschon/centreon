@@ -1,4 +1,5 @@
 <?php
+
 /*
  * Copyright 2005-2019 Centreon
  * Centreon is developped by : Julien Mathis and Romain Le Merlus under
@@ -79,7 +80,7 @@ class CentreonModulesWebserviceTest extends TestCase
     public function testPostGetBamModuleInfoWithoutModule()
     {
         // dependencies
-        $container = new Container;
+        $container = new Container();
         $container[\CentreonLegacy\ServiceProvider::CENTREON_LEGACY_MODULE_INFORMATION] = $this
             ->getMockBuilder(\CentreonLegacy\Core\Module\Information::class)
             ->disableOriginalConstructor()
@@ -110,7 +111,7 @@ class CentreonModulesWebserviceTest extends TestCase
      */
     public function testPostGetBamModuleInfoWithModule()
     {
-        $container = new Container;
+        $container = new Container();
         $container[\CentreonLegacy\ServiceProvider::CENTREON_LEGACY_MODULE_INFORMATION] = $this
             ->getMockBuilder(\CentreonLegacy\Core\Module\Information::class)
             ->disableOriginalConstructor()

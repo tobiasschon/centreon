@@ -1,4 +1,5 @@
 <?php
+
 /*
  * Copyright 2005-2019 Centreon
  * Centreon is developed by : Julien Mathis and Romain Le Merlus under
@@ -153,9 +154,9 @@ class EventDispatcher
                         if (isset($result)) {
                             $this->executionContext[$context][$eventType] =
                                 array_merge(
-                                    $this->executionContext[$context][$eventType] ?? [],
-                                    $result
-                                );
+                                $this->executionContext[$context][$eventType] ?? [],
+                                $result
+                            );
                         }
                     }
                 }

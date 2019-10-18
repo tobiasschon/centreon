@@ -87,7 +87,8 @@ class HTML_QuickFormCustom extends HTML_QuickForm
     {
         $token = md5(uniqid());
 
-        if (false === isset($_SESSION['x-centreon-token']) &&
+        if (
+            false === isset($_SESSION['x-centreon-token']) &&
             (isset($_SESSION['x-centreon-token']) &&
                 false === is_array($_SESSION['x-centreon-token']))
         ) {
@@ -115,7 +116,8 @@ class HTML_QuickFormCustom extends HTML_QuickForm
         if ($this->_tokenValidated) {
             $success = true;
         } else {
-            if (isset($submittedValues['centreon_token']) &&
+            if (
+                isset($submittedValues['centreon_token']) &&
                 in_array($submittedValues['centreon_token'], $_SESSION['x-centreon-token'])
             ) {
                 $elapsedTime =

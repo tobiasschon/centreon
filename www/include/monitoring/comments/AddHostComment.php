@@ -50,8 +50,8 @@ $centreonGMT->getMyGMTFromSession(session_id(), $pearDB);
 
 if ($centreon->user->access->checkAction("host_comment")) {
     /*
-	 * ACL
-	 */
+     * ACL
+     */
     if (isset($_GET["host_name"])) {
         $host_id = getMyHostID($_GET["host_name"]);
         $host_name = $_GET["host_name"];
@@ -73,8 +73,8 @@ if ($centreon->user->access->checkAction("host_comment")) {
     }
 
     /*
-	 * Database retrieve information for differents elements list we need on the page
-	 */
+     * Database retrieve information for differents elements list we need on the page
+     */
     $hosts = array("" => "");
     $query = "SELECT host_id, host_name " .
         "FROM `host` " .
@@ -94,16 +94,16 @@ if ($centreon->user->access->checkAction("host_comment")) {
     $attrsTextarea = array("rows" => "7", "cols" => "100");
 
     /*
-	 * Form begin
-	 */
+     * Form begin
+     */
     $form = new HTML_QuickFormCustom('Form', 'post', "?p=" . $p);
     if ($o == "ah") {
         $form->addElement('header', 'title', _("Add a comment for Host"));
     }
 
     /*
-	 * Indicator basic information
-	 */
+     * Indicator basic information
+     */
     $redirect = $form->addElement('hidden', 'o');
     $redirect->setValue($o);
 
@@ -137,8 +137,8 @@ if ($centreon->user->access->checkAction("host_comment")) {
         require_once($path . "listComment.php");
     } else {
         /*
-		 * Smarty template Init
-		 */
+         * Smarty template Init
+         */
         $tpl = new Smarty();
         $tpl = initSmartyTpl($path, $tpl, "template/");
 
@@ -146,8 +146,8 @@ if ($centreon->user->access->checkAction("host_comment")) {
             $tpl->assign('host_name', $host_name);
         }
         /*
-		 * Apply a template definition
-		 */
+         * Apply a template definition
+         */
         $renderer = new HTML_QuickForm_Renderer_ArraySmarty($tpl);
         $renderer->setRequiredTemplate('{$label}&nbsp;<font color="red" size="1">*</font>');
         $renderer->setErrorTemplate('<font color="red">{$error}</font><br />{$html}');

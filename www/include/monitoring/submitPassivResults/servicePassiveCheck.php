@@ -89,14 +89,14 @@ if (!$is_admin && $host_id) {
 }
 
 if (($is_admin || $flag_acl) && $host_id) {
-    $form = new HTML_QuickFormCustom('select_form', 'GET', "?p=".$p);
+    $form = new HTML_QuickFormCustom('select_form', 'GET', "?p=" . $p);
     $form->addElement('header', 'title', _("Command Options"));
 
     $return_code = array("0" => "OK","1" => "WARNING", "3" => "UNKNOWN", "2" => "CRITICAL");
 
     $form->addElement('select', 'return_code', _("Check result"), $return_code);
-    $form->addElement('text', 'output', _("Check output"), array("size"=>"100"));
-    $form->addElement('text', 'dataPerform', _("Performance data"), array("size"=>"100"));
+    $form->addElement('text', 'output', _("Check output"), array("size" => "100"));
+    $form->addElement('text', 'dataPerform', _("Performance data"), array("size" => "100"));
 
     $form->addElement('hidden', 'host_name', $host_name);
     $form->addElement('hidden', 'service_description', $service_description);

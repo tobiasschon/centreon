@@ -51,8 +51,8 @@ $compo = array();
 if (($o == "c" || $o == "w") && $compo_id) {
     $res = $pearDB->query("SELECT * FROM giv_components_template WHERE compo_id = '" . $compo_id . "' LIMIT 1");
     /*
-	 * Set base value
-	 */
+     * Set base value
+     */
     $tab = $res->fetchRow();
     $compo = array_map("myDecode", $tab);
     unset($compo['host_id']);
@@ -273,8 +273,8 @@ $tpl = initSmartyTpl($path, $tpl);
 
 if ($o == "w") {
     /*
-	 * Just watch
-	 */
+     * Just watch
+     */
     $form->addElement(
         "button",
         "change",
@@ -285,8 +285,8 @@ if ($o == "w") {
     $form->freeze();
 } elseif ($o == "c") {
     /*
-	 * Modify
-	 */
+     * Modify
+     */
     $subC = $form->addElement('submit', 'submitC', _("Save"), array("class" => "btc bt_success"));
     $res = $form->addElement('reset', 'reset', _("Reset"), array(
         "onClick" => "javascript:resetLists(" . $compo["host_id"] . "," . $compo["index_id"] . ")",
@@ -295,8 +295,8 @@ if ($o == "w") {
     $form->setDefaults($compo);
 } elseif ($o == "a") {
     /*
-	 * Add
-	 */
+     * Add
+     */
     $subA = $form->addElement('submit', 'submitA', _("Save"), array("class" => "btc bt_success"));
     $res = $form->addElement(
         'reset',
@@ -378,8 +378,8 @@ if ($valid) {
     require_once("listComponentTemplates.php");
 } else {
     /*
-	 * Apply a template definition
-	 */
+     * Apply a template definition
+     */
     $renderer = new HTML_QuickForm_Renderer_ArraySmarty($tpl, true);
     $renderer->setRequiredTemplate('{$label}&nbsp;<font color="red" size="1">*</font>');
     $renderer->setErrorTemplate('<font color="red">{$error}</font><br />{$html}');

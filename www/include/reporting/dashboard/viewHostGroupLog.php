@@ -72,7 +72,7 @@ $select = $form->addElement(
     _("Host Group"),
     $items,
     array(
-        "onChange" =>"this.form.submit();"
+        "onChange" => "this.form.submit();"
     )
 );
 

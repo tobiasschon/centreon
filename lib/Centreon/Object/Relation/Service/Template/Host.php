@@ -107,18 +107,18 @@ class Centreon_Object_Relation_Service_Template_Host extends Centreon_Object_Rel
             if ($fString != "") {
                 $fString .= ",";
             }
-            $fString .= "h.".$fparams;
+            $fString .= "h." . $fparams;
         }
         foreach ($secondTableParams as $sparams) {
             if ($fString != "" || $sString != "") {
                 $sString .= ",";
             }
-            $sString .= "h2.".$sparams;
+            $sString .= "h2." . $sparams;
         }
-        $sql = "SELECT ".$fString.$sString."
-        		FROM ".$this->firstObject->getTableName()." h,".$this->relationTable."
-        		JOIN ".$this->secondObject->getTableName(). " h2 ON ".$this->relationTable.".".$this->firstKey." = h2.".$this->secondObject->getPrimaryKey() ."
-        		WHERE h.".$this->firstObject->getPrimaryKey()." = ".$this->relationTable.".".$this->secondKey;
+        $sql = "SELECT " . $fString . $sString . "
+        		FROM " . $this->firstObject->getTableName() . " h," . $this->relationTable . "
+        		JOIN " . $this->secondObject->getTableName() . " h2 ON " . $this->relationTable . "." . $this->firstKey . " = h2." . $this->secondObject->getPrimaryKey() . "
+        		WHERE h." . $this->firstObject->getPrimaryKey() . " = " . $this->relationTable . "." . $this->secondKey;
         $filterTab = array();
         if (count($filters)) {
             foreach ($filters as $key => $rawvalue) {

@@ -1,4 +1,5 @@
 <?php
+
 /*
  * Copyright 2005-2019 Centreon
  * Centreon is developed by : Julien Mathis and Romain Le Merlus under
@@ -77,7 +78,7 @@ $allowedAclGroups = $acl->getAccessGroups();
  */
 $eventDispatcher = $dependencyInjector[ServiceProvider::CENTREON_EVENT_DISPATCHER];
 
-if(! is_null($eventDispatcher->getDispatcherLoader())) {
+if (! is_null($eventDispatcher->getDispatcherLoader())) {
     $eventDispatcher->getDispatcherLoader()->load();
 }
 
@@ -141,7 +142,7 @@ $eventDispatcher->addEventHandler(
 switch ($o) {
     case "li":
         require_once($path . "ldapImportContact.php");
-        break; # LDAP import form	# Wistof
+        break; # LDAP import form   # Wistof
     case "mc":
         require_once($path . "formContact.php");
         break; # Massive Change

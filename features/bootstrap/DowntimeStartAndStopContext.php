@@ -110,7 +110,8 @@ class DowntimeStartAndStopContext extends CentreonContext
                 $found = false;
                 $page = new DowntimeConfigurationListingPage($context);
                 foreach ($page->getEntries() as $entry) {
-                    if ($entry['host'] == $context->host &&
+                    if (
+                        $entry['host'] == $context->host &&
                         $entry['service'] == $context->service &&
                         $entry['started'] == true
                     ) {

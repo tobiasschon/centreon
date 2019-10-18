@@ -41,7 +41,7 @@ require_once "./include/common/common-Func.php";
 
 require_once './class/centreonFeature.class.php';
 
-$form = new HTML_QuickFormCustom('Form', 'post', "?p=".$p);
+$form = new HTML_QuickFormCustom('Form', 'post', "?p=" . $p);
 
 /*
  * Path to the configuration dir

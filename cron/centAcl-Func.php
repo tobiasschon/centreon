@@ -57,7 +57,7 @@ function programExit($msg)
  * set the `running` value to 0 to remove the DB's virtual lock
  * @param integer $appId , the process Id
  */
-function removeLock(int $appId):void
+function removeLock(int $appId): void
 {
     global $pearDB;
 
@@ -80,7 +80,7 @@ function removeLock(int $appId):void
  * set the `running` value to 1 to set a virtual lock on the DB
  * @param integer $appId , the process Id
  */
-function putALock(int $appId):void
+function putALock(int $appId): void
 {
     global $pearDB;
 

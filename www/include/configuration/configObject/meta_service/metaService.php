@@ -73,7 +73,7 @@ $cG ? $dupNbr = $cG : $dupNbr = $cP;
 $path = "./include/configuration/configObject/meta_service/";
 
 #PHP functions
-require_once $path."DB-Func.php";
+require_once $path . "DB-Func.php";
 require_once "./include/common/common-Func.php";
 
 /* Set the real page */
@@ -85,7 +85,7 @@ $acl = $oreon->user->access;
 $aclDbName = $acl->getNameDBAcl();
 $metaStr = $acl->getMetaServiceString();
 
-if (!$oreon->user->admin && $meta_id && false === strpos($metaStr, "'".$meta_id."'")) {
+if (!$oreon->user->admin && $meta_id && false === strpos($metaStr, "'" . $meta_id . "'")) {
     $msg = new CentreonMsg();
     $msg->setImage("./img/icons/warning.png");
     $msg->setTextStyle("bold");
@@ -95,55 +95,55 @@ if (!$oreon->user->admin && $meta_id && false === strpos($metaStr, "'".$meta_id.
 
 switch ($o) {
     case "a":
-        require_once($path."formMetaService.php");
+        require_once($path . "formMetaService.php");
         break; #Add an Meta Service
     case "w":
-        require_once($path."formMetaService.php");
+        require_once($path . "formMetaService.php");
         break; #Watch an Meta Service
     case "c":
-        require_once($path."formMetaService.php");
+        require_once($path . "formMetaService.php");
         break; #Modify an Meta Service
     case "s":
         enableMetaServiceInDB($meta_id);
-        require_once($path."listMetaService.php");
+        require_once($path . "listMetaService.php");
         break; #Activate a Meta Service
     case "u":
         disableMetaServiceInDB($meta_id);
-        require_once($path."listMetaService.php");
+        require_once($path . "listMetaService.php");
         break; #Desactivate a Meta Service
     case "d":
         deleteMetaServiceInDB(isset($select) ? $select : array());
-        require_once($path."listMetaService.php");
+        require_once($path . "listMetaService.php");
         break; #Delete n Meta Servive
     case "m":
         multipleMetaServiceInDB(isset($select) ? $select : array(), $dupNbr);
-        require_once($path."listMetaService.php");
+        require_once($path . "listMetaService.php");
         break; #Duplicate n Meta Service
     case "ci":
-        require_once($path."listMetric.php");
+        require_once($path . "listMetric.php");
         break; #Manage Service of the MS
     case "as":
-        require_once($path."metric.php");
+        require_once($path . "metric.php");
         break; # Add Service to a MS
     case "cs":
-        require_once($path."metric.php");
+        require_once($path . "metric.php");
         break; # Change Service to a MS
     case "ss":
         enableMetricInDB($msr_id);
-        require_once($path."listMetric.php");
+        require_once($path . "listMetric.php");
         break; #Activate a Metric
     case "us":
         disableMetricInDB($msr_id);
-        require_once($path."listMetric.php");
+        require_once($path . "listMetric.php");
         break; #Desactivate a Metric
     case "ws":
-        require_once($path."metric.php");
+        require_once($path . "metric.php");
         break; # View Service to a MS
     case "ds":
         deleteMetricInDB(isset($select) ? $select : array());
-        require_once($path."listMetric.php");
+        require_once($path . "listMetric.php");
         break; #Delete n Metric
     default:
-        require_once($path."listMetaService.php");
+        require_once($path . "listMetaService.php");
         break;
 }

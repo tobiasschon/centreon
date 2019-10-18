@@ -1,4 +1,5 @@
 <?php
+
 namespace CentreonRemote\Infrastructure\Service;
 
 use Centreon\Infrastructure\Service\Exception\NotFoundException;
@@ -8,7 +9,6 @@ use Centreon\Infrastructure\Service\Traits\ServiceContainerTrait;
 
 class ExporterService implements ContainerInterface
 {
-
     use ServiceContainerTrait;
 
     public function add(string $object, callable $factory): void

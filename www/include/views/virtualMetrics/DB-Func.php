@@ -47,7 +47,8 @@ function _TestRPNInfinityLoop()
         $gsvs = $form->getSubmitValues();
     }
 
-    if ($gsvs["vmetric_name"] != null
+    if (
+        $gsvs["vmetric_name"] != null
         && preg_match("/" . $gsvs["vmetric_name"] . "/i", $gsvs["rpn_function"])
     ) {
         return false;
@@ -116,7 +117,8 @@ function hasVirtualNameNeverUsed($vmetricName = null, $indexId = null)
     $numberOfVirtualMetric += $prepareMetric->rowCount();
     $prepareMetric->closeCursor();
     
-    if (($numberOfVirtualMetric >= 1
+    if (
+        ($numberOfVirtualMetric >= 1
         && $vmetric["vmetric_id"] != $gsvs["vmetric_id"])
         || isset($metric["metric_id"])
     ) {
@@ -173,7 +175,7 @@ function multipleVirtualMetricInDB($vmetrics = array(), $nbrDup = array())
         $vmConfiguration = $prepareStatement->fetch();
         $vmConfiguration["vmetric_id"] = '';
         
-        for ($newIndex= 1; $newIndex <= $nbrDup[$vmetricId]; $newIndex++) {
+        for ($newIndex = 1; $newIndex <= $nbrDup[$vmetricId]; $newIndex++) {
             $val = null;
             $virtualMetricName = null;
             foreach ($vmConfiguration as $cfgName => $cfgValue) {

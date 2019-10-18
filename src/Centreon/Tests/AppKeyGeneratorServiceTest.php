@@ -1,4 +1,5 @@
 <?php
+
 /*
  * Copyright 2005-2019 Centreon
  * Centreon is developed by : Julien Mathis and Romain Le Merlus under
@@ -45,7 +46,7 @@ class AppKeyGeneratorServiceTest extends TestCase
 
     public function testGenerateKey()
     {
-        $service = new AppKeyGeneratorService;
+        $service = new AppKeyGeneratorService();
         $key = $service->generateKey();
 
         /**

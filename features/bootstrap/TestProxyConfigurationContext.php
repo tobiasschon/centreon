@@ -46,8 +46,8 @@ class TestProxyConfigurationContext extends CentreonContext
         $this->iAmLoggedInACentreonServer();
         $this->page = new ParametersCentreonUiPage($this);
         $this->page->setProperties(array(
-            'proxy_url'=> $this->wrongProxyAddress,
-            'proxy_port'=> $this->wrongProxyPort
+            'proxy_url' => $this->wrongProxyAddress,
+            'proxy_port' => $this->wrongProxyPort
         ));
         $this->page->save();
     }

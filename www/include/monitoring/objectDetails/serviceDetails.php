@@ -66,7 +66,8 @@ if (count($GroupListofUser) > 0 && $is_admin == 0) {
     $authorized_actions = $centreon->user->access->getActions();
 }
 
-if (isset($_GET["host_name"]) &&
+if (
+    isset($_GET["host_name"]) &&
     $_GET["host_name"] != "" &&
     isset($_GET["service_description"]) && $_GET["service_description"] != ""
 ) {
@@ -140,10 +141,10 @@ if (!is_null($host_id)) {
                 "WHERE sgr.servicegroup_sg_id = sg.sg_id AND sgr.host_host_id = " . $host_id .
                 " AND sgr.service_service_id = " . $service_id . " " .
                 $centreon->user->access->queryBuilder(
-                    "AND",
-                    "sgr.host_host_id",
-                    $centreon->user->access->getHostsString("ID", $pearDBO)
-                );
+                "AND",
+                "sgr.host_host_id",
+                $centreon->user->access->getHostsString("ID", $pearDBO)
+            );
             $DBRESULT = $pearDB->query($query);
             while ($row = $DBRESULT->fetchRow()) {
                 $serviceGroups[] = $row['sg_name'];
@@ -303,9 +304,9 @@ if (!is_null($host_id)) {
                 $tabCommentServices[$i]['service_description'] = $data['service_description'];
                 $tabCommentServices[$i]['comment_data'] =
                     CentreonUtils::escapeAllExceptSelectedTags(
-                        $data['comment_data'],
-                        array('a', 'hr', 'br')
-                    );
+                    $data['comment_data'],
+                    array('a', 'hr', 'br')
+                );
                 $tabCommentServices[$i]["is_persistent"] = $en[$tabCommentServices[$i]["is_persistent"]];
             }
             $DBRESULT->closeCursor();
@@ -520,7 +521,8 @@ if (!is_null($host_id)) {
             $service_status["current_state"] .= "&nbsp;&nbsp;<b>(" . _("ACKNOWLEDGED") . ")</b>";
         }
 
-        if (isset($service_status["scheduled_downtime_depth"]) &&
+        if (
+            isset($service_status["scheduled_downtime_depth"]) &&
             $service_status["scheduled_downtime_depth"]
         ) {
             $service_status["scheduled_downtime_depth"] = 1;
@@ -786,7 +788,8 @@ if (!is_null($host_id)) {
         $tools = array();
         $DBRESULT = $pearDB->query("SELECT * FROM modules_informations");
         while ($module = $DBRESULT->fetchrow()) {
-            if (isset($module['svc_tools']) &&
+            if (
+                isset($module['svc_tools']) &&
                 $module['svc_tools'] == 1 &&
                 file_exists('modules/' . $module['name'] . '/svc_tools.php')
             ) {

@@ -120,7 +120,7 @@ class CommandConfigurationContext extends CentreonContext
                                 $this->tableau[] = $key;
                             }
                         }
-                        if ($key == 'command_name' && $value .'_1' != $object[$key]) {
+                        if ($key == 'command_name' && $value . '_1' != $object[$key]) {
                             $this->tableau[] = $key;
                         }
                     }

@@ -84,7 +84,8 @@ $hostId = filter_var(
 $allowedHosts = $centreon->user->access->getHostAclConf(null, 'broker');
 
 //checking if the user has ACL rights for this resource
-if (!$centreon->user->admin
+if (
+    !$centreon->user->admin
     && $hostId !== null
     && !array_key_exists($hostId, $allowedHosts)
 ) {
@@ -161,7 +162,7 @@ echo "\n";
 echo "\n";
 
 echo _("Service") . ";"
-    . _("OK") . " %; " . _("OK") ." Alert;"
+    . _("OK") . " %; " . _("OK") . " Alert;"
     . _("Warning") . " %;" . _("Warning") . " Alert;"
     . _("Critical") . " %;" . _("Critical") . " Alert;"
     . _("Unknown") . " %;" . _("Unknown") . " Alert;"
@@ -197,7 +198,7 @@ echo _("Day") . ";"
     . _("Duration") . ";"
     . _("Up") . " (s);"
     . _("Up") . " %;"
-    . _("Up") ." " . _("Alert") . ";"
+    . _("Up") . " " . _("Alert") . ";"
     . _("Down") . " (s);"
     . _("Down") . " %;"
     . _("Down") . " " . _("Alert") . ";"

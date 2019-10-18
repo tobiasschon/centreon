@@ -55,8 +55,8 @@ if (!isset($gopt["nagios_path_img"])) {
 }
 
 
-$attrsText = array("size"=>"40");
-$attrsText2 = array("size"=>"5");
+$attrsText = array("size" => "40");
+$attrsText2 = array("size" => "5");
 $attrsAdvSelect = null;
 
 // Form begin
@@ -160,7 +160,7 @@ $form->addElement(
     "button",
     "change",
     _("Modify"),
-    array("onClick"=>"javascript:window.location.href='?p=" . $p . "&o=engine'", 'class' => 'btc bt_info')
+    array("onClick" => "javascript:window.location.href='?p=" . $p . "&o=engine'", 'class' => 'btc bt_info')
 );
 
 /*

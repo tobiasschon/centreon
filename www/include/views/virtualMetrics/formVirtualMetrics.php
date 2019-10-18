@@ -45,7 +45,8 @@ if (!isset($oreon)) {
  */
 $vmetric = array();
 
-if (($o == METRIC_MODIFY || $o == METRIC_WATCH)
+if (
+    ($o == METRIC_MODIFY || $o == METRIC_WATCH)
     && is_int($vmetricId)
 ) {
     $query = "SELECT *, hidden vhidden FROM virtual_metrics WHERE vmetric_id = $vmetricId LIMIT 1";

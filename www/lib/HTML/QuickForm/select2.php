@@ -344,7 +344,7 @@ class HTML_QuickForm_select2 extends HTML_QuickForm_select
                     let template = state.text;
 
                     if (state.hasOwnProperty('status') && state.status === false) {
-                        template = jQuery('<span class=\"show-disabled\" disabled=\"". _('disabled') ."\"></span>');
+                        template = jQuery('<span class=\"show-disabled\" disabled=\"" . _('disabled') . "\"></span>');
                         template.text(state.text);
                     }
 
@@ -556,7 +556,7 @@ class HTML_QuickForm_select2 extends HTML_QuickForm_select
 }
 
 if (class_exists('HTML_QuickForm')) {
-    (new HTML_QuickForm)->registerElementType(
+    (new HTML_QuickForm())->registerElementType(
         'select2',
         'HTML/QuickForm/select2.php',
         'HTML_QuickForm_select2'

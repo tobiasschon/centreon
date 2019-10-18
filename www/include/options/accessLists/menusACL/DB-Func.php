@@ -427,7 +427,8 @@ function insertLCA()
 
     $submitedValues = $form->getSubmitValues();
     $isAclActivate = false;
-    if (isset($submitedValues['acl_topo_activate'])
+    if (
+        isset($submitedValues['acl_topo_activate'])
         && isset($submitedValues['acl_topo_activate']['acl_topo_activate'])
         && $submitedValues['acl_topo_activate']['acl_topo_activate'] == '1'
     ) {
@@ -445,7 +446,7 @@ function insertLCA()
     );
     $prepare->bindValue(
         ':is_activate',
-        ($isAclActivate ? '1': '0'),
+        ($isAclActivate ? '1' : '0'),
         \PDO::PARAM_STR
     );
     $prepare->bindValue(
@@ -480,7 +481,8 @@ function updateLCA($aclId = null)
     $submitedValues = $form->getSubmitValues();
     
     $isAclActivate = false;
-    if (isset($submitedValues['acl_topo_activate'])
+    if (
+        isset($submitedValues['acl_topo_activate'])
         && isset($submitedValues['acl_topo_activate']['acl_topo_activate'])
         && $submitedValues['acl_topo_activate']['acl_topo_activate'] == '1'
     ) {
@@ -510,7 +512,7 @@ function updateLCA($aclId = null)
     
     $prepareUpdate->bindValue(
         ':is_activate',
-        ($isAclActivate ? '1': '0'),
+        ($isAclActivate ? '1' : '0'),
         \PDO::PARAM_STR
     );
     

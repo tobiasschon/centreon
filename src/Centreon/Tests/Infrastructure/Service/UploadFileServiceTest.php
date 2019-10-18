@@ -1,4 +1,5 @@
 <?php
+
 /*
  * Copyright 2005-2019 Centreon
  * Centreon is developed by : Julien Mathis and Romain Le Merlus under
@@ -47,7 +48,7 @@ class UploadFileServiceTest extends TestCase
 
     public function setUp()
     {
-        $container = new ContainerWrap(new Container);
+        $container = new ContainerWrap(new Container());
         $this->filesRequest = [
             'field1' => [
                 'name' => 'A.txt',

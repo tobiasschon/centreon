@@ -47,7 +47,8 @@ $pearDB = $dependencyInjector['configuration_db'];
 $pearDB->query("DELETE FROM ws_token WHERE generate_date < DATE_SUB(NOW(), INTERVAL 1 HOUR)");
 
 /* Test if the call is for authenticate */
-if ($_SERVER['REQUEST_METHOD'] === 'POST' &&
+if (
+    $_SERVER['REQUEST_METHOD'] === 'POST' &&
     isset($_GET['action']) && $_GET['action'] == 'authenticate'
 ) {
     if (false === isset($_POST['username']) || false === isset($_POST['password'])) {
@@ -79,7 +80,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' &&
         } else {
             if (isset($data['reach_api']) && $data['reach_api'] == 1) {
                 $reachAPI = 1;
-            } else if (isset($data['reach_api_rt']) && $data['reach_api_rt'] == 1) {
+            } elseif (isset($data['reach_api_rt']) && $data['reach_api_rt'] == 1) {
                 $reachAPI = 1;
             }
         }

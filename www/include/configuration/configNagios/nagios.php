@@ -53,7 +53,7 @@ $cG ? $dupNbr = $cG : $dupNbr = $cP;
 $path = "./include/configuration/configNagios/";
     
 /* PHP functions */
-require_once $path."DB-Func.php";
+require_once $path . "DB-Func.php";
 require_once "./include/common/common-Func.php";
     
 /* Set the real page */
@@ -65,7 +65,7 @@ $acl = $oreon->user->access;
 $serverString = $acl->getPollerString();
 $allowedMainConf = array();
 if ($serverString != "''" && !empty($serverString)) {
-    $sql = "SELECT nagios_id FROM cfg_nagios WHERE nagios_server_id IN (".$serverString.")";
+    $sql = "SELECT nagios_id FROM cfg_nagios WHERE nagios_server_id IN (" . $serverString . ")";
     $res = $pearDB->query($sql);
     while ($row = $res->fetchRow()) {
         $allowedMainConf[$row['nagios_id']] = true;
@@ -74,31 +74,31 @@ if ($serverString != "''" && !empty($serverString)) {
 
 switch ($o) {
     case "a":
-        require_once($path."formNagios.php");
+        require_once($path . "formNagios.php");
         break; #Add Nagios.cfg
     case "w":
-        require_once($path."formNagios.php");
+        require_once($path . "formNagios.php");
         break; #Watch Nagios.cfg
     case "c":
-        require_once($path."formNagios.php");
+        require_once($path . "formNagios.php");
         break; #Modify Nagios.cfg
     case "s":
         enableNagiosInDB($nagios_id);
-        require_once($path."listNagios.php");
+        require_once($path . "listNagios.php");
         break; #Activate a nagios CFG
     case "u":
         disableNagiosInDB($nagios_id);
-        require_once($path."listNagios.php");
+        require_once($path . "listNagios.php");
         break; #Desactivate a nagios CFG
     case "m":
         multipleNagiosInDB(isset($select) ? $select : array(), $dupNbr);
-        require_once($path."listNagios.php");
+        require_once($path . "listNagios.php");
         break; #Duplicate n nagios CFGs
     case "d":
         deleteNagiosInDB(isset($select) ? $select : array());
-        require_once($path."listNagios.php");
+        require_once($path . "listNagios.php");
         break; #Delete n nagios CFG
     default:
-        require_once($path."listNagios.php");
+        require_once($path . "listNagios.php");
         break;
 }

@@ -1,4 +1,5 @@
 <?php
+
 /*
  * Copyright 2005-2019 Centreon
  * Centreon is developed by : Julien Mathis and Romain Le Merlus under
@@ -64,7 +65,7 @@ trait CheckListOfIdsTrait
 
         $count = count($ids);
 
-        $collector = new StatementCollector;
+        $collector = new StatementCollector();
         $sql = "SELECT COUNT(*) AS `total` FROM `{$tableName}` ";
 
         $isWhere = false;

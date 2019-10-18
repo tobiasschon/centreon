@@ -1,4 +1,5 @@
 <?php
+
 /*
  * Copyright 2005 - 2019 Centreon (https://www.centreon.com/)
  *
@@ -220,7 +221,8 @@ class MonitoringService extends AbstractCentreonService implements MonitoringSer
                  */
                 foreach ($serviceGroups as $serviceGroup) {
                     foreach ($serviceGroup->getHosts() as $host) {
-                        if (array_key_exists($serviceGroup->getId(), $servicesByServiceGroupAndHost)
+                        if (
+                            array_key_exists($serviceGroup->getId(), $servicesByServiceGroupAndHost)
                             && array_key_exists($host->getId(), $servicesByServiceGroupAndHost[$serviceGroup->getId()])
                         ) {
                             $host->setServices(

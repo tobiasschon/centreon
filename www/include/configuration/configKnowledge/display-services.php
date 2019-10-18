@@ -60,7 +60,8 @@ if (isset($_POST['searchHost'])) {
 
 $order = "ASC";
 $orderby = "host_name";
-if (isset($_REQUEST['order'])
+if (
+    isset($_REQUEST['order'])
     && $_REQUEST['order']
     && isset($_REQUEST['orderby'])
     && $_REQUEST['orderby']
@@ -203,7 +204,8 @@ try {
         }
 
         if (isset($_REQUEST['searchTemplatesWithNoProcedure'])) {
-            if ($diff[$key] == 1
+            if (
+                $diff[$key] == 1
                 || $proc->serviceHasProcedure($key_nospace, $tplArr, PROCEDURE_INHERITANCE_MODE) == true
             ) {
                 $rows--;

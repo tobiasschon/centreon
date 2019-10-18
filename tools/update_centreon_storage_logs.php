@@ -1,4 +1,5 @@
 <?php
+
 /*
  * Copyright 2005-2019 Centreon
  * Centreon is developed by : Julien Mathis and Romain Le Merlus under
@@ -37,6 +38,7 @@
  * The goal of this script is to manage the removal of the log_id column from
  * the centreon_storage.logs table
  */
+
 ini_set('max_execution_time', 0);
 
 require_once(realpath(dirname(__FILE__) . '/../config/centreon.config.php'));
@@ -122,8 +124,7 @@ function askQuestion($question, $hidden = false)
  * @param string $message Message to show
  * @param bool $showStep Set to true if you want showing steps
  */
-$logs = function ($message, $showStep = true) use (&$currentStep, &$partitionName)
-{
+$logs = function ($message, $showStep = true) use (&$currentStep, &$partitionName) {
     if ($showStep && $currentStep) {
         if (! empty($partitionName)) {
             printf(
@@ -325,10 +326,10 @@ try {
         // We ask to user if he want to keep old data otherwise we will delete the old logs table
         $shouldDeleteOldData =
             askYesOrNoQuestion(
-                "Do you want to delete the partition data from the old log table after each copy?\n"
+            "Do you want to delete the partition data from the old log table after each copy?\n"
                 . "If not, be careful with your disk space: ",
-                false
-            );
+            false
+        );
     }
 
     // We check if the database connection port is set, otherwise we request it.
@@ -483,7 +484,7 @@ try {
             $date->setTime(0, 0, 0);
             $end = (int) $date->format('U');
 
-            $date->setTime(-24, 0 , 0);
+            $date->setTime(-24, 0, 0);
             $start = (int) $date->format('U');
 
             $result = $db->query("SELECT * FROM logs_old WHERE ctime >= $start AND ctime < $end");

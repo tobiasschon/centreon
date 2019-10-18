@@ -40,8 +40,8 @@
     header('Cache-Control: no-cache');
 
     require_once realpath(dirname(__FILE__) . "/../../../../../config/centreon.config.php");
-    require_once _CENTREON_PATH_."/www/class/centreonDB.class.php";
-    require_once _CENTREON_PATH_."/www/class/centreonXML.class.php";
+    require_once _CENTREON_PATH_ . "/www/class/centreonDB.class.php";
+    require_once _CENTREON_PATH_ . "/www/class/centreonXML.class.php";
 
 function compare($a, $b)
 {
@@ -55,8 +55,8 @@ function compare($a, $b)
     $pearDBO = new CentreonDB("centstorage");
 
         /*
-	 * Get session
-	 */
+     * Get session
+     */
     require_once(_CENTREON_PATH_ . "www/class/centreonSession.class.php");
     require_once(_CENTREON_PATH_ . "www/class/centreon.class.php");
 if (!isset($_SESSION['centreon'])) {
@@ -70,8 +70,8 @@ if (isset($_SESSION['centreon'])) {
 }
 
     /*
-	 * Get language
-	 */
+     * Get language
+     */
     $locale = $oreon->user->get_lang();
     putenv("LANG=$locale");
     setlocale(LC_ALL, $locale);
@@ -84,13 +84,13 @@ if (isset($_SESSION['centreon'])) {
     # Existing Real Metric List comes from DBO -> Store in $rmetrics Array
     #
     $s_datas = array();
-    $o_datas = array(""=> utf8_decode(_("List of known metrics")));
+    $o_datas = array("" => utf8_decode(_("List of known metrics")));
     $mx_l = strlen($o_datas[""]);
     $where = "";
-    $def_type = array(0=>"CDEF",1=>"VDEF");
+    $def_type = array(0 => "CDEF",1 => "VDEF");
 
 if (isset($_GET['vdef']) && is_numeric($_GET['vdef']) && $_GET['vdef'] == 0) {
-    $where = " AND def_type='".$_GET["vdef"]."'";
+    $where = " AND def_type='" . $_GET["vdef"] . "'";
 }
 
 if (isset($_GET["host_id"]) && $_GET["service_id"]) {
@@ -134,9 +134,9 @@ if (isset($_GET["host_id"]) && $_GET["service_id"]) {
     $pq_sql = $pearDB->query($query);
 
     while ($fw_sql = $pq_sql->fetchRow()) {
-        $sd_l = strlen($fw_sql["vmetric_name"]." [CDEF]");
-        $fw_sql["metric_name"] = $fw_sql["vmetric_name"]." [".$def_type[$fw_sql["def_type"]]."]&nbsp;&nbsp;&nbsp;";
-        $fw_sql["metric_id"] = "v".$fw_sql["vmetric_id"];
+        $sd_l = strlen($fw_sql["vmetric_name"] . " [CDEF]");
+        $fw_sql["metric_name"] = $fw_sql["vmetric_name"] . " [" . $def_type[$fw_sql["def_type"]] . "]&nbsp;&nbsp;&nbsp;";
+        $fw_sql["metric_id"] = "v" . $fw_sql["vmetric_id"];
         $s_datas[] = $fw_sql;
         if ($sd_l > $mx_l) {
             $mx_l = $sd_l;

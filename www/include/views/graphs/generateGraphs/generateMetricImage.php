@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2005-2015 Centreon
  * Centreon is developped by : Julien Mathis and Romain Le Merlus under
@@ -38,7 +39,7 @@
  */
 require_once realpath(dirname(__FILE__) . "/../../../../../config/centreon.config.php");
 require_once "$centreon_path/www/class/centreonDB.class.php";
-require_once _CENTREON_PATH_."/www/class/centreonGraph.class.php";
+require_once _CENTREON_PATH_ . "/www/class/centreonGraph.class.php";
 
 /**
  * Create XML Request Objects
@@ -82,7 +83,7 @@ if (isset($_GET['index'])) {
 }
 
 
-require_once _CENTREON_PATH_."www/include/common/common-Func.php";
+require_once _CENTREON_PATH_ . "www/include/common/common-Func.php";
 $contactId = CentreonSession::getUser($sid, $pearDB);
 $obj = new CentreonGraph($contactId, $index, 0, 1);
 
@@ -101,7 +102,7 @@ if (isset($_GET["metric"])) {
 /**
  * Set arguments from GET
  */
-$obj->setRRDOption("start", $obj->checkArgument("start", $_GET, time() - (60*60*48)));
+$obj->setRRDOption("start", $obj->checkArgument("start", $_GET, time() - (60 * 60 * 48)));
 $obj->setRRDOption("end", $obj->checkArgument("end", $_GET, time()));
 
 //$obj->GMT->getMyGMTFromSession($obj->session_id, $pearDB);

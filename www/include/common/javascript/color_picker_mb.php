@@ -77,7 +77,7 @@ if (function_exists("filter_var")) {
                                 onmousemove="if (cp_imd && cp_imo) compute_gradiant(event); return false;"
                                 onmouseover="cp_imo = true;"
                                 onmouseout="cp_imo = false;">
-<?php	  $l_mid = $l_slice/2;
+<?php	  $l_mid = $l_slice / 2;
 for ($l_i = 0; $l_i < $l_slice; $l_i++) {?>
         <div id="cg_<?php echo $l_i; ?>" class="cg_slice"></div>
 <?php	          }?>

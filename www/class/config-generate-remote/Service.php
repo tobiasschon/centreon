@@ -1,4 +1,5 @@
 <?php
+
 /*
  * Copyright 2005 - 2019 Centreon (https://www.centreon.com/)
  *
@@ -174,7 +175,8 @@ class Service extends AbstractService
      */
     private function buildCache()
     {
-        if ($this->doneCache == 1 ||
+        if (
+            $this->doneCache == 1 ||
             ($this->useCache == 0 && $this->useCachePoller == 0)
         ) {
             return 0;

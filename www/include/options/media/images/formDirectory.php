@@ -68,7 +68,7 @@ if ($o == IMAGE_MODIFY_DIRECTORY && $directoryId) {
 
     foreach ($list as $selector => $status) {
         $ids = explode('-', $selector);
-        if (count($ids)!=2) {
+        if (count($ids) != 2) {
             continue;
         }
         $selected[] = $ids[1];
@@ -84,13 +84,13 @@ $rq = "SELECT `img_id`,`dir_alias`,`img_name` FROM view_img "
     . "JOIN view_img_dir_relation ON img_img_id = img_id "
     . "JOIN view_img_dir ON dir_id = dir_dir_parent_id ";
 if ($o == IMAGE_MOVE && count($selected) > 0) {
-    $rq .= " WHERE `img_id` IN (".implode(",", $selected).") ";
+    $rq .= " WHERE `img_id` IN (" . implode(",", $selected) . ") ";
 }
 $rq .= " ORDER BY dir_alias, img_name";
 $DBRESULT = $pearDB->query($rq);
 while ($img = $DBRESULT->fetchRow()) {
     $imgs[$img["img_id"]] = htmlentities(
-        $img["dir_alias"]."/".$img["img_name"],
+        $img["dir_alias"] . "/" . $img["img_name"],
         ENT_QUOTES,
         "utf-8"
     );
@@ -113,15 +113,15 @@ while ($row = $DBRESULT->fetchRow()) {
 ##########################################################
 # Var information to format the element
 #
-$attrsText = array("size"=>"30");
-$attrsSelect = array("size"=>"5", "multiple"=>"1", "cols"=>"40");
+$attrsText = array("size" => "30");
+$attrsSelect = array("size" => "5", "multiple" => "1", "cols" => "40");
 $attrsAdvSelect = array("style" => "width: 250px; height: 250px;");
-$attrsTextarea = array("rows"=>"5", "cols"=>"40");
+$attrsTextarea = array("rows" => "5", "cols" => "40");
 
 #
 ## Form begin
 #
-$form = new HTML_QuickFormCustom('Form', 'post', "?p=".$p);
+$form = new HTML_QuickFormCustom('Form', 'post', "?p=" . $p);
 if ($o == IMAGE_MODIFY_DIRECTORY) {
     $form->addElement('header', 'title', _("Modify directory"));
     $form->addElement('autocomplete', 'dir_name', _("Directory name"), $directories);
@@ -161,7 +161,7 @@ $tpl = initSmartyTpl($path, new Smarty());
 $helptext = "";
 include_once("help.php");
 foreach ($help as $key => $text) {
-    $helptext .= '<span style="display:none" id="help:'.$key.'">'.$text.'</span>'."\n";
+    $helptext .= '<span style="display:none" id="help:' . $key . '">' . $text . '</span>' . "\n";
 }
 $tpl->assign("helptext", $helptext);
 
@@ -200,7 +200,8 @@ if ($form->validate()) {
         moveMultImg($imgs, $dir_name);
         $valid = true;
     /* modify dir */
-    } elseif ($form->getSubmitValue("submitC") &&
+    } elseif (
+        $form->getSubmitValue("submitC") &&
         ($directoryId = $form->getSubmitValue('dir_id'))
     ) {
         /**
@@ -215,7 +216,7 @@ if ($form->validate()) {
 if ($valid) {
     $o = null;
     $form->freeze();
-    require_once($path."listImg.php");
+    require_once($path . "listImg.php");
 } else {
     #Apply a template definition
     $renderer = new HTML_QuickForm_Renderer_ArraySmarty($tpl);

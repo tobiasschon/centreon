@@ -208,7 +208,8 @@ class ACLResourcesAccessContext extends CentreonContext
                             }
                         }
                         if ($key == 'acl_groups') {
-                            if (count($object[$key]) != 0 && $object[$key][0] != $this->aclGroup1['group_name']
+                            if (
+                                count($object[$key]) != 0 && $object[$key][0] != $this->aclGroup1['group_name']
                                 && $object[$key][1] != $this->aclGroup2['group_name']
                             ) {
                                 $this->tableau[] = $key;
@@ -301,7 +302,8 @@ class ACLResourcesAccessContext extends CentreonContext
                     $this->currentPage = new ACLResourceConfigurationListingPage($this);
                     $this->currentPage = $this->currentPage->inspect($this->linkedAclResource['acl_name']);
                     $object = $this->currentPage->getProperties();
-                    if (count($object['acl_groups']) != 1 ||
+                    if (
+                        count($object['acl_groups']) != 1 ||
                         $object['acl_groups'][0] != $this->aclGroup1['group_name']
                     ) {
                         $this->tableau[] = $this->linkedAclResource['acl_name'];
@@ -398,7 +400,8 @@ class ACLResourcesAccessContext extends CentreonContext
                             }
                         }
                         if ($key == 'acl_groups') {
-                            if (count($object[$key]) != 0 && $object[$key][0] != $this->aclGroup1['group_name']
+                            if (
+                                count($object[$key]) != 0 && $object[$key][0] != $this->aclGroup1['group_name']
                                 && $object[$key][1] != $this->aclGroup2['group_name']
                             ) {
                                 $this->tableau[] = $key;
@@ -408,7 +411,8 @@ class ACLResourcesAccessContext extends CentreonContext
                     $this->currentPage = new ACLGroupConfigurationListingPage($this);
                     $this->currentPage = $this->currentPage->inspect($this->aclGroup1['group_name']);
                     $object = $this->currentPage->getProperties();
-                    if (count($object['resources']) == 2
+                    if (
+                        count($object['resources']) == 2
                         && $object['resources'][0] != $this->initialProperties['acl_name']
                         && $object['resources'][1] != $this->duplicatedProperties['acl_name']
                     ) {
@@ -417,7 +421,8 @@ class ACLResourcesAccessContext extends CentreonContext
                     $this->currentPage = new ACLGroupConfigurationListingPage($this);
                     $this->currentPage = $this->currentPage->inspect($this->aclGroup2['group_name']);
                     $object = $this->currentPage->getProperties();
-                    if (count($object['resources']) == 2
+                    if (
+                        count($object['resources']) == 2
                         && $object['resources'][0] != $this->initialProperties['acl_name']
                         && $object['resources'][1] != $this->duplicatedProperties['acl_name']
                     ) {
@@ -500,7 +505,8 @@ class ACLResourcesAccessContext extends CentreonContext
                             }
                         }
                         if ($key == 'acl_groups') {
-                            if (count($object[$key]) != 0 && $object[$key][0] != $this->aclGroup2['group_name']
+                            if (
+                                count($object[$key]) != 0 && $object[$key][0] != $this->aclGroup2['group_name']
                                 && $object[$key][1] != $this->aclGroup3['group_name']
                             ) {
                                 $this->tableau[] = $key;
@@ -516,7 +522,8 @@ class ACLResourcesAccessContext extends CentreonContext
                     $this->currentPage = new ACLGroupConfigurationListingPage($this);
                     $this->currentPage = $this->currentPage->inspect($this->aclGroup2['group_name']);
                     $object = $this->currentPage->getProperties();
-                    if (count($object['resources']) == 2
+                    if (
+                        count($object['resources']) == 2
                         && $object['resources'][0] != $this->initialProperties['acl_name']
                         && $object['resources'][1] != $this->updatedProperties['acl_name']
                     ) {
@@ -525,7 +532,8 @@ class ACLResourcesAccessContext extends CentreonContext
                     $this->currentPage = new ACLGroupConfigurationListingPage($this);
                     $this->currentPage = $this->currentPage->inspect($this->aclGroup1['group_name']);
                     $object = $this->currentPage->getProperties();
-                    if (count($object['resources']) != 1
+                    if (
+                        count($object['resources']) != 1
                         && $object['resources'][0] != $this->initialProperties['acl_name']
                     ) {
                         $this->tableau[] = $this->aclGroup1['group_name'];

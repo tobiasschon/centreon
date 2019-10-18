@@ -1,4 +1,5 @@
 <?php
+
 /*
  * Copyright 2005 - 2019 Centreon (https://www.centreon.com/)
  *
@@ -51,7 +52,7 @@ interface AuthenticationServiceInterface
      *
      * @return string Returns the generated token
      */
-    public function getGeneratedToken():string;
+    public function getGeneratedToken(): string;
 
     /**
      * Delete an existing authentication token

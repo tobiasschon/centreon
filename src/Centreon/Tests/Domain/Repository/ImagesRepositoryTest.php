@@ -1,4 +1,5 @@
 <?php
+
 /*
  * Copyright 2005-2019 Centreon
  * Centreon is developed by : Julien Mathis and Romain Le Merlus under
@@ -56,7 +57,7 @@ class ImagesRepositoryTest extends TestCase
 
     protected function setUp()
     {
-        $db = new CentreonDB;
+        $db = new CentreonDB();
         $this->datasets = [
             [
                 'query' => "SELECT * FROM `view_img_dir`,`view_img_dir_relation` vidr,`view_img` "

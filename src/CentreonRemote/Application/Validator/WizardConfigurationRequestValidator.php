@@ -17,7 +17,7 @@ class WizardConfigurationRequestValidator
      */
     public static function validate(): void
     {
-        (new static)->validateServerPostData();
+        (new static())->validateServerPostData();
     }
 
     /**
@@ -27,7 +27,7 @@ class WizardConfigurationRequestValidator
      */
     public function validateServerPostData(): void
     {
-        $isRemoteConnection = (new ServerWizardIdentity)->requestConfigurationIsRemote();
+        $isRemoteConnection = (new ServerWizardIdentity())->requestConfigurationIsRemote();
 
         $this->validateServerGeneralFields();
 

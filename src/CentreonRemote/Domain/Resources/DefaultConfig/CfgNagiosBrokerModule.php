@@ -1,4 +1,5 @@
 <?php
+
 namespace CentreonRemote\Domain\Resources\DefaultConfig;
 
 /**

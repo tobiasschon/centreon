@@ -1,4 +1,5 @@
 <?php
+
 /*
  * Copyright 2005 - 2019 Centreon (https://www.centreon.com/)
  *
@@ -39,7 +40,7 @@ class ExportParserJsonTest extends TestCase
         $this->fs->mount();
         $this->fs->get('/')->add('tmp', new Directory([]));
 
-        $this->parser = new ExportParserJson;
+        $this->parser = new ExportParserJson();
     }
 
     public function tearDown()

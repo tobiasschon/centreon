@@ -3,7 +3,6 @@
 namespace CentreonRemote\Domain\Service\ConfigurationWizard;
 
 use Centreon\Infrastructure\CentreonLegacyDB\CentreonDBAdapter;
-
 use CentreonRemote\Domain\Resources\RemoteConfig\NagiosServer;
 use CentreonRemote\Domain\Resources\RemoteConfig\CfgNagios;
 use CentreonRemote\Domain\Resources\RemoteConfig\CfgNagiosBrokerModule;
@@ -138,7 +137,8 @@ abstract class ServerConnectionConfigurationService
             throw new \Exception('Resources records from `cfg_resource` could not be fetched.');
         }
 
-        if ($results[0]->resource_name != '$USER1$' ||
+        if (
+            $results[0]->resource_name != '$USER1$' ||
             $results[1]->resource_name != '$CENTREONPLUGINS$'
         ) {
             throw new \Exception('Resources records from `cfg_resource` are not as expected.');

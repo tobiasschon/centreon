@@ -40,8 +40,8 @@ $graph = array();
 if (($o == "c" || $o == "w") && $graph_id) {
     $res = $pearDB->query("SELECT * FROM giv_graphs_template WHERE graph_id = '" . $graph_id . "' LIMIT 1");
     /*
-	 * Set base value
-	 */
+     * Set base value
+     */
     $graph = array_map("myDecode", $res->fetchRow());
 }
 #

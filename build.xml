@@ -43,5 +43,12 @@
     </exec>
   </target>
 
+  <target name="codestyle-fixer">
+    <exec executable="./vendor/bin/phpcbf" dir="./">
+      <arg value="--standard=ruleset.xml" />
+      <arg value="./" />
+    </exec>
+  </target>
+
   <target name="main"></target>
 </project>

@@ -301,8 +301,8 @@ $tpl->assign("helptext", $helptext);
 
 if ($o == "w") {
     /*
-	 * Just watch a host information
-	 */
+     * Just watch a host information
+     */
     if (!$min && $centreon->user->access->page($p) != 2) {
         $form->addElement(
             "button",
@@ -315,15 +315,15 @@ if ($o == "w") {
     $form->freeze();
 } elseif ($o == "c") {
     /*
-	 * Modify a service information
-	 */
+     * Modify a service information
+     */
     $subC = $form->addElement('submit', 'submitC', _("Save"), array("class" => "btc bt_success"));
     $res = $form->addElement('reset', 'reset', _("Reset"), array("class" => "btc bt_default"));
     $form->setDefaults($ms);
 } elseif ($o == "a") {
     /*
-	 * Add a service information
-	 */
+     * Add a service information
+     */
     $subA = $form->addElement('submit', 'submitA', _("Save"), array("class" => "btc bt_success"));
     $res = $form->addElement('reset', 'reset', _("Reset"), array("class" => "btc bt_default"));
 }
@@ -347,8 +347,8 @@ if ($valid) {
     require_once($path . "listMetaService.php");
 } else {
     /*
-	 * Apply a template definition
-	 */
+     * Apply a template definition
+     */
     $renderer = new HTML_QuickForm_Renderer_ArraySmarty($tpl, true);
     $renderer->setRequiredTemplate('{$label}&nbsp;<font color="red" size="1">*</font>');
     $renderer->setErrorTemplate('<font color="red">{$error}</font><br />{$html}');

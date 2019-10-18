@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Centreon
  *
@@ -14,6 +15,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 namespace CentreonLegacy\Core\Widget;
 
 use Pimple\Container;

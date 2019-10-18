@@ -44,11 +44,11 @@ while ($opt = $DBRESULT->fetchRow()) {
 }
 $DBRESULT->closeCursor();
 
-$attrsText        = array("size"=>"40");
-$attrsText2        = array("size"=>"5");
+$attrsText        = array("size" => "40");
+$attrsText2        = array("size" => "5");
 $attrsAdvSelect = null;
 
-$form = new HTML_QuickFormCustom('Form', 'post', "?p=".$p);
+$form = new HTML_QuickFormCustom('Form', 'post', "?p=" . $p);
 $form->addElement('header', 'title', _("Modify General Options"));
 $form->addElement('header', 'debug', _("Debug"));
 
@@ -82,7 +82,7 @@ $redirect->setValue($o);
  * Smarty template Init
  */
 $tpl = new Smarty();
-$tpl = initSmartyTpl($path.'debug/', $tpl);
+$tpl = initSmartyTpl($path . 'debug/', $tpl);
 
 $form->setDefaults($gopt);
 
@@ -106,42 +106,42 @@ if ($form->validate()) {
     $form->freeze();
 
     if (isset($_POST["debug_auth_clear"])) {
-        @unlink($oreon->optGen["debug_path"]."auth.log");
+        @unlink($oreon->optGen["debug_path"] . "auth.log");
     }
 
     if (isset($_POST["debug_nagios_import_clear"])) {
-        @unlink($oreon->optGen["debug_path"]."cfgimport.log");
+        @unlink($oreon->optGen["debug_path"] . "cfgimport.log");
     }
 
     if (isset($_POST["debug_rrdtool_clear"])) {
-        @unlink($oreon->optGen["debug_path"]."rrdtool.log");
+        @unlink($oreon->optGen["debug_path"] . "rrdtool.log");
     }
 
     if (isset($_POST["debug_ldap_import_clear"])) {
-        @unlink($oreon->optGen["debug_path"]."ldapsearch.log");
+        @unlink($oreon->optGen["debug_path"] . "ldapsearch.log");
     }
 
     if (isset($_POST["debug_inventory_clear"])) {
-        @unlink($oreon->optGen["debug_path"]."inventory.log");
+        @unlink($oreon->optGen["debug_path"] . "inventory.log");
     }
 }
 
 if (!$form->validate() && isset($_POST["gopt_id"])) {
-    print("<div class='msg' align='center'>"._("Impossible to validate, one or more field is incorrect")."</div>");
+    print("<div class='msg' align='center'>" . _("Impossible to validate, one or more field is incorrect") . "</div>");
 }
 
 $form->addElement(
     "button",
     "change",
     _("Modify"),
-    array("onClick"=>"javascript:window.location.href='?p=".$p."&o=debug'", 'class' => 'btc bt_info')
+    array("onClick" => "javascript:window.location.href='?p=" . $p . "&o=debug'", 'class' => 'btc bt_info')
 );
 
 // prepare help texts
 $helptext = "";
 include_once("help.php");
 foreach ($help as $key => $text) {
-    $helptext .= '<span style="display:none" id="help:'.$key.'">'.$text.'</span>'."\n";
+    $helptext .= '<span style="display:none" id="help:' . $key . '">' . $text . '</span>' . "\n";
 }
 $tpl->assign("helptext", $helptext);
 

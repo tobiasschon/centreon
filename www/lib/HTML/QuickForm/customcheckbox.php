@@ -61,7 +61,7 @@ class HTML_QuickForm_customcheckbox extends HTML_QuickForm_checkbox
 }
 
 if (class_exists('HTML_QuickForm')) {
-    (new HTML_QuickForm)->registerElementType(
+    (new HTML_QuickForm())->registerElementType(
         'customcheckbox',
         'HTML/QuickForm/customcheckbox.php',
         'HTML_QuickForm_customcheckbox'

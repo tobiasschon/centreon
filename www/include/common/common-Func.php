@@ -142,7 +142,8 @@ function tidySearchKey($search, $advanced_search)
     if ($advanced_search == 1) {
         if (isset($search) && !strstr($search, "*") && !strstr($search, "%")) {
             $search = "'" . $search . "'";
-        } elseif (isset($search) &&
+        } elseif (
+            isset($search) &&
             isset($search[0]) &&
             isset($search[strlen($search) - 1]) &&
             $search[0] == "%" &&
@@ -674,12 +675,13 @@ function getMyHostExtendedInfoImage($host_id = null, $field, $flag1stLevel = nul
                         }
                     }
                 } else {
-                    if ($result_field = getMyHostExtendedInfoImage(
-                        $row['host_tpl_id'],
-                        $field,
-                        null,
-                        $row['host_tpl_id']
-                    )
+                    if (
+                        $result_field = getMyHostExtendedInfoImage(
+                            $row['host_tpl_id'],
+                            $field,
+                            null,
+                            $row['host_tpl_id']
+                        )
                     ) {
                         return $result_field;
                     }
@@ -1858,7 +1860,8 @@ function host_has_one_or_more_GraphService($host_id, $search = 0)
     $services = getMyHostServices($host_id, $search);
 
     foreach ($services as $svc_id => $svc_name) {
-        if (service_has_graph($host_id, $svc_id) &&
+        if (
+            service_has_graph($host_id, $svc_id) &&
             ($is_admin || (!$is_admin && isset($lca["LcaHost"][$host_id][$svc_id])))
         ) {
             return true;
@@ -2175,7 +2178,7 @@ function cleanString($str)
     return $str;
 }
 
-// Global Function 
+// Global Function
 
 function get_my_first_allowed_root_menu($lcaTStr)
 {
@@ -2208,7 +2211,8 @@ function reset_search_page($url)
     if (!isset($url)) {
         return;
     }
-    if (isset($_GET['search'])
+    if (
+        isset($_GET['search'])
         && isset($centreon->historySearch[$url])
         && $_GET['search'] != $centreon->historySearch[$url]
         && !isset($_GET['num'])
@@ -2216,7 +2220,8 @@ function reset_search_page($url)
     ) {
         $_POST['num'] = 0;
         $_GET['num'] = 0;
-    } elseif (isset($_GET["search"])
+    } elseif (
+        isset($_GET["search"])
         && isset($_POST["search"])
         && $_GET["search"] === $_POST["search"]
     ) {

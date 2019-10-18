@@ -88,14 +88,14 @@ $xml->writeElement('rmImg', trim('./img/icones/16x16/delete.gif'));
 /**
  * Get next row id
  */
-$query = "SELECT COUNT(ldap_host_id) as cnt FROM auth_ressource_host WHERE auth_ressource_id = ".$db->escape($arId);
+$query = "SELECT COUNT(ldap_host_id) as cnt FROM auth_ressource_host WHERE auth_ressource_id = " . $db->escape($arId);
 $res = $db->query($query);
 $maxHostId = 0;
 if ($res->rowCount()) {
     $row = $res->fetchRow();
     $maxHostId = $row['cnt'];
 }
-$xml->writeElement('nextRowId', $maxHostId+1);
+$xml->writeElement('nextRowId', $maxHostId + 1);
 
 /* The labels */
 $xml->startElement('labels');
@@ -111,7 +111,7 @@ $xml->endElement(); /* End main */
 
 $query = "SELECT host_address, host_port, use_ssl, use_tls, host_order, ldap_host_id
           FROM auth_ressource_host
-          WHERE auth_ressource_id = ".$db->escape($arId)."
+          WHERE auth_ressource_id = " . $db->escape($arId) . "
           ORDER BY host_order";
 $res = $db->query($query);
 

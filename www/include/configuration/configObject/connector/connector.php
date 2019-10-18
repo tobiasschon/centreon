@@ -60,15 +60,15 @@ if (isset($_REQUEST['options'])) {
 
 switch ($o) {
     case "a":
-        require_once($path.'formConnector.php');
+        require_once($path . 'formConnector.php');
         break;
 
     case "w":
-        require_once($path.'formConnector.php');
+        require_once($path . 'formConnector.php');
         break;
 
     case "c":
-        require_once($path.'formConnector.php');
+        require_once($path . 'formConnector.php');
         break;
 
     case "s":
@@ -77,7 +77,7 @@ switch ($o) {
             $myConnector['enabled'] = '1';
             $connectorObj->update($connector_id, $myConnector);
         }
-        require_once($path.'listConnector.php');
+        require_once($path . 'listConnector.php');
         break;
 
     case "u":
@@ -86,7 +86,7 @@ switch ($o) {
             $myConnector['enabled'] = '0';
             $connectorObj->update($connector_id, $myConnector);
         }
-        require_once($path.'listConnector.php');
+        require_once($path . 'listConnector.php');
         break;
 
     case "m":
@@ -96,7 +96,7 @@ switch ($o) {
                 $connectorObj->copy($connectorId, (int)$options[$connectorId]);
             }
         }
-        require_once($path.'listConnector.php');
+        require_once($path . 'listConnector.php');
         break;
 
     case "d":
@@ -106,10 +106,10 @@ switch ($o) {
                 $connectorObj->delete($connectorId);
             }
         }
-        require_once($path.'listConnector.php');
+        require_once($path . 'listConnector.php');
         break;
 
     default:
-        require_once($path.'listConnector.php');
+        require_once($path . 'listConnector.php');
         break;
 }

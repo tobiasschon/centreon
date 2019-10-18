@@ -132,8 +132,10 @@ if (!$min) {
     </script>
 <?php
 
-if ((isset($_GET["mini"]) && $_GET["mini"] == 1) ||
-    (isset($_SESSION['fullScreen']) && isset($_SESSION['fullScreen']['value']) && $_SESSION['fullScreen']['value'])) {
+if (
+    (isset($_GET["mini"]) && $_GET["mini"] == 1) ||
+    (isset($_SESSION['fullScreen']) && isset($_SESSION['fullScreen']['value']) && $_SESSION['fullScreen']['value'])
+) {
     ?>
     <script type="text/javascript">
         myToggleAll(0, false);
@@ -194,7 +196,7 @@ function setQuickSearchPosition() {
 <?php
 $featureToAsk = $centreonFeature->toAsk($centreon->user->get_id());
 if (count($featureToAsk) === 1) {
-?>
+    ?>
 var testingFeature = jQuery('<div/>')
     .html(
         '<h3>Feature testing</h3>' +
@@ -252,7 +254,7 @@ function validateFeature(name, version, enabled) {
             })
         <?php
 }
-        ?>
+?>
     
     // send an event to parent for change in iframe URL
     function parentHrefUpdate(href) {

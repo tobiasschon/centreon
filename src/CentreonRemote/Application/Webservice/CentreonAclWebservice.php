@@ -1,4 +1,5 @@
 <?php
+
 namespace CentreonRemote\Application\Webservice;
 
 use Centreon\Domain\Repository\TopologyRepository;

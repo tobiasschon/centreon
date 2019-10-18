@@ -57,36 +57,36 @@ $path = "./include/views/componentTemplates/";
 /*
  * PHP functions
  */
-require_once $path."DB-Func.php";
+require_once $path . "DB-Func.php";
 require_once "./include/common/common-Func.php";
 
 switch ($o) {
     case "a":
-        require_once $path."formComponentTemplate.php";
+        require_once $path . "formComponentTemplate.php";
         break; //Add a Component Template
     case "w":
-        require_once $path."formComponentTemplate.php";
+        require_once $path . "formComponentTemplate.php";
         break; //Watch a Component Template
     case "c":
-        require_once $path."formComponentTemplate.php" ;
+        require_once $path . "formComponentTemplate.php" ;
         break; //Modify a Component Template
     case "s":
         enableComponentTemplateInDB($lca_id);
-        require_once $path."listComponentTemplates.php";
+        require_once $path . "listComponentTemplates.php";
         break; //Activate a Component Template
     case "u":
         disableComponentTemplateInDB($lca_id);
-        require_once $path."listComponentTemplates.php";
+        require_once $path . "listComponentTemplates.php";
         break; //Desactivate a Component Template
     case "m":
         multipleComponentTemplateInDB(isset($select) ? $select : array(), $dupNbr);
-        require_once $path."listComponentTemplates.php";
+        require_once $path . "listComponentTemplates.php";
         break; //Duplicate n Component Templates
     case "d":
         deleteComponentTemplateInDB(isset($select) ? $select : array());
-        require_once $path."listComponentTemplates.php";
+        require_once $path . "listComponentTemplates.php";
         break; //Delete n Component Templates
     default:
-        require_once $path."listComponentTemplates.php";
+        require_once $path . "listComponentTemplates.php";
         break;
 }

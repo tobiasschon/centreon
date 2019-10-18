@@ -473,7 +473,7 @@ class HTML_QuickForm_selectoptgroup extends HTML_QuickForm_select
 }
 
 if (class_exists('HTML_QuickForm')) {
-    (new HTML_QuickForm)->registerElementType(
+    (new HTML_QuickForm())->registerElementType(
         'selectoptgroup',
         'HTML/QuickForm/selectoptgroup.php',
         'HTML_QuickForm_selectoptgroup'

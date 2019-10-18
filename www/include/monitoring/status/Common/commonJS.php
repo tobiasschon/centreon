@@ -105,10 +105,10 @@ var _lock = 0;
 var _instance = "-1";
 var _default_hg = "<?php if (isset($default_hg)) {
     echo htmlentities($default_hg, ENT_QUOTES, "UTF-8");
-} ?>";
+                   } ?>";
 var _default_sg = "<?php if (isset($default_sg)) {
     echo htmlentities($default_sg, ENT_QUOTES, "UTF-8");
-} ?>";
+                   } ?>";
 var _default_instance = "<?php echo $default_poller?>";
 var _nc = 0;
 var _poppup = (navigator.appName.substring(0,3) == "Net") ? 1 : 0;
@@ -285,7 +285,7 @@ if ($centreon->user->admin || !count($pollerArray)) {
 } else {
     $instanceQuery = "SELECT instance_id, name
                       FROM `instances` WHERE running = 1 AND deleted = 0
-                      AND name IN (". $centreon->user->access->getPollerString('NAME') .")
+                      AND name IN (" . $centreon->user->access->getPollerString('NAME') . ")
                       ORDER BY name";
 }
     $DBRESULT = $pearDBO->query($instanceQuery);
@@ -337,11 +337,11 @@ if (!$centreon->user->access->admin) {
     $query = "SELECT DISTINCT hg.hg_alias, hg.hg_name AS name
                   FROM hostgroup hg, acl_resources_hg_relations arhr
                   WHERE hg.hg_id = arhr.hg_hg_id
-                      AND arhr.acl_res_id IN (".$centreon->user->access->getResourceGroupsString().")
+                      AND arhr.acl_res_id IN (" . $centreon->user->access->getResourceGroupsString() . ")
                       AND hg.hg_activate = '1'
                       AND hg.hg_id in (SELECT hostgroup_hg_id
                                        FROM hostgroup_relation
-                                       WHERE host_host_id IN (".$centreon->user->access->getHostsString("ID", $acldb)."))";
+                                       WHERE host_host_id IN (" . $centreon->user->access->getHostsString("ID", $acldb) . "))";
     $DBRESULT = $pearDB->query($query);
     while ($data = $DBRESULT->fetchRow()) {
         $hgNdo[$data["name"]] = 1;
@@ -359,8 +359,10 @@ $DBRESULT = $pearDBO->query(
     "ORDER BY hg.name"
 );
 while ($hostgroups = $DBRESULT->fetchRow()) {
-    if ($centreon->user->access->admin ||
-        ($centreon->user->access->admin == 0 && isset($hgBrk[$hostgroups["name"]]))) {
+    if (
+        $centreon->user->access->admin ||
+        ($centreon->user->access->admin == 0 && isset($hgBrk[$hostgroups["name"]]))
+    ) {
         if (!isset($tabHG)) {
             $tabHG = array();
         }
@@ -375,7 +377,7 @@ while ($hostgroups = $DBRESULT->fetchRow()) {
 
 if (isset($tabHG)) {
     foreach ($tabHG as $name => $id) {
-?>
+        ?>
         var m = document.createElement('option');
             m.value= "<?php echo $id; ?>";
             _select.appendChild(m);
@@ -384,7 +386,7 @@ if (isset($tabHG)) {
             _select.appendChild(m);
             select_index["<?php echo $id; ?>"] = i;
             i++;
-<?php
+        <?php
     }
 }
 ?>
@@ -428,11 +430,11 @@ if (!$centreon->user->access->admin) {
     $query = "SELECT DISTINCT sg.sg_alias, sg.sg_name AS name
                 FROM servicegroup sg, acl_resources_sg_relations arsr
                 WHERE sg.sg_id = arsr.sg_id
-                    AND arsr.acl_res_id IN (".$centreon->user->access->getResourceGroupsString().")
+                    AND arsr.acl_res_id IN (" . $centreon->user->access->getResourceGroupsString() . ")
                     AND sg.sg_activate = '1'
                     AND sg.sg_id in (SELECT servicegroup_sg_id
                 FROM servicegroup_relation
-                WHERE service_service_id IN (".$centreon->user->access->getServicesString("ID", $acldb)."))";
+                WHERE service_service_id IN (" . $centreon->user->access->getServicesString("ID", $acldb) . "))";
     $DBRESULT = $pearDB->query($query);
     while ($data = $DBRESULT->fetchRow()) {
         $sgBrk[$data["name"]] = 1;
@@ -731,7 +733,7 @@ for ($i = 1; $i <= 2; $i++) { ?>
         _pagination<?php echo $i; ?>.appendChild(_linkaction_right<?php echo $i; ?>);
         _pagination<?php echo $i; ?>.appendChild(_linkaction_last<?php echo $i; ?>);
     }
-<?php
+    <?php
 } ?>
 
     var _sel1 = document.getElementById('sel1');
@@ -960,7 +962,6 @@ var func_popupXsltCallback = function(trans_obj) {
     }, 25);
     jQuery('#' + target_element).stop(true, true).fadeIn(1000);
 <?php } else { ?>
-
     jQuery('.popup_volante').css('left', jQuery('#' + target_element).attr('left'));
 
     //item's Id from where the popin was called

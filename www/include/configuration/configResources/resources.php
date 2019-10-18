@@ -63,7 +63,7 @@ $action = filter_var(
     $_POST['o1'] ?? $_POST['o2'] ?? null,
     FILTER_VALIDATE_REGEXP,
     array(
-        "options" => array("regexp"=>"/([a|c|d|m|s|u|w]{1})/")
+        "options" => array("regexp" => "/([a|c|d|m|s|u|w]{1})/")
     )
 );
 if ($action !== false) {

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2005-2019 Centreon
  * Centreon is developped by : Julien Mathis and Romain Le Merlus under
@@ -33,6 +34,7 @@
  *
  *
  */
+
 declare(strict_types=1);
 
 namespace Centreon\Domain\Contact\Interfaces;

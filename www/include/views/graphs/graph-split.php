@@ -51,12 +51,14 @@ $tpl = initSmartyTpl($path, $tpl);
 function getGetPostValue($str)
 {
     $value = null;
-    if (isset($_GET[$str]) &&
+    if (
+        isset($_GET[$str]) &&
         $_GET[$str]
     ) {
         $value = $_GET[$str];
     }
-    if (isset($_POST[$str]) &&
+    if (
+        isset($_POST[$str]) &&
         $_POST[$str]
     ) {
         $value = $_POST[$str];
@@ -86,12 +88,14 @@ if (isset($svc_id) && $svc_id) {
 /* Get Period if is in url */
 $period_start = 'undefined';
 $period_end = 'undefined';
-if (isset($_REQUEST['start']) &&
+if (
+    isset($_REQUEST['start']) &&
     is_numeric($_REQUEST['start'])
 ) {
     $period_start = $_REQUEST['start'];
 }
-if (isset($_REQUEST['end']) &&
+if (
+    isset($_REQUEST['end']) &&
     is_numeric($_REQUEST['end'])
 ) {
     $period_end = $_REQUEST['end'];
@@ -128,7 +132,7 @@ $sel = $form->addElement(
     _("Graph Period"),
     $periods,
     array(
-        "onchange"=>"changeInterval()"
+        "onchange" => "changeInterval()"
     )
 );
 $form->addElement(
@@ -196,7 +200,8 @@ $form->addElement(
     )
 );
 
-if ($period_start != 'undefined' &&
+if (
+    $period_start != 'undefined' &&
     $period_end != 'undefined'
 ) {
     $startDay = date('Y-m-d', $period_start);

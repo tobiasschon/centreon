@@ -1,4 +1,5 @@
 <?php
+
 /*
  * Copyright 2005 - 2019 Centreon (https://www.centreon.com/)
  *
@@ -72,7 +73,7 @@ class ServiceGroup
      * @param Host $host
      * @return ServiceGroup
      */
-    public function addHost(Host $host):ServiceGroup
+    public function addHost(Host $host): ServiceGroup
     {
         $this->hosts[] = $host;
         return $this;

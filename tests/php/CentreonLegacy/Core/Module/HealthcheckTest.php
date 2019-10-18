@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Centreon
  *
@@ -47,13 +48,11 @@ class HealthcheckTest extends TestCase
                     'checklist' => new Directory([
                         'requirements.php' => new File(''),
                         ]),
-                    ]
-        ));
+                    ]));
         $this->fs->get('/')
             ->add('tmp1', new Directory([
                     'checklist' => new Directory([]),
-                    ]
-        ));
+                    ]));
 
         $this->container = new ServiceContainer();
         $this->container[ServiceProvider::CONFIGURATION] = $this
@@ -68,7 +67,7 @@ class HealthcheckTest extends TestCase
             ->method('getModulePath')
             ->will($this->returnCallback(function () {
                     return 'vfs://';
-                }));
+            }));
 
         $this->service = $this->getMockBuilder(Module\Healthcheck::class)
             ->setConstructorArgs([
@@ -101,21 +100,34 @@ class HealthcheckTest extends TestCase
      * @param int $licenseExpirationV
      */
     protected function setRequirementMockMethodValue(
-        $messageV = null, $customActionV = null, $warningV = false, $criticalV = false, $licenseExpirationV = null
-    )
-    {
+        $messageV = null,
+        $customActionV = null,
+        $warningV = false,
+        $criticalV = false,
+        $licenseExpirationV = null
+    ) {
         $this->service
             ->method('getRequirements')
             ->will($this->returnCallback(function (
-                    $checklistDir, &$message, &$customAction, &$warning, &$critical, &$licenseExpiration
-                    ) use ($messageV, $customActionV, $warningV, $criticalV, $licenseExpirationV) {
+                $checklistDir,
+                &$message,
+                &$customAction,
+                &$warning,
+                &$critical,
+                &$licenseExpiration
+            ) use (
+                $messageV,
+                $customActionV,
+                $warningV,
+                $criticalV,
+                $licenseExpirationV
+) {
                     $message = $messageV ?: [];
                     $customAction = $customActionV;
                     $warning = $warningV;
                     $critical = $criticalV;
                     $licenseExpiration = $licenseExpirationV;
-                }
-        ));
+            }));
     }
 
     public function testCheckWithDotModuleName()
@@ -200,7 +212,8 @@ class HealthcheckTest extends TestCase
             [
                 'customAction' => $valueCustomAction['action'],
                 'customActionName' => $valueCustomAction['name'],
-            ], $this->service->getCustomAction()
+            ],
+            $this->service->getCustomAction()
         );
     }
 
@@ -279,11 +292,15 @@ class HealthcheckTest extends TestCase
         $this->service
             ->method('getRequirements')
             ->will($this->returnCallback(function (
-                    $checklistDir, &$message, &$customAction, &$warning, &$critical, &$licenseExpiration
-                    ) use ($valueException) {
+                $checklistDir,
+                &$message,
+                &$customAction,
+                &$warning,
+                &$critical,
+                &$licenseExpiration
+            ) use ($valueException) {
                     throw new \Exception($valueException);
-                }
-        ));
+            }));
 
         $result = $this->service->checkPrepareResponse($module);
 

@@ -42,8 +42,8 @@ if (($o == "c" || $o == "w") && $tp_id) {
     $dbResult = $pearDB->query("SELECT * FROM timeperiod WHERE tp_id = '" . $tp_id . "' LIMIT 1");
 
     /*
-	 * Set base value
-	 */
+     * Set base value
+     */
     $tp = array_map("myDecode", $dbResult->fetchRow());
     $tp["contact_exclude"] = array();
 }
@@ -218,8 +218,8 @@ $tpl = initSmartyTpl($path, $tpl);
 
 if ($o == "w") {
     /*
-	 * Just watch a Time Period information
-	 */
+     * Just watch a Time Period information
+     */
     if ($centreon->user->access->page($p) != 2) {
         $form->addElement(
             "button",
@@ -232,15 +232,15 @@ if ($o == "w") {
     $form->freeze();
 } elseif ($o == "c") {
     /*
-	 * Modify a Time Period information
-	 */
+     * Modify a Time Period information
+     */
     $subC = $form->addElement('submit', 'submitC', _("Save"), array("class" => "btc bt_success"));
     $res = $form->addElement('reset', 'reset', _("Reset"), array("class" => "btc bt_default"));
     $form->setDefaults($tp);
 } elseif ($o == "a") {
     /*
-	 * Add a Time Period information
-	 */
+     * Add a Time Period information
+     */
     $subA = $form->addElement('submit', 'submitA', _("Save"), array("class" => "btc bt_success"));
     $res = $form->addElement('reset', 'reset', _("Reset"), array("class" => "btc bt_default"));
 }
@@ -282,8 +282,8 @@ if ($valid) {
     require_once($path . "listTimeperiod.php");
 } else {
     /*
-	 * Apply a template definition
-	 */
+     * Apply a template definition
+     */
     $renderer = new HTML_QuickForm_Renderer_ArraySmarty($tpl, true);
     $renderer->setRequiredTemplate('{$label}&nbsp;<font color="red" size="1">*</font>');
     $renderer->setErrorTemplate('<font color="red">{$error}</font><br />{$html}');

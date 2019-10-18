@@ -75,7 +75,7 @@ if (!$centreon->user->admin) {
     $aclFrom = ", $dbmon.centreon_acl acl ";
     $aclCond = " WHERE res.host_id = acl.host_id 
                  AND acl.service_id = res.service_id 
-                 AND acl.group_id IN (".$acl->getAccessGroupsString().") ";
+                 AND acl.group_id IN (" . $acl->getAccessGroupsString() . ") ";
 }
 
 /*
@@ -107,7 +107,7 @@ if (isset($hostId)) {
 					SELECT s.service_id, s.service_description, h.host_name, h.host_id 
 					FROM service s, host h, host_service_relation hsr 
 					WHERE hsr.hostgroup_hg_id IS NULL 
-                                        AND h.host_id = '" . $db->escape($hostId). "' 
+                                        AND h.host_id = '" . $db->escape($hostId) . "' 
                                         AND h.host_id = hsr.host_host_id 
                                         AND s.service_id = hsr.service_service_id 
                                         AND s.service_register = '1' 
@@ -117,8 +117,8 @@ if (isset($hostId)) {
 					WHERE hsr.host_host_id IS NULL 
                                         AND hsr.hostgroup_hg_id IN (SELECT hostgroup_hg_id 
                                                                     FROM hostgroup_relation 
-                                                                    WHERE host_host_id = '" . $db->escape($hostId). "') 
-                                        AND h.host_id = '" . $db->escape($hostId). "' 
+                                                                    WHERE host_host_id = '" . $db->escape($hostId) . "') 
+                                        AND h.host_id = '" . $db->escape($hostId) . "' 
                                         AND s.service_id = hsr.service_service_id 
                                         AND s.service_register = '1' 
                                 ) AS res $aclFrom $aclCond
@@ -127,7 +127,7 @@ if (isset($hostId)) {
     $res = $db->query($query);
     while ($row = $res->fetchRow()) {
         $xml->startElement("services");
-        $xml->writeElement("id", $row['host_id']."_".$row['service_id']);
+        $xml->writeElement("id", $row['host_id'] . "_" . $row['service_id']);
         $xml->writeElement("description", $row['host_name'] . " - " . $row['service_description']);
         $xml->endElement();
     }

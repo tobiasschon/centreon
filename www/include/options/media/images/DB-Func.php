@@ -65,7 +65,7 @@ function extractDir($zipfile, $path)
 {
     if (file_exists($zipfile)) {
         $files = array();
-        $zip = new ZipArchive;
+        $zip = new ZipArchive();
         if ($zip->open($zipfile) === true) {
             if ($zip->extractTo($path) === true) {
                 return true;
@@ -120,11 +120,11 @@ function insertImg($src_dir, $src_file, $dst_dir, $dst_file, $img_comment = "")
     }
 
     $dst_file = sanitizeFilename($dst_file);
-    $dst  = $mediadir.$dst_dir."/".$dst_file;
+    $dst  = $mediadir . $dst_dir . "/" . $dst_file;
     if (is_file($dst)) {
         return false;
     } // file exists
-    if (!rename($src_dir.$src_file, $dst)) {
+    if (!rename($src_dir . $src_file, $dst)) {
         return false;
     } // access denied, path error
 
@@ -157,7 +157,7 @@ function deleteMultImg($images = array())
 {
     foreach (array_keys($images) as $selector) {
         $id = explode('-', $selector);
-        if (count($id)!=2) {
+        if (count($id) != 2) {
             continue;
         }
         deleteImg($id[1]);
@@ -182,7 +182,7 @@ function deleteImg($imageId)
         . "AND dir_dir_parent_id = dir_id"
     );
     while ($imagePath = $dbResult->fetch()) {
-        $fullpath = $mediadir.$imagePath["dir_alias"]."/".$imagePath["img_path"];
+        $fullpath = $mediadir . $imagePath["dir_alias"] . "/" . $imagePath["img_path"];
         if (is_file($fullpath)) {
             unlink($fullpath);
         }
@@ -194,7 +194,7 @@ function deleteImg($imageId)
 
 function moveMultImg($images, $dirName)
 {
-    if (count($images)>0) {
+    if (count($images) > 0) {
         foreach ($images as $id) {
             moveImg($id, $dirName);
         }
@@ -227,8 +227,8 @@ function moveImg($img_id, $dir_alias)
         $dir_alias = $img_info["dir_alias"];
     }
     if ($dir_alias != $img_info["dir_alias"]) {
-        $oldpath = $mediadir.$img_info["dir_alias"]."/".$img_info["img_path"];
-        $newpath = $mediadir.$dir_alias."/".$img_info["img_path"];
+        $oldpath = $mediadir . $img_info["dir_alias"] . "/" . $img_info["img_path"];
+        $newpath = $mediadir . $dir_alias . "/" . $img_info["img_path"];
         
         if (!file_exists($newpath)) {
             /**
@@ -264,7 +264,7 @@ function moveImg($img_id, $dir_alias)
 
 function testDirectoryCallback($name)
 {
-    return testDirectoryExistence($name)==0;
+    return testDirectoryExistence($name) == 0;
 }
 
 function testDirectoryExistence($name)
@@ -290,7 +290,7 @@ function testDirectoryIsEmpty($dir_id)
     }
     global $pearDB;
 
-    $rq = "SELECT img_img_id FROM view_img_dir_relation WHERE dir_dir_parent_id = '".$dir_id."'";
+    $rq = "SELECT img_img_id FROM view_img_dir_relation WHERE dir_dir_parent_id = '" . $dir_id . "'";
     $dbResult = $pearDB->query($rq);
     $empty = true;
     if ($dbResult && $dbResult->rowCount() >= 1) {
@@ -305,9 +305,9 @@ function insertDirectory($dir_alias, $dir_comment = "")
     global $pearDB;
     $mediadir = "./img/media/";
     $dir_alias_safe = sanitizePath($dir_alias);
-    @mkdir($mediadir.$dir_alias);
-    if (is_dir($mediadir.$dir_alias)) {
-        touch($mediadir.$dir_alias."/index.html");
+    @mkdir($mediadir . $dir_alias);
+    if (is_dir($mediadir . $dir_alias)) {
+        touch($mediadir . $dir_alias . "/index.html");
         $prepare = $pearDB->prepare(
             "INSERT INTO view_img_dir (dir_name, dir_alias, dir_comment) VALUES "
             . "(:dir_alias, :dir_alias, :dir_comment)"
@@ -326,7 +326,7 @@ function deleteMultDirectory($dirs = array())
 {
     foreach (array_keys($dirs) as $selector) {
         $id = explode('-', $selector);
-        if (count($id)!=1) {
+        if (count($id) != 1) {
             continue;
         }
         deleteDirectory($id[0]);
@@ -363,8 +363,8 @@ function deleteDirectory($directoryId)
             unlink($mediadir . $dirAlias["dir_alias"] . "/" . $fileName);
         }
     }
-    rmdir($mediadir.$dirAlias["dir_alias"]);
-    if (!is_dir($mediadir.$dirAlias["dir_alias"])) {
+    rmdir($mediadir . $dirAlias["dir_alias"]);
+    if (!is_dir($mediadir . $dirAlias["dir_alias"])) {
         $dbResult = $pearDB->query("DELETE FROM view_img_dir WHERE dir_id = $directoryId");
     }
 }
@@ -377,17 +377,17 @@ function updateDirectory($dir_id, $dir_alias, $dir_comment = "")
 
     global $pearDB;
     $mediadir = "./img/media/";
-    $rq = "SELECT dir_alias FROM view_img_dir WHERE dir_id = '".$dir_id."'";
+    $rq = "SELECT dir_alias FROM view_img_dir WHERE dir_id = '" . $dir_id . "'";
     $dbResult = $pearDB->query($rq);
     $old_dir = $dbResult->fetch();
     $dir_alias = sanitizePath($dir_alias);
-    if (!is_dir($mediadir.$old_dir["dir_alias"])) {
-        mkdir($mediadir.$dir_alias);
+    if (!is_dir($mediadir . $old_dir["dir_alias"])) {
+        mkdir($mediadir . $dir_alias);
     } else {
-        rename($mediadir.$old_dir["dir_alias"], $mediadir.$dir_alias);
+        rename($mediadir . $old_dir["dir_alias"], $mediadir . $dir_alias);
     }
 
-    if (is_dir($mediadir.$dir_alias)) {
+    if (is_dir($mediadir . $dir_alias)) {
         $prepare = $pearDB->prepare(
             "UPDATE view_img_dir SET dir_name = :dir_name, "
             . "dir_alias = :dir_alias, dir_comment = :dir_comment "

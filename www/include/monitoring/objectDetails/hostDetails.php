@@ -371,9 +371,9 @@ if (!$is_admin && !$haveAccess) {
         foreach ($tabCommentHosts as $index => $commentHost) {
             $tabCommentHosts[$index]['comment_data'] =
                 CentreonUtils::escapeAllExceptSelectedTags(
-                    $commentHost['comment_data'],
-                    ['a', 'hr', 'br']
-                );
+                $commentHost['comment_data'],
+                ['a', 'hr', 'br']
+            );
         }
         $DBRESULT->closeCursor();
         unset($data);
@@ -429,7 +429,8 @@ if (!$is_admin && !$haveAccess) {
 
         $host_status[$host_name]["is_flapping"] = $en[$host_status[$host_name]["is_flapping"]];
 
-        if (isset($host_status[$host_name]["scheduled_downtime_depth"]) &&
+        if (
+            isset($host_status[$host_name]["scheduled_downtime_depth"]) &&
             $host_status[$host_name]["scheduled_downtime_depth"]
         ) {
             $host_status[$host_name]["scheduled_downtime_depth"] = 1;
@@ -668,7 +669,8 @@ if (!$is_admin && !$haveAccess) {
         $tools = array();
         $DBRESULT = $pearDB->query("SELECT * FROM modules_informations");
         while ($module = $DBRESULT->fetchrow()) {
-            if (isset($module['host_tools']) && $module['host_tools'] == 1
+            if (
+                isset($module['host_tools']) && $module['host_tools'] == 1
                 && file_exists('modules/' . $module['name'] . '/host_tools.php')
             ) {
                 include('modules/' . $module['name'] . '/host_tools.php');

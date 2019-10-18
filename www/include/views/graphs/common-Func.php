@@ -64,7 +64,7 @@ function getMyHostGraphs($host_id = null)
         "SELECT `service_id`, `service_description` "
         . "FROM `index_data`, `metrics` "
         . "WHERE metrics.index_id = index_data.id "
-        . "AND `host_id` = '".CentreonDB::escape($host_id)."' "
+        . "AND `host_id` = '" . CentreonDB::escape($host_id) . "' "
         . "AND index_data.`hidden` = '0' "
         . "AND index_data.`trashed` = '0' "
         . "ORDER BY `service_description`"
@@ -103,8 +103,8 @@ function checkIfServiceSgIsEn($host_id = null, $service_id = null)
 
     $DBRESULT = $pearDBO->query(
         "SELECT `service_id` FROM `index_data` "
-        . "WHERE `host_id` = '".CentreonDB::escape($host_id)."' "
-        . "AND `service_id` = '".CentreonDB::escape($service_id)."' "
+        . "WHERE `host_id` = '" . CentreonDB::escape($host_id) . "' "
+        . "AND `service_id` = '" . CentreonDB::escape($service_id) . "' "
         . "AND index_data.`hidden` = '0' "
         . "AND `trashed` = '0'"
     );

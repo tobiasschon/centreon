@@ -193,7 +193,8 @@ if ($o == "svcpb" || $o == "svc_unhandled") {
     }
     if (!empty($filters["order"])) {
         $order = $filters["order"];
-    } elseif (isset($centreon->optGen["global_sort_order"]) &&
+    } elseif (
+        isset($centreon->optGen["global_sort_order"]) &&
         $centreon->optGen["global_sort_order"] != ""
     ) {
         $order = $centreon->optGen["global_sort_order"];

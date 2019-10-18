@@ -117,8 +117,8 @@ class HTML_QuickForm_tags extends HTML_QuickForm_select2
 
         $javascriptString = '<script>
             jQuery(function () {
-                var $currentSelect2Object'. $this->getName() . ' = jQuery("#' . $this->getName() . '").centreonSelect2({
-                    allowClear: ' . $allowClear .',
+                var $currentSelect2Object' . $this->getName() . ' = jQuery("#' . $this->getName() . '").centreonSelect2({
+                    allowClear: ' . $allowClear . ',
                     pageLimit: ' . $this->_pagination . ',
                     select2: {
                         tags: true,
@@ -138,7 +138,7 @@ class HTML_QuickForm_tags extends HTML_QuickForm_select2
 }
 
 if (class_exists('HTML_QuickForm')) {
-    (new HTML_QuickForm)->registerElementType(
+    (new HTML_QuickForm())->registerElementType(
         'tags',
         'HTML/QuickForm/tags.php',
         'HTML_QuickForm_tags'

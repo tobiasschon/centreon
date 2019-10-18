@@ -1,4 +1,5 @@
 <?php
+
 /*
  * Copyright 2005-2019 Centreon
  * Centreon is developped by : Julien Mathis and Romain Le Merlus under
@@ -63,7 +64,7 @@ class ModuleDetailEntityTest extends TestCase
             'release_note' => 'http://localhost/',
         ];
 
-        $entity = new Module;
+        $entity = new Module();
         $entity->setId($data['id']);
         $entity->setType($data['type']);
         $entity->setName($data['name']);

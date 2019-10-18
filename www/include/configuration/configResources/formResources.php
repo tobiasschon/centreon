@@ -33,7 +33,8 @@
  *
  */
 
-if (!$centreon->user->admin &&
+if (
+    !$centreon->user->admin &&
     isset($resourceId) &&
     count($allowedResourceConf) &&
     !isset($allowedResourceConf[$resourceId])

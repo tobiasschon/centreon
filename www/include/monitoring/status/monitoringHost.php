@@ -59,7 +59,8 @@ if (!isset($_GET["cmd"]) && isset($_POST["cmd"])) {
     $param = $_GET;
 }
 
-if (isset($param["cmd"])
+if (
+    isset($param["cmd"])
     && $param["cmd"] == 14
     && isset($param["author"])
     && isset($param["en"])
@@ -78,7 +79,8 @@ if (isset($param["cmd"])
         $param["ackhostservice"] = 0;
     }
     acknowledgeHost($param);
-} elseif (isset($param["cmd"])
+} elseif (
+    isset($param["cmd"])
     && $param["cmd"] == 14
     && isset($param["author"])
     && isset($param["en"])
@@ -99,8 +101,8 @@ if ($min) {
     }
 } else {
     /*
-	 * Now route to pages or Actions
-	 */
+     * Now route to pages or Actions
+     */
     if ($continue) {
         switch ($o) {
             case "h":

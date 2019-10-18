@@ -1,4 +1,5 @@
 <?php
+
 /*
  * Copyright 2005-2019 Centreon
  * Centreon is developed by : Julien Mathis and Romain Le Merlus under
@@ -88,7 +89,7 @@ class RepositoryCallbackValidator extends CallbackValidator
                     ->atPath($field)
                     ->setInvalidValue($value)
                     ->setCode(RepositoryCallback::NOT_VALID_REPO_CALLBACK)
-                    ->setCause('Not Satisfying method:'.$method)
+                    ->setCause('Not Satisfying method:' . $method)
                     ->addViolation();
         }
     }

@@ -38,10 +38,10 @@ if (!isset($_POST['poller'])) {
 }
 
 require_once realpath(dirname(__FILE__) . "/../../../../../config/centreon.config.php");
-require_once _CENTREON_PATH_.'/www/class/centreonDB.class.php';
-require_once _CENTREON_PATH_.'/www/class/centreonXML.class.php';
-require_once _CENTREON_PATH_.'/www/class/centreonInstance.class.php';
-require_once _CENTREON_PATH_.'/www/class/centreonSession.class.php';
+require_once _CENTREON_PATH_ . '/www/class/centreonDB.class.php';
+require_once _CENTREON_PATH_ . '/www/class/centreonXML.class.php';
+require_once _CENTREON_PATH_ . '/www/class/centreonInstance.class.php';
+require_once _CENTREON_PATH_ . '/www/class/centreonSession.class.php';
 
 $db = new CentreonDB();
 
@@ -79,7 +79,7 @@ while ($row = $res->fetchRow()) {
                 $resultColor = "red";
                 $ok = false;
             }
-            $str .= $command['command_name'] . ": <font color='$resultColor'>".implode(";", $output)."</font><br/>";
+            $str .= $command['command_name'] . ": <font color='$resultColor'>" . implode(";", $output) . "</font><br/>";
         }
     }
 }

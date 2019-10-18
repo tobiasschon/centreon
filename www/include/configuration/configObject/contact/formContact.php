@@ -1,4 +1,5 @@
 <?php
+
 /*
  * Copyright 2005-2019 Centreon
  * Centreon is developed by : Julien Mathis and Romain Le Merlus under
@@ -158,7 +159,8 @@ $notifCgs = array();
 $cg = new CentreonContactgroup($pearDB);
 $notifCgs = $cg->getListContactgroup(false);
 
-if ($centreon->optGen['ldap_auth_enable'] == 1
+if (
+    $centreon->optGen['ldap_auth_enable'] == 1
     && $cct['contact_auth_type'] == 'ldap' && isset($cct['ar_id']) && $cct['ar_id']
 ) {
     $ldap = new CentreonLDAP($pearDB, null, $cct['ar_id']);
@@ -243,7 +245,7 @@ if ($o == "a") {
         EventDispatcher::EVENT_DISPLAY,
         [
             'form' => $form,
-            'tpl' =>$tpl,
+            'tpl' => $tpl,
             'contact_id' => $contactId
         ]
     );
@@ -255,7 +257,7 @@ if ($o == "a") {
         EventDispatcher::EVENT_READ,
         [
             'form' => $form,
-            'tpl' =>$tpl,
+            'tpl' => $tpl,
             'contact_id' => $contactId
         ]
     );
@@ -267,7 +269,7 @@ if ($o == "a") {
         EventDispatcher::EVENT_READ,
         [
             'form' => $form,
-            'tpl' =>$tpl,
+            'tpl' => $tpl,
             'contact_id' => $contactId
         ]
     );
@@ -279,7 +281,7 @@ if ($o == "a") {
         EventDispatcher::EVENT_DISPLAY,
         [
             'form' => $form,
-            'tpl' =>$tpl,
+            'tpl' => $tpl,
             'contact_id' => $contactId
         ]
     );
@@ -696,7 +698,8 @@ if ($o != "mc") {
     }
     $form->addRule('contact_auth_type', _("Required Field"), 'required');
 
-    if ((isset($ret["contact_enable_notifications"]["contact_enable_notifications"])
+    if (
+        (isset($ret["contact_enable_notifications"]["contact_enable_notifications"])
         && $ret["contact_enable_notifications"]["contact_enable_notifications"] == 1)
         && ($isRemote == false)
     ) {

@@ -54,7 +54,7 @@ $path = "./include/monitoring/downtime/";
  * PHP functions
  */
 require_once "./include/common/common-Func.php";
-require_once $path."common-Func.php";
+require_once $path . "common-Func.php";
 require_once "./include/monitoring/external_cmd/functions.php";
 
 switch ($o) {
@@ -63,7 +63,8 @@ switch ($o) {
             foreach ($_POST["select"] as $key => $value) {
                 $res = explode(';', urldecode($key));
                 $ishost = isDownTimeHost($res[2]);
-                if ($oreon->user->access->admin ||
+                if (
+                    $oreon->user->access->admin ||
                     ($ishost && $oreon->user->access->checkAction("host_schedule_downtime")) ||
                     (!$ishost && $oreon->user->access->checkAction("service_schedule_downtime"))
                 ) {
@@ -80,7 +81,8 @@ switch ($o) {
             foreach ($_POST["select"] as $key => $value) {
                 $res = explode(';', urldecode($key));
                 $ishost = isDownTimeHost($res[2]);
-                if ($oreon->user->access->admin ||
+                if (
+                    $oreon->user->access->admin ||
                     ($ishost && $oreon->user->access->checkAction("host_schedule_downtime")) ||
                     (!$ishost && $oreon->user->access->checkAction("service_schedule_downtime"))
                 ) {
@@ -94,12 +96,12 @@ switch ($o) {
         require_once($path . "listDowntime.php");
         break;
     case "a":
-        require_once($path."AddDowntime.php");
+        require_once($path . "AddDowntime.php");
         break;
     case "vh":
-        require_once($path."listDowntime.php");
+        require_once($path . "listDowntime.php");
         break;
     default:
-        require_once($path."listDowntime.php");
+        require_once($path . "listDowntime.php");
         break;
 }
