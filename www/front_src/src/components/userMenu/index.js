@@ -8,7 +8,7 @@
 
 import React, { Component } from 'react';
 import classnames from 'classnames';
-import { Translate } from 'react-redux-i18n';
+import { withTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { allowedPagesSelector } from '../../redux/selectors/navigation/allowedPages';
@@ -95,6 +95,7 @@ class UserMenu extends Component {
   };
 
   render() {
+    const { t } = this.props;
     const { data, toggled, copied } = this.state;
 
     if (!data) {
@@ -138,8 +139,7 @@ class UserMenu extends Component {
                       {fullname}
                     </span>
                     <span className={styles['submenu-user-type']}>
-                      <Translate value="as" />
-                      {` ${username}`}
+                      {`${t('as')} ${username}`}
                     </span>
                     {allowEditProfile && (
                       <Link
@@ -147,7 +147,7 @@ class UserMenu extends Component {
                         className={styles['submenu-user-edit']}
                         onClick={this.toggle}
                       >
-                        <Translate value="Edit profile" />
+                        {t('Edit profile')}
                       </Link>
                     )}
                   </span>
@@ -158,7 +158,7 @@ class UserMenu extends Component {
                       className={styles['submenu-user-button']}
                       onClick={this.onCopy}
                     >
-                      <Translate value="Copy autologin link" />
+                      {t('Copy autologin link')}
                       <span
                         className={classnames(
                           styles['btn-logout-icon'],
@@ -184,7 +184,7 @@ class UserMenu extends Component {
                       styles.logout,
                     )}
                   >
-                    <Translate value="Logout" />
+                    {t('Logout')}
                   </button>
                 </a>
               </div>
@@ -205,4 +205,4 @@ const mapDispatchToProps = {};
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(UserMenu);
+)(withTranslation()(UserMenu));

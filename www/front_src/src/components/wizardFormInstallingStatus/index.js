@@ -3,17 +3,19 @@
 
 import React from 'react';
 import classnames from 'classnames';
-import { Translate } from 'react-redux-i18n';
+import { useTranslation } from 'react-i18next';
 import styles from '../../styles/partials/form/_form.scss';
 import Loader from '../loader';
 
-export default ({
+const WizardFormInstallingStatus = ({
   formTitle,
   statusCreating,
   statusGenerating,
   statusProcessing,
   error,
 }) => {
+  const { t } = useTranslation();
+
   return (
     <div className={classnames(styles['form-wrapper'], styles.installation)}>
       <div className={styles['form-inner']}>
@@ -23,7 +25,7 @@ export default ({
         {!error && <Loader /> // display loader until tasks are finished or error is displayed
         }
         <p className={styles['form-text']}>
-          <Translate value="Creating Export Task" />
+          {t('Creating Export Task')}
           <span
             className={classnames(
               styles['form-status'],
@@ -38,7 +40,7 @@ export default ({
           </span>
         </p>
         <p className={styles['form-text']}>
-          <Translate value="Generating Export Files" />
+          {t('Generating Export Files')}
           <span
             className={classnames(
               styles['form-status'],
@@ -53,7 +55,7 @@ export default ({
           </span>
         </p>
         <p className={styles['form-text']}>
-          <Translate value="Processing Remote Import/Configuration" />
+          {t('Processing Remote Import/Configuration')}
           <span
             className={classnames(
               styles['form-status'],
@@ -74,3 +76,5 @@ export default ({
     </div>
   );
 };
+
+export default WizardFormInstallingStatus;

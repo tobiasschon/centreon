@@ -6,7 +6,7 @@
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { I18n } from 'react-redux-i18n';
+import { withTranslation } from 'react-i18next';
 import WizardFormInstallingStatus from '../../components/wizardFormInstallingStatus';
 import ProgressBar from '../../components/progressBar';
 import routeMap from '../../route-maps/route-map';
@@ -162,7 +162,7 @@ class RemoteServerStepThreeRoute extends Component {
 
   render() {
     const { links } = this;
-    const { pollerData } = this.props;
+    const { pollerData, t } = this.props;
     const { generateStatus, processingStatus, error } = this.state;
     return (
       <div>
@@ -171,7 +171,7 @@ class RemoteServerStepThreeRoute extends Component {
           statusCreating={pollerData.submitStatus}
           statusGenerating={generateStatus}
           statusProcessing={processingStatus}
-          formTitle={`${I18n.t('Finalizing Setup')}:`}
+          formTitle={`${t('Finalizing Setup')}:`}
           error={error}
         />
       </div>
@@ -188,4 +188,4 @@ const mapDispatchToProps = {};
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(RemoteServerStepThreeRoute);
+)(withTranslation()(RemoteServerStepThreeRoute));

@@ -1,8 +1,5 @@
-import {
-  loadTranslations,
-  setLocale,
-  syncTranslationWithStore,
-} from 'react-redux-i18n';
+import i18n from 'i18next';
+import { initReactI18next } from 'react-i18next';
 import axios from '../axios';
 
 const translationService = axios(
@@ -12,7 +9,7 @@ const userService = axios(
   'internal.php?object=centreon_topcounter&action=user',
 );
 
-export default function setTranslations(store, callback) {
+function loadTranslations(callback) {
   const localePromise = userService.get();
   const translationsPromise = translationService.get();
 
@@ -20,10 +17,32 @@ export default function setTranslations(store, callback) {
     .then((response) => {
       let { locale } = response[0].data;
       locale = locale !== null ? locale.slice(0, 2) : navigator.language;
-      const translations = response[1].data;
-      syncTranslationWithStore(store);
-      store.dispatch(loadTranslations(translations));
-      store.dispatch(setLocale(locale));
+
+      const translations = {};
+      Object.keys(response[1].data).forEach((lang) => {
+        translations[lang] = {
+          translations: response[1].data[lang],
+        };
+      });
+
+      i18n.use(initReactI18next).init({
+        // we init with resources
+        resources: translations,
+        fallbackLng: [locale, 'en'],
+        debug: true,
+
+        // have a common namespace used around the full app
+        ns: ['translations'],
+        defaultNS: 'translations',
+
+        nsSeparator: false,
+        keySeparator: false, // we use content as keys
+
+        interpolation: {
+          escapeValue: false,
+        },
+      });
+
       callback();
     })
     .catch((error) => {
@@ -33,3 +52,5 @@ export default function setTranslations(store, callback) {
       }
     });
 }
+
+export default loadTranslations;

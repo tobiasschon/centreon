@@ -3,21 +3,47 @@
 /* eslint-disable import/no-extraneous-dependencies */
 
 import React, { Component } from 'react';
-import Moment from 'moment';
-import 'moment-timezone/builds/moment-timezone-with-data-10-year-range'; // minimize bundle size (905KB -> 33KB)
+//import { fromUnixTime, format } from 'date-fns';
+//import * as locales from 'date-fns/locale';
+//import { utcToZonedTime } from 'date-fns-tz';
 import axios from '../../axios';
 
 import styles from '../header/header.scss';
 
 const instantiateDate = (tz, locale, timestamp) => {
+  /*
   const currentTime =
-    tz !== '' ? Moment.unix(timestamp).tz(tz) : Moment.unix(timestamp);
-  locale = locale !== null ? currentTime.locale(locale) : currentTime;
+    tz !== ''
+      ? utcToZonedTime(fromUnixTime(timestamp), tz)
+      : fromUnixTime(timestamp);
+  */
+  const shortLocale = locale !== null && locale.length >= 2 ? locale.substring(0, 2) : 'en';
+  //const options = locales[shortLocale] ? { locale: locales[shortLocale] } : {};
+  const date = new Date(timestamp * 1000);
+
+  const dateOptions = {
+    timeZone: tz,
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+  };
+
+  const timeOptions = {
+    timeZone: tz,
+    hour: "numeric",
+    minute: "numeric",
+  };
 
   return {
-    date: currentTime.format('LL'),
-    time: currentTime.format('LT'),
+    date: new Intl.DateTimeFormat(shortLocale, dateOptions).format(date),
+    time: new Intl.DateTimeFormat(shortLocale, timeOptions).format(date),
   };
+/*
+  return {
+    date: format(currentTime, 'PP', options),
+    time: format(currentTime, 'p', options),
+  };
+*/
 };
 
 class Clock extends Component {

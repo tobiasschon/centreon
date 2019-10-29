@@ -13,7 +13,7 @@ import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import numeral from 'numeral';
 import { Link } from 'react-router-dom';
-import { Translate } from 'react-redux-i18n';
+import { withTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
 import axios from '../../axios';
 
@@ -92,6 +92,7 @@ class ServiceStatusMenu extends Component {
   };
 
   render() {
+    const { t } = this.props;
     const { data, toggled } = this.state;
 
     // do not display service information until having data
@@ -212,10 +213,7 @@ class ServiceStatusMenu extends Component {
                     className={styles['submenu-item-link']}
                   >
                     <div onClick={this.toggle}>
-                      <span>
-                        <Translate value="All Services" />
-                        {':'}
-                      </span>
+                      <span>{`${t('All Services')}:`}</span>
                       <span className={styles['submenu-count']}>
                         {numeral(data.total).format()}
                       </span>
@@ -234,8 +232,7 @@ class ServiceStatusMenu extends Component {
                           styles.red,
                         )}
                       >
-                        <Translate value="Critical services" />
-                        {':'}
+                        {`${t('Critical services')}:`}
                       </span>
                       <span className={styles['submenu-count']}>
                         {numeral(data.critical.unhandled).format()}
@@ -257,8 +254,7 @@ class ServiceStatusMenu extends Component {
                           styles.orange,
                         )}
                       >
-                        <Translate value="Warning services" />
-                        {':'}
+                        {`${t('Warning services')}:`}
                       </span>
                       <span className={styles['submenu-count']}>
                         {numeral(data.warning.unhandled).format()}
@@ -280,8 +276,7 @@ class ServiceStatusMenu extends Component {
                           styles['gray-light'],
                         )}
                       >
-                        <Translate value="Unknown services" />
-                        {':'}
+                        {`${t('Unknown services')}:`}
                       </span>
                       <span className={styles['submenu-count']}>
                         {numeral(data.unknown.unhandled).format()}
@@ -303,8 +298,7 @@ class ServiceStatusMenu extends Component {
                           styles.green,
                         )}
                       >
-                        <Translate value="Ok services" />
-                        {':'}
+                        {`${t('Ok services')}:`}
                       </span>
                       <span className={styles['submenu-count']}>
                         {numeral(data.ok).format()}
@@ -324,8 +318,7 @@ class ServiceStatusMenu extends Component {
                           styles.blue,
                         )}
                       >
-                        <Translate value="Pending services" />
-                        {':'}
+                        {`${t('Pending services')}:`}
                       </span>
                       <span className={styles['submenu-count']}>
                         {numeral(data.pending).format()}
@@ -353,7 +346,7 @@ const mapDispatchToProps = {};
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(ServiceStatusMenu);
+)(withTranslation()(ServiceStatusMenu));
 
 ServiceStatusMenu.propTypes = {
   refreshTime: PropTypes.oneOfType([PropTypes.number, PropTypes.bool])

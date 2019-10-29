@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import { Provider } from 'react-redux';
 import App from './App';
 import createStore from './store';
-import setTranslations from './translations';
+import loadTranslations from './translations';
 
 const store = createStore();
 
@@ -14,7 +14,7 @@ class AppProvider extends Component {
   };
 
   componentDidMount = () => {
-    setTranslations(store, this.finishLoading);
+    loadTranslations(this.finishLoading);
   };
 
   finishLoading = () => {
@@ -23,6 +23,7 @@ class AppProvider extends Component {
 
   render() {
     const { translationsLoaded } = this.state;
+    console.log('translation loaded ' + translationsLoaded)
 
     return (
       translationsLoaded && (

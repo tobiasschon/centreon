@@ -13,7 +13,7 @@ import classnames from 'classnames';
 import numeral from 'numeral';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { Translate } from 'react-redux-i18n';
+import { withTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
 import axios from '../../axios';
 
@@ -92,6 +92,7 @@ class HostMenu extends Component {
   };
 
   render() {
+    const { t } = this.props;
     const { data, toggled } = this.state;
 
     // do not display host information until having data
@@ -167,7 +168,7 @@ class HostMenu extends Component {
               ) : null}
             </span>
             <span className={styles['wrap-right-icon__name']}>
-              <Translate value="Hosts" />
+              {t('Hosts')}
             </span>
           </span>
           <span
@@ -190,7 +191,7 @@ class HostMenu extends Component {
                     className={styles['submenu-item-link']}
                   >
                     <div onClick={this.toggle}>
-                      <Translate value="All" />
+                      {t('All')}
                       <span className={styles['submenu-count']}>
                         {numeral(data.total).format()}
                       </span>
@@ -209,7 +210,7 @@ class HostMenu extends Component {
                           styles.red,
                         )}
                       >
-                        <Translate value="Down" />
+                        {t('Down')}
                       </span>
                       <span className={styles['submenu-count']}>
                         {numeral(data.down.unhandled).format()}
@@ -231,7 +232,7 @@ class HostMenu extends Component {
                           styles.gray,
                         )}
                       >
-                        <Translate value="Unreachable" />
+                        {t('Unreachable')}
                       </span>
                       <span className={styles['submenu-count']}>
                         {numeral(data.unreachable.unhandled).format()}
@@ -253,7 +254,7 @@ class HostMenu extends Component {
                           styles.green,
                         )}
                       >
-                        <Translate value="Up" />
+                        {t('Up')}
                       </span>
                       <span className={styles['submenu-count']}>
                         {numeral(data.ok).format()}
@@ -273,7 +274,7 @@ class HostMenu extends Component {
                           styles.blue,
                         )}
                       >
-                        <Translate value="Pending" />
+                        {t('Pending')}
                       </span>
                       <span className={styles['submenu-count']}>
                         {numeral(data.pending).format()}
@@ -301,7 +302,7 @@ const mapDispatchToProps = {};
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(HostMenu);
+)(withTranslation()(HostMenu));
 
 HostMenu.propTypes = {
   refreshTime: PropTypes.oneOfType([PropTypes.number, PropTypes.bool])
