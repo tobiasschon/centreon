@@ -33,7 +33,7 @@ The processing of an SNMP trap is as follows:
 1. snmptrapd is the service enabling the retrieval of SNMP traps sent by the equipment (by default it listens on port **UDP 162**).
 2. Once the SNMP trap has been received, it is sent to the ‘centreontrapdforward’ script which writes the information received in a buffer folder (by default **/var/spool/centreontrapd/**).
 3. The ‘centreontrapd’ service reads the information received in the buffer folder and interprets the traps received checking, in the centreon database, the actions necessary to process these events.
-4. The ‘centreontrapd’ service transmits the information to the scheduler or the ‘centcore’ service (to send the information to a remote scheduler) which changes the status and the information associated with service to which the SNMP trap is linked.
+4. The ‘centreontrapd’ service transmits the information to the scheduler or the ‘centreon-gorgone’ service (to send the information to a remote scheduler) which changes the status and the information associated with service to which the SNMP trap is linked.
 
 .. image:: /images/user/configuration/10advanced_configuration/06_trap_centreon.png
     :align: center
@@ -53,7 +53,7 @@ The processing of an SNMP trap is as follows:
 .. image:: /images/user/configuration/10advanced_configuration/06_trap_poller.png
     :align: center
 
-.. note:: the Centcore process is responsible to copy the SQLite base on the remote collector.
+.. note:: the centreon-gorgone process is responsible to copy the SQLite base on the remote collector.
 
 Successive actions by the centreontrapd process
 ===============================================

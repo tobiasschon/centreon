@@ -647,7 +647,6 @@ Installation du composant Centcore
     Copy CentCore in binary directory                          OK
     Change right : /var/run/centreon                           OK
     Change right : /var/lib/centreon                           OK
-    Change macros for centcore.logrotate                       OK
     Install Centreon Core logrotate.d file                     OK
     Replace CentCore init script Macro                         OK
     Replace CentCore default script Macro                      OK

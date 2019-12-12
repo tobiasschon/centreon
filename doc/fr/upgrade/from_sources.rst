@@ -83,10 +83,6 @@ Sélectionner les composants à mettre à jour : ::
     [y/n], default to [n]:
     > y
 
-    Do you want to install : Centreon CentCore
-    [y/n], default to [n]:
-    > y
-
     Do you want to install : Centreon Nagios Plugins
     [y/n], default to [n]:
     > y

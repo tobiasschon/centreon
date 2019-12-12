@@ -238,7 +238,7 @@ Description des logiciels et utilisateurs liés :
 +-----------------+------------------+-----------------+-----------------------+
 | MySQL (MariaDB) | mysqld (mysql)   | mysql           | démarrage automatique |
 +-----------------+------------------+-----------------+-----------------------+
-| Centreon        | centcore         | centreon        | démarrage automatique |
+| Centreon        | centreon-gorgone | centreon        | démarrage automatique |
 +-----------------+------------------+-----------------+-----------------------+
 | Centreon        | centreontrapd    | centreon        | démarrage automatique |
 +-----------------+------------------+-----------------+-----------------------+

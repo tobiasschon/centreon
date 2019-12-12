@@ -99,7 +99,7 @@ CentCore
 
 This part can be used set the operation of the CentCore process.
 
-#. Go into the menu: **Administration > Parameters > Centcore**
+#. Go into the menu: **Administration > Parameters > Gorgone**
 
 .. image:: /images/guide_exploitation/ecentcore.png
    :align: center
@@ -252,5 +252,5 @@ This part can be used to configure the enabling of the logging of activity on Ce
 * **RRDTool debug** box enables logging of the RRDTool graph engine debugging
 * **LDAP User Import debug** box enables logging of debugging of the import of LDAP users
 * **SQL debug** box enables the logging of SQL requests executed by the Centreon interface
-* **Centcore Engine debug** box enables logging of Centcore process debugging
+* **Centreon gorgone debug** box enables logging of centreon-gorgone process debugging
 * **Centreontrapd debug** box enables logging of the Centreontrapd process debugging

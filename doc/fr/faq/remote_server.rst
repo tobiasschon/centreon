@@ -428,7 +428,7 @@ Si tel n'est pas le cas :
 
 * Redémarrez ce dernier via la commande : ::
 
-    # systemctl restart centcore
+    # systemctl restart centreon-gorgone
 
 3. Le processus **centengine** est-il en cours d'exécution sur les collecteurs ?
 

@@ -9,9 +9,9 @@ Pour démarrer l'ordonnanceur de supervision :
 
     # systemctl start centengine
 
-4. Démarrez centcore ::
+4. Démarrez centreon gorgone ::
 
-    # systemctl start centcore
+    # systemctl start centreon-gorgone
 
 5. Démarrez centreontrapd ::
 
@@ -21,7 +21,7 @@ Activer le lancement automatique de services au démarrage.
 
 Lancer les commandes suivantes : ::
 
-    # systemctl enable centcore
+    # systemctl enable centreon-gorgone
     # systemctl enable centreontrapd
     # systemctl enable cbd
     # systemctl enable centengine

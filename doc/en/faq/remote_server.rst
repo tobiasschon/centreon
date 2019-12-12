@@ -133,27 +133,35 @@ on the Remote Server.
 Solving data extraction problems
 ********************************
 
-1. Check that the **centcore** process is running on the
+1. Check that the **centreon-gorgone** process is running on the
    central Centreon server: ::
 
-    # systemctl status centcore
-    ● centcore.service - SYSV: centcore is a Centreon program that manage pollers
-       Loaded: loaded (/etc/rc.d/init.d/centcore; bad; vendor preset: disabled)
-       Active: active (running) since ven. 2018-10-19 14:09:26 BST; 3 weeks 4 days ago
-         Docs: man:systemd-sysv-generator(8)
-       CGroup: /system.slice/centcore.service
-               └─32385 /usr/bin/perl /usr/share/centreon/bin/centcore --logfile=/var/log/centreon/centcore.log --severity=error --config=/etc/centreon/conf.pm
-
-    Warning: Journal has been rotated since unit was started. Log output is incomplete or unavailable.
+    # systemctl status centreon-gorgone
+    ● centreon-gorgone.service - Centreon Gorgone
+       Loaded: loaded (/etc/systemd/system/centreon-gorgone.service; disabled; vendor preset: disabled)
+       Active: active (running) since Mon 2019-09-30 09:36:19 CEST; 2min 29s ago
+    Main PID: 5168 (perl)
+       CGroup: /system.slice/centreon-gorgone.service
+           ├─5168 /usr/bin/perl /usr/bin/gorgoned --config=/etc/centreon/gorgoned.yml --logfile=/var/log/centreon/gorgoned.log --severity=error
+           ├─5175 gorgone-dbcleaner
+           ├─5182 gorgone-action
+           ├─5187 gorgone-nodes
+           ├─5190 gorgone-legacycmd
+           ├─5203 gorgone-proxy
+           ├─5204 gorgone-proxy
+           ├─5205 gorgone-proxy
+           ├─5206 gorgone-proxy
+           └─5207 gorgone-proxy
+    Sep 30 09:36:19 cga-centreon-19-10.int.centreon.com systemd[1]: Started Centreon Gorgone.
 
 If it is not running,
 
 * Check the database access rights configuration in the
-  file **/etc/centreon/conf.pm**
+  file **/etc/centreon/gorgoned.yml**
 
-* Restart the centcore process: ::
+* Restart the centreon-gorgone process: ::
 
-    # systemctl restart centcore
+    # systemctl restart centreon-gorgone
 
 Then generate the Remote Server configuration from the central Centreon server.
 
@@ -164,7 +172,7 @@ last line is: ::
 
     [2018:11:08 01:54:05] Checking for pending export tasks
 
-Or if the **/var/log/centreon/centcore.log** file on the central Centreon server
+Or if the **/var/log/centreon/gorgoned.log** file on the central Centreon server
 includes: ::
 
     2018-11-08 13:54:10 - Receiving die: Timeout by signal ALARM
@@ -178,13 +186,13 @@ includes: ::
     2018-11-08 13:54:10 - Killing child process [3926] ...
     2018-11-08 13:54:10 - Killed
 
-Go to **Administration > Parameters > CentCore** menu on the central
+Go to **Administration > Parameters > Gorgone** menu on the central
 Centreon server and set the **Timeout value for Centcore commands**
 variable to 60s.
 
-Restart the centcore process: ::
+Restart the centreon-gorgone process: ::
 
-    # systemctl restart centcore
+    # systemctl restart centreon-gorgone
 
 Purge the extraction task table in the database::
 
@@ -298,26 +306,35 @@ Solving data importation problems
 
 Then generate the Remote Server configuration from the central Centreon server.
 
-2. Check the **centcore** process is up and running on both servers: ::
+2. Check the **centreon-gorgone** process is up and running on both servers: ::
 
-    # systemctl status centcore
-    ● centcore.service - SYSV: centcore is a Centreon program that manage pollers
-       Loaded: loaded (/etc/rc.d/init.d/centcore; bad; vendor preset: disabled)
-       Active: active (running) since ven. 2018-10-19 14:09:26 BST; 3 weeks 4 days ago
-         Docs: man:systemd-sysv-generator(8)
-       CGroup: /system.slice/centcore.service
-               └─32385 /usr/bin/perl /usr/share/centreon/bin/centcore --logfile=/var/log/centreon/centcore.log --severity=error --config=/etc/centreon/conf.pm
+    # systemctl status centreon-gorgone
+    ● centreon-gorgone.service - Centreon Gorgone
+       Loaded: loaded (/etc/systemd/system/centreon-gorgone.service; disabled; vendor preset: disabled)
+       Active: active (running) since Mon 2019-09-30 09:36:19 CEST; 2min 29s ago
+    Main PID: 5168 (perl)
+       CGroup: /system.slice/centreon-gorgone.service
+           ├─5168 /usr/bin/perl /usr/bin/gorgoned --config=/etc/centreon/gorgoned.yml --logfile=/var/log/centreon/gorgoned.log --severity=error
+           ├─5175 gorgone-dbcleaner
+           ├─5182 gorgone-action
+           ├─5187 gorgone-nodes
+           ├─5190 gorgone-legacycmd
+           ├─5203 gorgone-proxy
+           ├─5204 gorgone-proxy
+           ├─5205 gorgone-proxy
+           ├─5206 gorgone-proxy
+           └─5207 gorgone-proxy
 
-    Warning: Journal has been rotated since unit was started. Log output is incomplete or unavailable.
+    Sep 30 09:36:19 cga-centreon-19-10.int.centreon.com systemd[1]: Started Centreon Gorgone.
 
 If it is not running:
 
 * Check the database access rights configuration in the
-  file **/etc/centreon/conf.pm**
+  file **/etc/centreon/gorgoned.yml**
 
-* Restart the centcore process: ::
+* Restart the centreon-gorgone process: ::
 
-    # systemctl restart centcore
+    # systemctl restart centreon-gorgone
 
 Then generate the Remote Server configuration from the central Centreon server.
 
@@ -336,27 +353,23 @@ last line is: ::
 
     [2018:11:08 01:54:05] Checking for pending export tasks
 
-Or if the **/var/log/centreon/centcore.log** file on the central Centreon server
+Or if the **/var/log/centreon/gorgoned.log** file on the central Centreon server
 includes: ::
 
-    2018-11-08 13:54:10 - Receiving die: Timeout by signal ALARM
+    2019-12-10 15:29:56 - ERROR - Cannot bind ipc '/tmp/gorgone/routing.ipc': Aucun fichier ou dossier de ce type
+    2019-12-10 15:29:56 - ERROR - Maybe directory not exist. We try to create it!!!
+    2019-12-10 15:29:56 - ERROR - [proxy] -hooks- Cannot create child. need a core id
+    2019-12-10 15:29:56 - ERROR - [proxy] -hooks- Cannot create child. need a core id
+    2019-12-10 15:29:56 - ERROR - [proxy] -hooks- Cannot create child. need a core id
+    2019-12-10 15:29:56 - ERROR - [proxy] -hooks- Cannot create child. need a core id
 
-    2018-11-08 13:54:10 - Dont die...
-    2018-11-08 13:54:10 - Receiving die: Timeout by signal ALARM
-
-    2018-11-08 13:54:10 - Dont die...
-    2018-11-08 13:54:10 - Timeout by signal ALARM
-
-    2018-11-08 13:54:10 - Killing child process [3926] ...
-    2018-11-08 13:54:10 - Killed
-
-Go to **Administration > Parameters > CentCore** menu on the central
-Centreon server and set the **Timeout value for Centcore commands**
+Go to **Administration > Parameters > Gorgone** menu on the central
+Centreon server and set the **Timeout value for Centreon Gorgone commands**
 variable to 60s.
 
-Restart the centcore process: ::
+Restart the centreon-gorgone process: ::
 
-    # systemctl restart centcore
+    # systemctl restart centreon-gorgone
 
 Purge the extraction task table in the database::
 
@@ -389,26 +402,35 @@ Resolution
 
 Then generate the Remote Server configuration from the central Centreon server.
 
-2. Check the **centcore** process is up and running on both servers: ::
+2. Check the **centreon-gorgone** process is up and running on both servers: ::
 
-    # systemctl status centcore
-    ● centcore.service - SYSV: centcore is a Centreon program that manage pollers
-       Loaded: loaded (/etc/rc.d/init.d/centcore; bad; vendor preset: disabled)
-       Active: active (running) since ven. 2018-10-19 14:09:26 BST; 3 weeks 4 days ago
-         Docs: man:systemd-sysv-generator(8)
-       CGroup: /system.slice/centcore.service
-               └─32385 /usr/bin/perl /usr/share/centreon/bin/centcore --logfile=/var/log/centreon/centcore.log --severity=error --config=/etc/centreon/conf.pm
+    # systemctl status centreon-gorgone
+    ● centreon-gorgone.service - Centreon Gorgone
+        Loaded: loaded (/etc/systemd/system/centreon-gorgone.service; disabled; vendor preset: disabled)
+        Active: active (running) since Mon 2019-09-30 09:36:19 CEST; 2min 29s ago
+     Main PID: 5168 (perl)
+        CGroup: /system.slice/centreon-gorgone.service
+           ├─5168 /usr/bin/perl /usr/bin/gorgoned --config=/etc/centreon/gorgoned.yml --logfile=/var/log/centreon/gorgoned.log --severity=error
+           ├─5175 gorgone-dbcleaner
+           ├─5182 gorgone-action
+           ├─5187 gorgone-nodes
+           ├─5190 gorgone-legacycmd
+           ├─5203 gorgone-proxy
+           ├─5204 gorgone-proxy
+           ├─5205 gorgone-proxy
+           ├─5206 gorgone-proxy
+           └─5207 gorgone-proxy
 
-    Warning: Journal has been rotated since unit was started. Log output is incomplete or unavailable.
+    Sep 30 09:36:19 cga-centreon-19-10.int.centreon.com systemd[1]: Started Centreon Gorgone.
 
 If it is not running:
 
 * Check the database access rights configuration in the
-  file **/etc/centreon/conf.pm**
+  file **/etc/centreon/gorgoned.yml**
 
-* Restart the centcore process: ::
+* Restart the centreon-gorgone process: ::
 
-    # systemctl restart centcore
+    # systemctl restart centreon-gorgoned
 
 Then generate the Remote Server configuration from the central Centreon server.
 

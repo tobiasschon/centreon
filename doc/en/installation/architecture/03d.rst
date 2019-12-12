@@ -47,7 +47,7 @@ Many components are used to build a master Centreon server:
 
 * Apache web server for Centreon web interface
 * The central Centreon server get configuration and collected data from DBMS server
-* The Centcore process is used to send monitoring configuration to the remote server and to manage it
+* The centreon-gorgone process is used to send monitoring configuration to the remote server and to manage it
 * A monitoring engine to collect data
 * Collected data are sent to Centreon Broker SQL using cbmod by monitoring engine
 * Centreon Broker SQL allows to store information into MariaDB databases and forward them to the two Centreon Broker RRD (master and slave)

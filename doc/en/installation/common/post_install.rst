@@ -19,9 +19,9 @@ To start the monitoring engine:
 
      # systemctl start centengine
 
-10. Start centcore: :: 
+10. Start centreon gorgone: ::
 
-    # systemctl start centcore
+    # systemctl start centreon-gorgone
 
 11. Start centreontrapd: ::
 
@@ -32,7 +32,7 @@ Monitoring is now working. You can begin monitoring your IT system.
 To automatically start services at system bootup, run these commands
 on the central server: ::
 
-    # systemctl enable centcore
+    # systemctl enable centreon-gorgone
     # systemctl enable centreontrapd
     # systemctl enable cbd
     # systemctl enable centengine

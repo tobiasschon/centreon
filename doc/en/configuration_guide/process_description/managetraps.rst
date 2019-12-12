@@ -353,16 +353,16 @@ To check its operation, you should check the centreontrapd configuration setting
 
 You can check the proper functioning of binary centreontrapdforward by checking the configuration part of :ref:`centreontrapd <configuration_advanced_centreontrapd>`.
 
-CentCore
+Centreon Gorgone
 ========
 
-CentCore daemon must be running to forward information from Centreontrapd to the monitoring engine as an external command.
+Centreon-gorgone daemon must be running to forward information from Centreontrapd to the monitoring engine as an external command.
 Enable the debug mode via **Administration > Options > Debug** menu and restart process.
 
 .. note::
-    You can edit debug severity level in **/etc/sysconfig/centcore** file.
+    You can edit debug severity level in **/etc/sysconfig/centreon-gorgone** file.
 
-If any external command are sent to the monitoring engine please check the path to "$cmdFile"" in **/etc/centreon/conf.pm** configuration file.
+If any external command are sent to the monitoring engine please check the path to "$cmdFile"" in **/etc/centreon/gorgoned.yml** configuration file.
 The path should be **/var/lib/centreon/centcore.cmd** for a central Centreon server.
 
 Poller

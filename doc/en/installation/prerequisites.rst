@@ -231,7 +231,7 @@ Description of software and linked users:
 +-----------------+------------------+-----------------+-----------------------+
 | MySQL (MariaDB) | mysqld (mysql)   | mysql           | automatic start       |
 +-----------------+------------------+-----------------+-----------------------+
-| Centreon        | centcore         | centreon        | automatic start       |
+| Centreon        | centreon-gorgone | centreon        | automatic start       |
 +-----------------+------------------+-----------------+-----------------------+
 | Centreon        | centreontrapd    | centreon        | automatic start       |
 +-----------------+------------------+-----------------+-----------------------+

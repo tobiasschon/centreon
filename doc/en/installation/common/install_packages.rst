@@ -179,7 +179,7 @@ To make services start automatically during system bootup, run these commands on
     # systemctl enable snmpd
     # systemctl enable snmptrapd
     # systemctl enable rh-php72-php-fpm
-    # systemctl enable centcore
+    # systemctl enable centreon-gorgone
     # systemctl enable centreontrapd
     # systemctl enable cbd
     # systemctl enable centengine
