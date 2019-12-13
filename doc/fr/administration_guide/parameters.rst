@@ -98,13 +98,12 @@ Cette partie traite des options générales de l'interface de supervision temps 
 * Le champ **Durée** permet de définir la durée par défaut d'un temps d'arrêt
 
 ********
-CentCore
+Gorgone
 ********
 
-Cette partie permet de paramétrer le fonctionnement du processus CentCore.
+Cette partie permet de paramétrer le fonctionnement du processus centreon-gorgone.
 
-#. Rendez-vous dans le menu **Administration > Paramétres**
-#. Dans le menu de gauche, cliquez sur **Centcore**
+#. Rendez-vous dans le menu **Administration > Paramétres > Gorgone**
 
 .. image :: /images/guide_exploitation/ecentcore.png
    :align: center
@@ -252,6 +251,5 @@ Cette partie permet de configurer l'activation de la journalisation de l'activit
 * La case **Débogage RRDTool** active la journalisation du débogage du moteur de graphique RRDTool
 * La case **Débogage de l'import d'utilisateurs LDAP** active la journalisation du débogage de l'import des utilisateurs LDAP
 * La case **Enregistrer les requêtes SQL** active la journalisation des requêtes SQL exécutées par l'interface Centreon
-* La case **Débogage processus Centcore** active la journalisation du débogage du processus Centcore
-* La case **Débogage du processus Centstorage** active la journalisation du débogage du processus Centstorage
+* La case **Débogage processus centreon-gorgone** active la journalisation du débogage du processus centreon-gorgone
 * La case **Débogage du moteur de traitement des traps SNMP (centreontrapd)** active la journalisation du débogage du processus Centreontrapd

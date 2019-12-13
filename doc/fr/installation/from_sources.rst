@@ -300,10 +300,6 @@ Répondez [y] à toutes les questions ::
     [y/n], default to [n]:
     > y
 
-    Do you want to install : Centreon Centcore
-    [y/n], default to [n]:
-    > y
-
     Do you want to install : Centreon Nagios Plugins
     [y/n], default to [n]:
     > y
@@ -629,33 +625,6 @@ Installation du composant Centstorage
     Change macros for centstorage.cron                         OK
     Install CentStorage cron                                   OK
     Create /etc/centreon/instCentStorage.conf                  OK
-
-Installation du composant Centcore
-----------------------------------
-
-::
-
-    ------------------------------------------------------------------------
-    	  Starting CentCore Installation
-    ------------------------------------------------------------------------
-    Where is your Centreon binary directory
-    default to [/usr/share/centreon/bin]
-    >
-    Path /usr/share/centreon/bin                               OK
-    Preparing Centreon temporary files
-    /tmp/centreon-setup exists, it will be moved...
-    Copy CentCore in binary directory                          OK
-    Change right : /var/run/centreon                           OK
-    Change right : /var/lib/centreon                           OK
-    Install Centreon Core logrotate.d file                     OK
-    Replace CentCore init script Macro                         OK
-    Replace CentCore default script Macro                      OK
-
-    Do you want me to install CentCore init script ?
-    [y/n], default to [n]:
-    > y
-    CentCore init script installed                             OK
-    CentCore default script installed                          OK
 
 Installation des plugins
 ------------------------

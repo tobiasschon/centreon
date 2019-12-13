@@ -311,30 +311,6 @@ De nouvelle informations sont nécessaires : ::
    Install Centreon Storage logrotate.d file                  OK
    Create /etc/centreon/instCentStorage.conf                  OK
 
-Mise à jour Centreon Core
--------------------------
-
-De nouvelle informations sont nécessaires : ::
-
-   ------------------------------------------------------------------------
-   	Start CentCore Installation
-   ------------------------------------------------------------------------
-   Preparing Centreon temporary files
-   /tmp/centreon-setup exists, it will be moved...
-   Copy CentCore in binary directory                          OK
-   Change right : /var/run/centreon                           OK
-   Change right : /var/lib/centreon                           OK
-   Change macros for centcore.logrotate                       OK
-   Install Centreon Core logrotate.d file                     OK
-   Replace CentCore init script Macro                         OK
-   Replace CentCore default script Macro                      OK
-
-   Do you want me to install CentCore init script ?
-   [y/n], default to [n]:
-   > y
-   CentCore init script installed                             OK
-   CentCore default script installed                          OK
-
 Mise à jour des sondes Centreon
 -------------------------------
 

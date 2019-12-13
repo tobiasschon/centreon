@@ -371,13 +371,13 @@ Le prochain binaire est celui de Centreon qui permet de sélectionner l'hôte po
 Vous pouvez vérifier la bonne configuration de centreontrapd au sein du chapitre de configuration de :ref:`centreontrapd<configuration_advanced_centreontrapd>`.
 
 
-CentCore
+Centreon Gorgone
 ========
 
-Dans le cas d'un serveur central, le processus Centcore doit être démarré pour transférer la commande externe à l'ordonnanceur supervisant l'émetteur, vérifiez son état de fonctionnement. Activez le débogage du processus via le menu **Administration > Options > Débogage** et redémarrez le processus.
+Dans le cas d'un serveur central, le processus centreon-gorgonr doit être démarré pour transférer la commande externe à l'ordonnanceur supervisant l'émetteur, vérifiez son état de fonctionnement. Activez le débogage du processus via le menu **Administration > Options > Débogage** et redémarrez le processus.
 
 .. note::
-    Vous pouvez modifier le niveau de débogage du processus via le fichier **/etc/sysconfig/centcore** en modifiant la sévérité.
+    Vous pouvez modifier le niveau de débogage du processus via le fichier **/etc/sysconfig/centreon-gorgone** en modifiant la sévérité.
 
 En cas de non réception de la commande externe, vérifiez le chemin d'accès au fichier de commande du processus défini dans la variable « $cmdFile » du fichier de configuration « /etc/centreon/conf.pm .». Le chemin doit être « /var/lib/centreon/centcore.cmd » dans le cas d'un serveur central ou le chemin vers le fichier de commande de l'ordonnanceur.
 
