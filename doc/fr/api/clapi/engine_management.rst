@@ -94,13 +94,13 @@ Move monitoring engine configuration files
 In order to move configuration files for poller "Local Poller" of id 1 to the final engine directory, use the **CFGMOVE** command::
 
   [root@centreon core]# ./centreon -u admin -p centreon -a CFGMOVE -v 2
-  OK: All configuration will be send to 'Remote Poller' by centreon-gorgonr in several minutes.
+  OK: All configuration will be send to 'Remote Poller' by centreon-gorgone in several minutes.
   Return code end : 1
 
 You can move the configuration files using the poller name::
 
   [root@centreon core]# ./centreon -u admin -p centreon -a CFGMOVE -v "Remote Poller"
-  OK: All configuration will be send to 'Remote Poller' by centreon-gorgonr in several minutes.
+  OK: All configuration will be send to 'Remote Poller' by centreon-gorgone in several minutes.
   Return code end : 1
 
 
