@@ -326,7 +326,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorApiResponse'
-    post:
+    put:
       tags:
         - Proxy
       summary: Update the default configuration of the Centreon proxy
