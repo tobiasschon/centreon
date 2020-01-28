@@ -50,11 +50,6 @@ final class AcknowledgmentRepositoryRDB extends AbstractRepositoryDRB implements
     private $sqlRequestTranslator;
 
     /**
-     * @var AccessGroup[] List of access group used to filter the requests
-     */
-    private $accessGroups;
-
-    /**
      * @var bool Indicates whether the contact is an admin or not
      */
     private $isAdmin = false;
@@ -62,7 +57,7 @@ final class AcknowledgmentRepositoryRDB extends AbstractRepositoryDRB implements
     /**
      * @var ContactInterface
      */
-    private $contact;
+    protected $contact;
 
     /**
      * AcknowledgmentRepositoryRDB constructor.
@@ -310,31 +305,5 @@ final class AcknowledgmentRepositoryRDB extends AbstractRepositoryDRB implements
         );
 
         return $acknowledgements;
-    }
-
-    private function isAdmin(): bool
-    {
-        return ($this->contact !== null)
-            ? $this->contact->isAdmin()
-            : false;
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function setContact(ContactInterface $contact): AcknowledgementRepositoryInterface
-    {
-        $this->contact = $contact;
-        return $this;
-    }
-
-    /**
-     * @return bool Return TRUE if the contact is an admin or has at least one access group.
-     */
-    private function hasNotEnoughRightsToContinue(): bool
-    {
-        return ($this->contact !== null)
-            ? !($this->contact->isAdmin() || count($this->accessGroups) > 0)
-            : count($this->accessGroups) == 0;
     }
 }

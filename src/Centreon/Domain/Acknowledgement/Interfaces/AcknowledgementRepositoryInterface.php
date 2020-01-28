@@ -80,10 +80,4 @@ interface AcknowledgementRepositoryInterface
      * @return self
      */
     public function setAdmin(bool $isAdmin): self;
-
-    /**
-     * @param ContactInterface $contact
-     * @return AcknowledgementRepositoryInterface
-     */
-    public function setContact(ContactInterface $contact): self;
 }

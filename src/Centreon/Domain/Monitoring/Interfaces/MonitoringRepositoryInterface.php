@@ -137,12 +137,6 @@ interface MonitoringRepositoryInterface
     public function findServicesByHosts(array $hostIds): array;
 
     /**
-     * @param ContactInterface $contact
-     * @return MonitoringRepositoryInterface
-     */
-    public function setContact(ContactInterface $contact): self;
-
-    /**
      * @param array $serviceGroups
      * @return array
      * @throws \Exception

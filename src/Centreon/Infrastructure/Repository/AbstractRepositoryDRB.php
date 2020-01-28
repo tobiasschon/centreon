@@ -21,6 +21,7 @@ declare(strict_types=1);
 
 namespace Centreon\Infrastructure\Repository;
 
+use Centreon\Domain\Contact\Interfaces\ContactInterface;
 use Centreon\Domain\Security\AccessGroup;
 use Centreon\Infrastructure\DatabaseConnection;
 
@@ -30,6 +31,11 @@ class AbstractRepositoryDRB
      * @var DatabaseConnection
      */
     protected $db;
+
+    /**
+     * @var AccessGroup[] List of access group used to filter the requests
+     */
+    protected $accessGroups = [];
 
     /**
      * Replace all instances of :dbstg and :db by the real db names.
@@ -54,12 +60,34 @@ class AbstractRepositoryDRB
      * @param AccessGroup[] $accessGroups
      * @return string
      */
-    public function accessGroupIdToString(array $accessGroups): string
+    protected function accessGroupIdToString(array $accessGroups): string
     {
         $ids = [];
         foreach ($accessGroups as $accessGroup) {
             $ids[] = $accessGroup->getId();
         }
         return implode(',', $ids);
+    }
+
+    /**
+     * Check if a contact is admin
+     *
+     * @return boolean admin or not
+     */
+    protected function isAdmin(): bool
+    {
+        return ($this->contact !== null)
+            ? $this->contact->isAdmin()
+            : false;
+    }
+
+    /**
+     * @return bool Return FALSE if the contact is an admin or has at least one access group.
+     */
+    protected function hasNotEnoughRightsToContinue(): bool
+    {
+        return ($this->contact !== null)
+            ? !($this->contact->isAdmin() || count($this->accessGroups) > 0)
+            : count($this->accessGroups) == 0;
     }
 }

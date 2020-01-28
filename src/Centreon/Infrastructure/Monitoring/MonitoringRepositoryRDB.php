@@ -21,7 +21,6 @@ declare(strict_types=1);
 
 namespace Centreon\Infrastructure\Monitoring;
 
-use Centreon\Domain\Contact\Interfaces\ContactInterface;
 use Centreon\Domain\Monitoring\HostGroup;
 use Centreon\Domain\Monitoring\ServiceGroup;
 use Centreon\Domain\RequestParameters\RequestParameters;
@@ -52,19 +51,9 @@ final class MonitoringRepositoryRDB extends AbstractRepositoryDRB implements Mon
     private $storageDbName;
 
     /**
-     * @var AccessGroup[] List of access group used to filter the requests
-     */
-    private $accessGroups = [];
-
-    /**
      * @var SqlRequestParametersTranslator
      */
     private $sqlRequestTranslator;
-
-    /**
-     * @var ContactInterface
-     */
-    private $contact;
 
     /**
      * MonitoringRepositoryRDB constructor.
@@ -134,7 +123,7 @@ final class MonitoringRepositoryRDB extends AbstractRepositoryDRB implements Mon
                   AND acg.acl_group_id IN (' . $this->accessGroupIdToString($this->accessGroups) . ') ';
 
         $request =
-            'SELECT SQL_CALC_FOUND_ROWS DISTINCT 
+            'SELECT SQL_CALC_FOUND_ROWS DISTINCT
               h.*,
               i.name AS instance_name,
               IF (h.display_name LIKE \'_Module_Meta%\', \'Meta\', h.display_name) AS display_name,
@@ -272,7 +261,7 @@ final class MonitoringRepositoryRDB extends AbstractRepositoryDRB implements Mon
                   AND acg.acl_group_id IN (' . $this->accessGroupIdToString($this->accessGroups) . ') ';
 
         $request =
-            'SELECT SQL_CALC_FOUND_ROWS DISTINCT 
+            'SELECT SQL_CALC_FOUND_ROWS DISTINCT
               ssg.servicegroup_id, h.*, i.name AS instance_name,
               IF (h.display_name LIKE \'_Module_Meta%\', \'Meta\', h.display_name) AS display_name,
               IF (h.display_name LIKE \'_Module_Meta%\', \'0\', h.state) AS state
@@ -1080,31 +1069,5 @@ final class MonitoringRepositoryRDB extends AbstractRepositoryDRB implements Mon
         }
 
         return $servicesByServiceGroupId;
-    }
-
-    private function isAdmin(): bool
-    {
-        return ($this->contact !== null)
-            ? $this->contact->isAdmin()
-            : false;
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function setContact(ContactInterface $contact): MonitoringRepositoryInterface
-    {
-        $this->contact = $contact;
-        return $this;
-    }
-
-    /**
-     * @return bool Return FALSE if the contact is an admin or has at least one access group.
-     */
-    private function hasNotEnoughRightsToContinue(): bool
-    {
-        return ($this->contact !== null)
-            ? !($this->contact->isAdmin() || count($this->accessGroups) > 0)
-            : count($this->accessGroups) == 0;
     }
 }

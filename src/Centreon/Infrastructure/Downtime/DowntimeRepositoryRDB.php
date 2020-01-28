@@ -42,10 +42,6 @@ class DowntimeRepositoryRDB extends AbstractRepositoryDRB implements DowntimeRep
     private $sqlRequestTranslator;
 
     /**
-     * @var AccessGroup[] List of access group used to filter the requests
-     */
-    private $accessGroups;
-    /**
      * @var array
      */
     private $downtimeConcordanceArray;
@@ -118,7 +114,7 @@ class DowntimeRepositoryRDB extends AbstractRepositoryDRB implements DowntimeRep
     /**
      * @return bool Return TRUE if the contact is an admin or has at least one access group.
      */
-    private function hasNotEnoughRightsToContinue(): bool
+    protected function hasNotEnoughRightsToContinue(): bool
     {
         return count($this->accessGroups) == 0;
     }
