@@ -90,7 +90,9 @@ final class CounterRepositoryRDB extends AbstractRepositoryDRB implements Counte
     }
 
     /**
-     * @inheritDoc
+     * Count all hosts by status filtered by admin / non admin user
+     *
+     * @return HostCounter The number of hosts by status
      */
     private function countHosts(bool $isAdmin = false): HostCounter
     {

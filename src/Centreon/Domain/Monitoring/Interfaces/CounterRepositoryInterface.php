@@ -37,7 +37,7 @@ interface CounterRepositoryInterface
     /**
      * Count all hosts by status for non admin user
      *
-     * @return array The number of hosts by status
+     * @return HostCounter The number of hosts by status
      * @throws \Exception
      */
     public function countHostsForNonAdminUser(): HostCounter;
@@ -45,7 +45,7 @@ interface CounterRepositoryInterface
     /**
      * Count all hosts by status for admin user
      *
-     * @return array The number of hosts by status
+     * @return HostCounter The number of hosts by status
      * @throws \Exception
      */
     public function countHostsForAdminUser(): HostCounter;
