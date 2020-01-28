@@ -79,12 +79,6 @@ class CounterService extends AbstractCentreonService implements CounterServiceIn
      */
     public function countHosts(): HostCounter
     {
-        if ($this->contact->isAdmin()) {
-            return $this->counterRepository->countHostsForAdminUser();
-        } else {
-            return $this->counterRepository
-                ->filterByAccessGroups($this->accessGroups)
-                ->countHostsForNonAdminUser();
-        }
+        return $this->counterRepository->countHostsForAdminUser();
     }
 }

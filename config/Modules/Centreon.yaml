@@ -80,12 +80,6 @@ services:
             - method: setSqlRequestTranslator
               arguments: ['@sqlRequestTranslator']
 
-    Centreon\Domain\Monitoring\Interfaces\CounterServiceInterface:
-        class: Centreon\Domain\Monitoring\CounterService
-
-    Centreon\Domain\Monitoring\Interfaces\CounterRepositoryInterface:
-        class: Centreon\Infrastructure\Monitoring\CounterRepositoryRDB
-
     # Downtime
     Centreon\Domain\Downtime\Interfaces\DowntimeServiceInterface:
         class: Centreon\Domain\Downtime\DowntimeService

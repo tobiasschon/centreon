@@ -48,10 +48,6 @@ class HostCounter
      */
     private $unreachableUnhandled = 0;
     /**
-     * @var int Number of up hosts
-     */
-    private $up = 0;
-    /**
      * @var int Number of pending hosts
      */
     private $pending = 0;
@@ -129,24 +125,6 @@ class HostCounter
     public function setUnreachableUnhandled(int $unreachableUnhandled): HostCounter
     {
         $this->unreachableTotal = $unreachableUnhandled;
-        return $this;
-    }
-
-    /**
-     * @return int
-     */
-    public function getUp(): int
-    {
-        return $this->up;
-    }
-
-    /**
-     * @param int $up
-     * @return HostCounter
-     */
-    public function setUp(int $up): HostCounter
-    {
-        $this->up = $up;
         return $this;
     }
 

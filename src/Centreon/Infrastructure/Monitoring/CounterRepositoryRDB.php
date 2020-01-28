@@ -129,9 +129,8 @@ final class CounterRepositoryRDB extends AbstractRepositoryDRB implements Counte
                 ->setDownTotal((int) $result['down_total'])
                 ->setUnreachableUnhandled((int) $result['unreachable'])
                 ->setUnreachableTotal((int) $result['unreachable_total'])
-                ->setUp((int) $result['up_total'])
                 ->setPending((int) $result['pending_total'])
-                ->setTotal($result['down_total'] + $result['unreachable_total'] + $result['up_total']);
+                ->setTotal($result['down_total'] + $result['unreachable_total']);
         }
 
         return $counter;

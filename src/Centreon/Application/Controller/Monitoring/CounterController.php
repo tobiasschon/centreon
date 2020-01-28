@@ -51,9 +51,8 @@ class CounterController extends AbstractFOSRestController
     /**
      * Entry point to get count of real time hosts by status.
      *
-     * @IsGranted("ROLE_API_REALTIME", message="You are not authorized to access this resource")
      * @Rest\Get(
-     *     "/monitoring/counter/hosts",
+     *     "unknown",
      *     condition="request.attributes.get('version.is_beta') == true")
      *
      * @return View
@@ -61,6 +60,8 @@ class CounterController extends AbstractFOSRestController
      */
     public function countHosts()
     {
+        return $this->view([]);
+        /*
         $hostCounter = $this->counterService
             ->filterByContact($this->getUser())
             ->countHosts();
@@ -74,11 +75,11 @@ class CounterController extends AbstractFOSRestController
                 'total' => $hostCounter->getUnreachableTotal(),
                 'unhandled' => $hostCounter->getUnreachableUnhandled(),
             ],
-            'up' => $hostCounter->getUp(),
             'pending' => $hostCounter->getPending(),
             'total' => $hostCounter->getTotal(),
         ];
 
         return $this->view($hosts);
+        */
     }
 }
