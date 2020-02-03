@@ -141,7 +141,7 @@ try {
           junit 'xunit-reports/**/*.xml'
           if ((currentBuild.result == 'UNSTABLE') || (acceptanceStatus != 0))
             currentBuild.result = 'FAILURE'
-          archiveArtifacts allowEmptyArchive: true, artifacts: 'acceptance-logs/*.txt, acceptance-logs/*.png, acceptance-logs/*.flv'
+          archiveArtifacts allowEmptyArchive: true, artifacts: 'acceptance-logs/*.txt'
         }
       }
     }
