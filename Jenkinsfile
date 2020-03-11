@@ -59,7 +59,17 @@ try {
         ])
         recordIssues(
           enabledForFailure: true,
-          tools: [checkStyle(pattern: 'codestyle-be.xml'), esLint(pattern: 'codestyle-fe.xml')],
+          aggregatingResults: true,
+          tools: [
+            checkStyle(pattern: 'codestyle-be.xml'),
+            checkStyle(pattern: 'phpstan.xml')
+          ],
+          referenceJobName: 'centreon-web/master'
+        )
+        recordIssues(
+          enabledForFailure: true,
+          failOnError: true,
+          tools: [esLint(pattern: 'codestyle-fe.xml')],
           referenceJobName: 'centreon-web/master'
         )
 
@@ -76,7 +86,9 @@ try {
             commentTemplate: "**{{violation.severity}}**: {{violation.message}}",
 
             violationConfigs: [
-              [parser: 'CHECKSTYLE', pattern: '.*/codestyle.xml$', reporter: 'Checkstyle']
+              [parser: 'CHECKSTYLE', pattern: '.*/codestyle-be.xml$', reporter: 'Checkstyle'],
+              [parser: 'CHECKSTYLE', pattern: '.*/codestyle-fe.xml$', reporter: 'Checkstyle'],
+              [parser: 'CHECKSTYLE', pattern: '.*/phpstan.xml$', reporter: 'Checkstyle']
             ]
           ])
         }
