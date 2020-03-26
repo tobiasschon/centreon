@@ -24,7 +24,7 @@ namespace Centreon\Domain\Gorgone\Command;
 
 use Centreon\Domain\Gorgone\Interfaces\CommandInterface;
 
-abstract class BasicCommand
+abstract class AbstractCommand
 {
     /**
      * @var string Token of the command assigned by the Gorgone server.
@@ -34,22 +34,22 @@ abstract class BasicCommand
     /**
      * @var int Poller id
      */
-    protected $monitoringInstanceId;
+    private $monitoringInstanceId;
 
     /**
-     * @var string|null
+     * @var string|null Body of the request that will be send in case of request of type POST, PUT or PATCH
      */
-    protected $bodyRequest;
+    private $bodyRequest;
 
     /**
      * We create a command for a specific poller.
      *
-     * @param int $pollerId Poller id for which this command is intended
-     * @param string|null $bodyRequest
+     * @param int $monitoringServer Id of the monitoring server for which this command is intended
+     * @param string|null $bodyRequest Body of the request
      */
-    public function __construct(int $pollerId, string $bodyRequest = null)
+    public function __construct(int $monitoringServer, string $bodyRequest = null)
     {
-        $this->monitoringInstanceId = $pollerId;
+        $this->monitoringInstanceId = $monitoringServer;
         $this->bodyRequest = $bodyRequest;
     }
 
@@ -78,5 +78,15 @@ abstract class BasicCommand
     public function setToken(string $token): void
     {
         $this->token = $token;
+    }
+
+    /**
+     * Returns the body of the request that will be sent to the Gorgone server.
+     *
+     * @return string|null Body of the request
+     */
+    public function getBodyRequest(): ?string
+    {
+        return $this->bodyRequest;
     }
 }

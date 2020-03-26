@@ -20,15 +20,17 @@
  */
 declare(strict_types=1);
 
-namespace Centreon\Domain\Gorgone\Command\Action;
+namespace Centreon\Domain\Gorgone\Command;
 
-use Centreon\Domain\Gorgone\Command\BasicCommand;
 use Centreon\Domain\Gorgone\Interfaces\CommandInterface;
 
-class Command implements CommandInterface
+/**
+ * This class is designed to send command of action type to the Gorgone server.
+ *
+ * @package Centreon\Domain\Gorgone\Command
+ */
+final class Command extends AbstractCommand implements CommandInterface
 {
-    use BasicCommand;
-
     private const NAME = "action::command";
 
     /**
@@ -36,15 +38,7 @@ class Command implements CommandInterface
      */
     public function getUriRequest(): string
     {
-        return 'nodes/' . $this->monitoringInstanceId . '/core/action/command';
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function getBodyRequest(): string
-    {
-        return $this->bodyRequest;
+        return 'nodes/' . $this->getMonitoringInstanceId() . '/core/action/command';
     }
 
     /**
