@@ -24,7 +24,7 @@ namespace Centreon\Domain\Gorgone\Command;
 
 use Centreon\Domain\Gorgone\Interfaces\CommandInterface;
 
-trait BasicCommand
+abstract class BasicCommand
 {
     /**
      * @var string Token of the command assigned by the Gorgone server.
@@ -34,12 +34,12 @@ trait BasicCommand
     /**
      * @var int Poller id
      */
-    private $monitoringInstanceId;
+    protected $monitoringInstanceId;
 
     /**
      * @var string|null
      */
-    private $bodyRequest;
+    protected $bodyRequest;
 
     /**
      * We create a command for a specific poller.
