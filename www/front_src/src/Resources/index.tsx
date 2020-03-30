@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+//import React, { useEffect, useState } from 'react';
+import * as React from 'react';
 
 import axios from 'axios';
 
@@ -43,9 +44,10 @@ const defaultStates = criterias?.states;
 const Resources = (): JSX.Element => {
   const classes = useStyles();
   const theme = useTheme();
+  console.log('renderr')
 
-  const [listing, setListing] = useState<ResourceListing>();
-  const [selectedResources, setSelectedResources] = useState<Array<Resource>>(
+  const [listing, setListing] = React.useState<ResourceListing>();
+  const [selectedResources, setSelectedResources] = React.useState<Array<Resource>>(
     [],
   );
   const [resourcesToAcknowledge, setResourcesToAcknowledge] = React.useState<
@@ -55,28 +57,28 @@ const Resources = (): JSX.Element => {
     Array<Resource>
   >([]);
 
-  const [sorto, setSorto] = useState<'asc' | 'desc'>();
-  const [sortf, setSortf] = useState<string>();
-  const [limit, setLimit] = useState<number>(30);
-  const [page, setPage] = useState<number>(1);
+  const [sorto, setSorto] = React.useState<'asc' | 'desc'>();
+  const [sortf, setSortf] = React.useState<string>();
+  const [limit, setLimit] = React.useState<number>(30);
+  const [page, setPage] = React.useState<number>(1);
 
-  const [filter, setFilter] = useState(defaultFilter);
-  const [search, setSearch] = useState<string>();
-  const [resourceTypes, setResourceTypes] = useState<Array<FilterModel>>(
+  const [filter, setFilter] = React.useState(defaultFilter);
+  const [search, setSearch] = React.useState<string>();
+  const [resourceTypes, setResourceTypes] = React.useState<Array<FilterModel>>(
     defaultResourceTypes,
   );
-  const [states, setStates] = useState<Array<FilterModel>>(defaultStates);
-  const [statuses, setStatuses] = useState<Array<FilterModel>>(defaultStatuses);
-  const [hostGroups, setHostGroups] = useState<Array<FilterModel>>();
-  const [serviceGroups, setServiceGroups] = useState<Array<FilterModel>>();
+  const [states, setStates] = React.useState<Array<FilterModel>>(defaultStates);
+  const [statuses, setStatuses] = React.useState<Array<FilterModel>>(defaultStatuses);
+  const [hostGroups, setHostGroups] = React.useState<Array<FilterModel>>();
+  const [serviceGroups, setServiceGroups] = React.useState<Array<FilterModel>>();
 
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = React.useState(true);
 
   const { showMessage } = useSnackbar();
   const showError = (message): void =>
     showMessage({ message, severity: Severity.error });
 
-  const [tokenSource] = useState(axios.CancelToken.source());
+  const [tokenSource] = React.useState(axios.CancelToken.source());
 
   const load = (): void => {
     setLoading(true);
@@ -106,13 +108,13 @@ const Resources = (): JSX.Element => {
       .finally(() => setLoading(false));
   };
 
-  useEffect(() => {
+  React.useEffect(() => {
     return (): void => {
       tokenSource.cancel();
     };
   }, []);
 
-  useEffect(() => {
+  React.useEffect(() => {
     load();
   }, [
     sortf,
@@ -266,6 +268,7 @@ const Resources = (): JSX.Element => {
 
   return (
     <div className={classes.page}>
+      aaad
       <div className={classes.filter}>
         <Filter
           filter={filter}

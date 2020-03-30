@@ -3,7 +3,6 @@
 /* eslint-disable react/react-in-jsx-scope */
 /* eslint-disable no-multi-assign */
 /* eslint-disable func-names */
-
 import AppProvider from './Provider';
 
 // make an IIFE function to allow "await" usage

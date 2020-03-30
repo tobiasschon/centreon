@@ -27,6 +27,7 @@ import { fetchExternalComponents } from './redux/actions/externalComponentsActio
 import styles from './App.scss';
 import footerStyles from './components/footer/footer.scss';
 import contentStyles from './styles/partials/_content.scss';
+import Toto from './Toto';
 
 // Extends Window interface
 declare global {
@@ -135,6 +136,7 @@ class App extends Component<Props, State> {
                   }}
                 >
                   <div className={styles['main-content']}>
+                    <Toto />
                     <MainRouter />
                   </div>
                 </Fullscreen>
