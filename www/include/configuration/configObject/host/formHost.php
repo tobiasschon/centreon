@@ -297,13 +297,17 @@ $attrHosts = array(
     'multiple' => true,
     'linkedObject' => 'centreonHost'
 );
-$hostTplRoute = './include/common/webServices/rest/internal.php?object=centreon_configuration_hosttemplates'
+$hostTplRoute = './api/internal.php?object=centreon_configuration_hosttemplate'
     . '&action=list';
 $attrHostTpls = array(
     'datasourceOrigin' => 'ajax',
     'availableDatasetRoute' => $hostTplRoute,
-    'multiple' => true,
-    'linkedObject' => 'centreonHosttemplates'
+    'multiple' => false,
+    'allowClear' => false,
+    'linkedObject' => 'centreonHosttemplates',
+    'defaultDataset' => [
+        //['id' => 1, 'text' => 'toto']
+    ],
 );
 $hostGrAvRoute = './include/common/webServices/rest/internal.php?object=centreon_configuration_hostgroup&action=list';
 $attrHostgroups = array(
@@ -458,6 +462,7 @@ $cloneSetMacro[] = $form->addElement(
 
 
 $cloneSetTemplate = array();
+/*
 $cloneSetTemplate[] = $form->addElement(
     'select',
     'tpSelect[#index#]',
@@ -469,6 +474,25 @@ $cloneSetTemplate[] = $form->addElement(
         "type" => "select-one"
     )
 );
+*/
+/*
+$hostTplRoute = './include/common/webServices/rest/internal.php?object=centreon_configuration_hosttemplates'
+    . '&action=list';
+$attrHostTpls = array(
+    'datasourceOrigin' => 'ajax',
+    'availableDatasetRoute' => $hostTplRoute,
+    'multiple' => true,
+    'linkedObject' => 'centreonHosttemplates'
+);
+*/
+$cloneSetTemplate[] = $form->addElement(
+    'select2',
+    'tpSelect_#index#',
+    _("Host template"),
+    [],
+    $attrHostTpls
+);
+$form->addElement('select2', 'host_cs', _("Linked Contacts"), array(), $attrContact1);
 
 $dupSvTpl[] = $form->createElement('radio', 'dupSvTplAssoc', null, _("Yes"), '1');
 $dupSvTpl[] = $form->createElement('radio', 'dupSvTplAssoc', null, _("No"), '0');
