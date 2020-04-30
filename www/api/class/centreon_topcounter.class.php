@@ -76,7 +76,7 @@ class CentreonTopCounter extends CentreonWebService
         $this->centreon = $centreon;
 
         parent::__construct();
-        $this->pearDBMonitoring = new CentreonDB('centstorage');
+        $this->pearDBMonitoring = new CentreonDB('centstoragereplica');
 
         // get refresh interval from database
         $this->initRefreshInterval();
@@ -850,6 +850,7 @@ class CentreonTopCounter extends CentreonWebService
 
         try {
             $dbResult = $this->pearDBMonitoring->query($query);
+            
         } catch (\Exception $e) {
             throw new \RestInternalServerErrorException($e);
         }

@@ -136,6 +136,10 @@ class CentreonDB extends \PDO
                     $this->dsn['hostspec'] = $conf_centreon["hostCentstorage"];
                     $this->dsn['database'] = $conf_centreon["dbcstg"];
                     break;
+                case "centstoragereplica":
+                    $this->dsn['hostspec'] = '10.30.2.95';
+                    $this->dsn['database'] = 'centreon_storage';
+                break;
                 case "centreon":
                 case "default":
                     $this->dsn['hostspec'] = $conf_centreon["hostCentreon"];
@@ -158,11 +162,13 @@ class CentreonDB extends \PDO
                 $this->options
             );
         } catch (Exception $e) {
-            if (false === $silent && php_sapi_name() != "cli") {
-                $this->displayConnectionErrorPage($e->getMessage());
-            } else {
-                throw new Exception($e->getMessage());
-            }
+            echo $e->getMessage();
+            exit;
+            // if (false === $silent && php_sapi_name() != "cli") {
+            //     $this->displayConnectionErrorPage($e->getMessage());
+            // } else {
+            //     throw new Exception($e->getMessage());
+            // }
         }
     }
 
