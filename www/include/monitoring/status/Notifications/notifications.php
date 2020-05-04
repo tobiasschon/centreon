@@ -117,8 +117,7 @@ if ($obj->is_admin) {
         "AND acl.host_id = h.host_id" . $obj->access->queryBuilder("AND", "acl.group_id", $obj->grouplistStr)
     );
 }
-$res = $obj->DBC->query($sql);
-$obj->XML->startElement("data");
+
 if (!isset($_SESSION['centreon_notification_preferences'])) {
     $user_id = $centreon->user->get_id();
     $res_pref = $obj->DB->query("SELECT cp_key, cp_value
@@ -133,53 +132,60 @@ if (!isset($_SESSION['centreon_notification_preferences'])) {
 } else {
     $notification_preferences = $_SESSION['centreon_notification_preferences'];
 }
-while ($row = $res->fetch()) {
-    $obj->XML->startElement("message");
-    if ($row['description']) {
-        if (isset($notification_preferences['monitoring_svc_notification_' . $row['state']])) {
-            $obj->XML->writeAttribute(
-                "output",
-                sprintf(
-                    "%s / %s is %s",
-                    $row['name'],
-                    $row['description'],
-                    $service_state_label[$row['state']]
-                )
-            );
-            $obj->XML->writeAttribute("class", $service_class_label[$row['state']]);
-        }
-        if (!isset($_SESSION['disable_sound']) &&
-            isset($notification_preferences['monitoring_sound_svc_notification_' . $row['state']]) &&
-            $notification_preferences['monitoring_sound_svc_notification_' . $row['state']]
-        ) {
-            $obj->XML->writeAttribute(
-                "sound",
+
+$obj->XML->startElement("data");
+
+if (!empty($notification_preferences)) {
+    $res = $obj->DBC->query($sql);
+
+    while ($row = $res->fetch()) {
+        $obj->XML->startElement("message");
+        if ($row['description']) {
+            if (isset($notification_preferences['monitoring_svc_notification_' . $row['state']])) {
+                $obj->XML->writeAttribute(
+                    "output",
+                    sprintf(
+                        "%s / %s is %s",
+                        $row['name'],
+                        $row['description'],
+                        $service_state_label[$row['state']]
+                    )
+                );
+                $obj->XML->writeAttribute("class", $service_class_label[$row['state']]);
+            }
+            if (!isset($_SESSION['disable_sound']) &&
+                isset($notification_preferences['monitoring_sound_svc_notification_' . $row['state']]) &&
                 $notification_preferences['monitoring_sound_svc_notification_' . $row['state']]
-            );
-        }
-    } else {
-        if (isset($notification_preferences['monitoring_host_notification_' . $row['state']])) {
-            $obj->XML->writeAttribute(
-                "output",
-                sprintf(
-                    "%s is %s",
-                    $row['name'],
-                    $host_state_label[$row['state']]
-                )
-            );
-            $obj->XML->writeAttribute("class", $host_class_label[$row['state']]);
-        }
-        if (!isset($_SESSION['disable_sound']) &&
-            isset($notification_preferences['monitoring_sound_host_notification_' . $row['state']]) &&
-            $notification_preferences['monitoring_sound_host_notification_' . $row['state']]
-        ) {
-            $obj->XML->writeAttribute(
-                "sound",
+            ) {
+                $obj->XML->writeAttribute(
+                    "sound",
+                    $notification_preferences['monitoring_sound_svc_notification_' . $row['state']]
+                );
+            }
+        } else {
+            if (isset($notification_preferences['monitoring_host_notification_' . $row['state']])) {
+                $obj->XML->writeAttribute(
+                    "output",
+                    sprintf(
+                        "%s is %s",
+                        $row['name'],
+                        $host_state_label[$row['state']]
+                    )
+                );
+                $obj->XML->writeAttribute("class", $host_class_label[$row['state']]);
+            }
+            if (!isset($_SESSION['disable_sound']) &&
+                isset($notification_preferences['monitoring_sound_host_notification_' . $row['state']]) &&
                 $notification_preferences['monitoring_sound_host_notification_' . $row['state']]
-            );
+            ) {
+                $obj->XML->writeAttribute(
+                    "sound",
+                    $notification_preferences['monitoring_sound_host_notification_' . $row['state']]
+                );
+            }
         }
+        $obj->XML->endElement();
     }
-    $obj->XML->endElement();
 }
 $obj->XML->endElement();
 
