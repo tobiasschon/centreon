@@ -79,15 +79,48 @@ class ServiceConfigurationRepositoryRDB extends AbstractRepositoryDRB implements
     /**
      * @inheritDoc
      */
-    public function findOnDemandServiceMacros(int $serviceId): array
+    public function findOnDemandServiceMacros(int $serviceId, bool $isUsingInheritance = false): array
     {
         try {
-            $request = $this->translateDbName('
-                SELECT svc_macro_id AS id, svc_macro_name AS name, svc_macro_value AS `value`, macro_order AS `order`,
-                is_password, description
-                FROM `:db`.on_demand_macro_service
-                WHERE svc_svc_id = :service_id
-            ');
+            if ($isUsingInheritance) {
+                $request = $this->translateDbName(
+                    'WITH RECURSIVE inherite AS (
+                        SELECT srv.service_id, srv.service_template_model_stm_id AS template_id,
+                            demand.svc_macro_id AS macro_id, demand.svc_macro_name AS name, 0 AS level
+                        FROM `:db`.service srv
+                        LEFT JOIN `:db`.on_demand_macro_service demand
+                            ON srv.service_id = demand.svc_svc_id
+                        WHERE service_id = :service_id
+                        UNION
+                        SELECT srv.service_id, srv.service_template_model_stm_id AS template_id,
+                            demand.svc_macro_id AS macro_id, demand.svc_macro_name AS name, inherite.level + 1
+                        FROM `:db`.service srv
+                        INNER JOIN inherite
+                            ON inherite.template_id = srv.service_id
+                        LEFT JOIN `:db`.on_demand_macro_service demand
+                            ON srv.service_id = demand.svc_svc_id
+                    )
+                    SELECT demand.svc_macro_id AS id, demand.svc_macro_name AS name, demand.svc_macro_value AS `value`,
+                      demand.macro_order AS `order`, demand.description, demand.svc_svc_id AS service_id,
+                        CASE
+                            WHEN demand.is_password IS NULL THEN \'0\'
+                            ELSE demand.is_password
+                        END is_password
+                    FROM inherite
+                    INNER JOIN `:db`.on_demand_macro_service demand
+                        ON demand.svc_macro_id = inherite.macro_id
+                    WHERE inherite.name IS NOT NULL
+                    GROUP BY inherite.name'
+                );
+            } else {
+                $request = $this->translateDbName(
+                    'SELECT svc_macro_id AS id, svc_macro_name AS name, svc_macro_value AS `value`,
+                        macro_order AS `order`, is_password, description, svc_svc_id AS service_id
+                    FROM `:db`.on_demand_macro_service
+                    WHERE svc_svc_id = :service_id'
+                );
+            }
+
             $statement = $this->db->prepare($request);
             $statement->bindValue(':service_id', $serviceId, \PDO::PARAM_INT);
             $statement->execute();
@@ -124,8 +157,8 @@ class ServiceConfigurationRepositoryRDB extends AbstractRepositoryDRB implements
                     AND inherite.command_command_id IS NULL
                 )
                 SELECT command.command_line 
-                FROM inherite 
-                INNER JOIN centreon.command 
+                FROM inherite
+                INNER JOIN `:db`.command
                     ON command.command_id = inherite.command_command_id'
             );
             $statement = $this->db->prepare($request);

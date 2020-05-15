@@ -89,10 +89,10 @@ class HostConfigurationService implements HostConfigurationServiceInterface
     /**
      * @inheritDoc
      */
-    public function findOnDemandHostMacros(int $hostId): array
+    public function findOnDemandHostMacros(int $hostId, bool $isUsingInheritance = false): array
     {
         try {
-            return $this->hostConfigurationRepository->findOnDemandHostMacros($hostId);
+            return $this->hostConfigurationRepository->findOnDemandHostMacros($hostId, $isUsingInheritance);
         } catch (\Throwable $ex) {
             throw new HostConfigurationException('', 0, $ex);
         }
@@ -106,7 +106,7 @@ class HostConfigurationService implements HostConfigurationServiceInterface
         $hostMacrosPassword = [];
         // If contains on-demand host macros
         if (strpos($command, '$_HOST') !== false) {
-            $onDemandHostMacros = $this->findOnDemandHostMacros($hostId);
+            $onDemandHostMacros = $this->findOnDemandHostMacros($hostId, true);
             foreach ($onDemandHostMacros as $hostMacro) {
                 if ($hostMacro->isPassword()) {
                     $hostMacrosPassword[] = $hostMacro;

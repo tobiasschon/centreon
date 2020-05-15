@@ -84,10 +84,10 @@ class ServiceConfigurationService implements ServiceConfigurationServiceInterfac
     /**
      * @inheritDoc
      */
-    public function findOnDemandServiceMacros(int $serviceId): array
+    public function findOnDemandServiceMacros(int $serviceId, bool $isUsingInheritance = false): array
     {
         try {
-            return $this->serviceRepository->findOnDemandServiceMacros($serviceId);
+            return $this->serviceRepository->findOnDemandServiceMacros($serviceId, $isUsingInheritance);
         } catch (RepositoryException $ex) {
             throw $ex;
         } catch (\Throwable $ex) {
@@ -103,7 +103,7 @@ class ServiceConfigurationService implements ServiceConfigurationServiceInterfac
         $serviceMacrosPassword = [];
         // If contains on-demand service macros
         if (strpos($command, '$_SERVICE') !== false) {
-            $onDemandServiceMacros = $this->findOnDemandServiceMacros($serviceId);
+            $onDemandServiceMacros = $this->findOnDemandServiceMacros($serviceId, true);
             foreach ($onDemandServiceMacros as $serviceMacro) {
                 if ($serviceMacro->isPassword()) {
                     $serviceMacrosPassword[] = $serviceMacro;

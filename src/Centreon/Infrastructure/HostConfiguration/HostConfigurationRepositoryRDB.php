@@ -251,11 +251,11 @@ class HostConfigurationRepositoryRDB extends AbstractRepositoryDRB implements Ho
                 host.host_activate AS host_is_activate, nagios.id AS monitoring_server_id,
                 nagios.name AS monitoring_server_name, ext.*
                 FROM `:db`.host host
-                LEFT JOIN `centreon`.extended_host_information ext
+                LEFT JOIN `:db`.extended_host_information ext
                     ON ext.host_host_id = host.host_id
-                INNER JOIN `centreon`.ns_host_relation host_server
+                INNER JOIN `:db`.ns_host_relation host_server
                     ON host_server.host_host_id = host.host_id
-                INNER JOIN `centreon`.nagios_server nagios
+                INNER JOIN `:db`.nagios_server nagios
                     ON nagios.id = host_server.nagios_server_id 
                 WHERE host.host_id = :host_id
                 AND host.host_register = \'1\''
@@ -324,18 +324,60 @@ class HostConfigurationRepositoryRDB extends AbstractRepositoryDRB implements Ho
     /**
      * @inheritDoc
      */
-    public function findOnDemandHostMacros(int $hostId): array
+    public function findOnDemandHostMacros(int $hostId, bool $isUsingInheritance = false): array
     {
         try {
-            $request = $this->translateDbName('
-            SELECT host_macro_id AS id, host_macro_name AS name, host_macro_value AS `value`, macro_order AS `order`,
-            CASE 
-                WHEN is_password IS NULL THEN \'0\'
-                ELSE is_password
-            END is_password, description
-            FROM `:db`.on_demand_macro_host
-            WHERE host_host_id = :host_id
-        ');
+            if ($isUsingInheritance) {
+                $request = $this->translateDbName(
+                    'WITH RECURSIVE inherite AS (
+                        SELECT relation.host_host_id, relation.host_tpl_id, relation.order, demand.host_macro_id,
+                            demand.host_macro_name, 0 AS level
+                        FROM `:db`.host
+                        LEFT JOIN `:db`.host_template_relation relation
+                            ON relation.host_host_id  = host.host_id
+                        LEFT JOIN on_demand_macro_host demand
+                            ON demand.host_host_id = host.host_id
+                        WHERE host.host_id = :host_id
+                        UNION ALL
+                        SELECT relation.host_host_id, relation.host_tpl_id, relation.order, demand.host_macro_id,
+                            demand.host_macro_name, inherite.level + 1
+                        FROM `:db`.host
+                        INNER JOIN inherite
+                            ON inherite.host_tpl_id = host.host_id
+                        LEFT JOIN `:db`.host_template_relation relation
+                            ON relation.host_host_id  = host.host_id
+                        LEFT JOIN on_demand_macro_host demand
+                            ON demand.host_host_id = host.host_id
+                    )
+                    SELECT macro.host_macro_id AS id, macro.host_macro_name AS name,
+                        macro.host_macro_value AS `value`, macro.macro_order AS `order`, macro.host_host_id AS host_id,
+                        CASE 
+                            WHEN is_password IS NULL THEN \'0\'
+                            ELSE is_password
+                        END is_password, description
+                    FROM (
+                        SELECT * 
+                        FROM inherite
+                        WHERE host_macro_id IS NOT NULL
+                        GROUP BY inherite.level, inherite.order, host_macro_name
+                    ) AS tpl
+                    INNER JOIN `:db`.on_demand_macro_host macro
+                        ON macro.host_macro_id = tpl.host_macro_id
+                    GROUP BY tpl.host_macro_name'
+                );
+            } else {
+                $request = $this->translateDbName(
+                    'SELECT host_macro_id AS id, host_macro_name AS name, host_macro_value AS `value`, 
+                        macro_order AS `order`, host_host_id AS host_id,
+                        CASE 
+                            WHEN is_password IS NULL THEN \'0\'
+                            ELSE is_password
+                        END is_password, description
+                    FROM `:db`.on_demand_macro_host
+                    WHERE host_host_id = :host_id'
+                );
+            }
+
             $statement = $this->db->prepare($request);
             $statement->bindValue(':host_id', $hostId, \PDO::PARAM_INT);
             $statement->execute();

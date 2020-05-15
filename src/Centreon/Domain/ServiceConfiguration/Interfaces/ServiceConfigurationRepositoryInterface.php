@@ -35,10 +35,11 @@ interface ServiceConfigurationRepositoryInterface
      * Find all service macros for the service.
      *
      * @param int $serviceId Id of the service
+     * @param bool $isUsingInheritance Indicates whether to use inheritance to find service macros (FALSE by default)
      * @return array<ServiceMacro> List of service macros found
      * @throws RepositoryException
      */
-    public function findOnDemandServiceMacros(int $serviceId): array;
+    public function findOnDemandServiceMacros(int $serviceId, bool $isUsingInheritance = false): array;
 
     /**
      * Find the command of a service.

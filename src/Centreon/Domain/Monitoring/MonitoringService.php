@@ -373,10 +373,12 @@ class MonitoringService extends AbstractCentreonService implements MonitoringSer
                 );
 
                 $onDemandServiceMacro = $this->serviceConfiguration->findOnDemandServiceMacros(
-                    $monitoringService->getId()
+                    $monitoringService->getId(),
+                    true
                 );
                 $onDemandHostMacro = $this->hostConfiguration->findOnDemandHostMacros(
-                    $monitoringService->getHost()->getId()
+                    $monitoringService->getHost()->getId(),
+                    true
                 );
 
                 $configurationToken = explode(' ', $configurationCommand);
