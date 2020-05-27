@@ -22,7 +22,6 @@ declare(strict_types=1);
 
 namespace Centreon\Application\Controller;
 
-use _HumbugBox01d8f9a04075\Nette\Neon\Exception;
 use Centreon\Application\Normalizer\IconUrlNormalizer;
 use Centreon\Domain\RequestParameters\Interfaces\RequestParametersInterface;
 use FOS\RestBundle\Context\Context;
