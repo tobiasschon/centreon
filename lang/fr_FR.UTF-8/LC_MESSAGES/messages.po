@@ -10573,6 +10573,9 @@ msgstr "Services utilisés"
 msgid "Check"
 msgstr "Vérification"
 
+msgid "check"
+msgstr "Vérifier"
+
 #: centreon-web/www/include/configuration/configObject/command/listCommand.php:157
 msgid "Host links (host template links)"
 msgstr "Liés aux modèles d'hôtes"

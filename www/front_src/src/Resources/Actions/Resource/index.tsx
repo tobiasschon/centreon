@@ -11,7 +11,7 @@ import { useCancelTokenSource, Severity, useSnackbar } from '@centreon/ui';
 import IconDowntime from '../../icons/Downtime';
 import {
   labelAcknowledge,
-  labelCheck,
+  labelCheckEventView,
   labelSomethingWentWrong,
   labelCheckCommandSent,
   labelDowntimeEventView,
@@ -128,7 +128,7 @@ const ResourceActions = (): JSX.Element => {
           startIcon={<IconCheck />}
           onClick={prepareToCheck}
         >
-          {labelCheck}
+          {labelCheckEventView}
         </ActionButton>
       </Grid>
       {resourcesToAcknowledge.length > 0 && (

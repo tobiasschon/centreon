@@ -65,6 +65,7 @@ export const labelSetDowntimeOnServices = I18n.t(
   'Set downtime on services attached to host',
 );
 export const labelCheck = I18n.t('Check');
+export const labelCheckEventView = I18n.t('check');
 export const labelLastCheck = I18n.t('Last check');
 export const labelLastNotification = I18n.t('Last notification');
 export const labelLastStateChange = I18n.t('Last state change');
