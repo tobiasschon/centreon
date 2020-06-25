@@ -11,10 +11,10 @@ import { useCancelTokenSource, Severity, useSnackbar } from '@centreon/ui';
 import IconDowntime from '../../icons/Downtime';
 import {
   labelAcknowledge,
-  labelDowntime,
   labelCheck,
   labelSomethingWentWrong,
   labelCheckCommandSent,
+  labelDowntimeEventView,
 } from '../../translatedLabels';
 import AcknowledgeForm from './Acknowledge';
 import DowntimeForm from './Downtime';
@@ -119,7 +119,7 @@ const ResourceActions = (): JSX.Element => {
           startIcon={<IconDowntime />}
           onClick={prepareToSetDowntime}
         >
-          {labelDowntime}
+          {labelDowntimeEventView}
         </ActionButton>
       </Grid>
       <Grid item>

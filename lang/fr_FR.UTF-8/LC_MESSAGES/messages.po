@@ -15252,6 +15252,9 @@ msgstr "Changer l'heure de début"
 msgid "Host group"
 msgstr "Groupe d'hôtes"
 
+msgid "DownTime"
+msgstr "Planifier une maintenance"
+
 msgid "Downtime"
 msgstr "Temps d'arrêt"
 

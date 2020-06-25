@@ -53,6 +53,7 @@ export const labelGraph = I18n.t('Graph');
 export const labelHost = I18n.t('Host');
 export const labelHostGroup = I18n.t('Host group');
 export const labelDowntime = I18n.t('Downtime');
+export const labelDowntimeEventView = I18n.t('DownTime');
 export const labelInDowntime = I18n.t('In downtime');
 export const labelLast24h = I18n.t('Last 24 hours');
 export const labelLast7Days = I18n.t('Last 7 days');

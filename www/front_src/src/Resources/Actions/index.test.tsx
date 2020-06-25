@@ -21,7 +21,7 @@ import {
   labelDisableAutorefresh,
   labelEnableAutorefresh,
   labelAcknowledge,
-  labelDowntime,
+  labelDowntimeEventView,
   labelSetDowntime,
   labelSetDowntimeOnServices,
   labelAcknowledgeServices,
@@ -171,7 +171,7 @@ describe(Actions, () => {
 
   it.each([
     [labelAcknowledge, labelAcknowledgedByAdmin, labelAcknowledge],
-    [labelDowntime, labelDowntimeByAdmin, labelSetDowntime],
+    [labelDowntimeEventView, labelDowntimeByAdmin, labelSetDowntime],
   ])(
     'cannot send a %p request when the corresponding action is fired and the comment field is left empty',
     async (labelAction, labelComment, labelConfirmAction) => {
@@ -286,7 +286,7 @@ describe(Actions, () => {
       context.setSelectedResources(selectedResources);
     });
 
-    fireEvent.click(getByText(labelDowntime));
+    fireEvent.click(getByText(labelDowntimeEventView));
 
     await findByText(labelDowntimeByAdmin);
 
@@ -314,9 +314,11 @@ describe(Actions, () => {
       context.setSelectedResources(selectedResources);
     });
 
-    await waitFor(() => expect(getByText(labelDowntime)).toBeEnabled());
+    await waitFor(() =>
+      expect(getByText(labelDowntimeEventView)).toBeEnabled(),
+    );
 
-    fireEvent.click(getByText(labelDowntime));
+    fireEvent.click(getByText(labelDowntimeEventView));
 
     await findByText(labelDowntimeByAdmin);
 
@@ -344,7 +346,7 @@ describe(Actions, () => {
       context.setSelectedResources(selectedResources);
     });
 
-    fireEvent.click(getByText(labelDowntime));
+    fireEvent.click(getByText(labelDowntimeEventView));
 
     mockedAxios.get.mockResolvedValueOnce({ data: {} });
     mockedAxios.post.mockResolvedValueOnce({}).mockResolvedValueOnce({});
@@ -461,7 +463,7 @@ describe(Actions, () => {
     await waitFor(() => {
       expect(getByText(labelCheck)).toBeDisabled();
       expect(getByText(labelAcknowledge)).toBeDisabled();
-      expect(getByText(labelDowntime)).toBeDisabled();
+      expect(getByText(labelDowntimeEventView)).toBeDisabled();
     });
   });
 
@@ -508,7 +510,7 @@ describe(Actions, () => {
   it.each([
     [
       labelSetDowntime,
-      labelDowntime,
+      labelDowntimeEventView,
       labelServicesDenied,
       cannotDowntimeServicesAcl,
     ],
@@ -518,7 +520,12 @@ describe(Actions, () => {
       labelServicesDenied,
       cannotAcknowledgeServicesAcl,
     ],
-    [labelSetDowntime, labelDowntime, labelHostsDenied, cannotDowntimeHostsAcl],
+    [
+      labelSetDowntime,
+      labelDowntimeEventView,
+      labelHostsDenied,
+      cannotDowntimeHostsAcl,
+    ],
     [
       labelAcknowledge,
       labelAcknowledge,
@@ -562,7 +569,7 @@ describe(Actions, () => {
   it.each([
     [
       labelSetDowntime,
-      labelDowntime,
+      labelDowntimeEventView,
       labelSetDowntimeOnServices,
       cannotDowntimeServicesAcl,
     ],
