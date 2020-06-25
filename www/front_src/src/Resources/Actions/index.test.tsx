@@ -28,7 +28,7 @@ import {
   labelNotify,
   labelFixed,
   labelChangeEndDate,
-  labelCheck,
+  labelCheckEventView,
   labelServicesDenied,
   labelHostsDenied,
 } from '../translatedLabels';
@@ -401,7 +401,7 @@ describe(Actions, () => {
     mockedAxios.all.mockResolvedValueOnce([]);
     mockedAxios.post.mockResolvedValueOnce({}).mockResolvedValueOnce({});
 
-    fireEvent.click(getByText(labelCheck));
+    fireEvent.click(getByText(labelCheckEventView));
 
     await waitFor(() => {
       expect(mockedAxios.post).toHaveBeenCalledWith(
@@ -461,7 +461,7 @@ describe(Actions, () => {
     });
 
     await waitFor(() => {
-      expect(getByText(labelCheck)).toBeDisabled();
+      expect(getByText(labelCheckEventView)).toBeDisabled();
       expect(getByText(labelAcknowledge)).toBeDisabled();
       expect(getByText(labelDowntimeEventView)).toBeDisabled();
     });
