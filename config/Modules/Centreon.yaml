@@ -151,3 +151,18 @@ services:
     Centreon\Domain\HostConfiguration\Interfaces\HostConfigurationServiceInterface:
         class: Centreon\Domain\HostConfiguration\HostConfigurationService
         public: true
+
+    # Log configuration
+    monolog.formater:
+        class: Monolog\Formatter\LineFormatter
+        arguments: ["[%%datetime%%] %%level_name%%: %%message%% %%context%% %%extra%%\n", null, true, true]
+
+    monolog.processor.user_processor:
+        class: Centreon\Domain\Log\UserProcessor
+        tags:
+            - { name: monolog.processor, handler: file_log }
+
+    Monolog\Processor\MemoryUsageProcessor:
+        class: Monolog\Processor\MemoryUsageProcessor
+        tags:
+            - { name: monolog.processor, handler: file_log }

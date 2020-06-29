@@ -16,6 +16,7 @@ parameters:
     validation_path: "%env(_CENTREON_PATH_)%config/packages/validator"
     centreon_path: "%env(_CENTREON_PATH_)%"
     translation_path: "%centreon_path%/www/locale"
+    log.path: "/var/log/centreon/app.log"
 
 services:
     # Default configuration for services in *this* file

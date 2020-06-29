@@ -46,6 +46,8 @@ use Centreon\Domain\RequestParameters\Interfaces\RequestParametersInterface;
 use Centreon\Domain\RequestParameters\RequestParameters;
 use Centreon\Domain\VersionHelper;
 use JMS\Serializer\Exception\ValidationFailedException;
+use Psr\Log\LoggerInterface;
+use Psr\Log\LogLevel;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\Response;
@@ -100,20 +102,27 @@ class CentreonEventSubscriber implements EventSubscriberInterface
      * @var Security
      */
     private $security;
+    /**
+     * @var LoggerInterface
+     */
+    private $logger;
 
     /**
      * @param RequestParametersInterface $requestParameters
      * @param ContainerInterface $container
      * @param Security $security
+     * @param LoggerInterface $logger
      */
     public function __construct(
         RequestParametersInterface $requestParameters,
         ContainerInterface $container,
-        Security $security
+        Security $security,
+        LoggerInterface $logger
     ) {
         $this->container = $container;
         $this->requestParameters = $requestParameters;
         $this->security = $security;
+        $this->logger = $logger;
     }
 
     /**
@@ -300,6 +309,7 @@ class CentreonEventSubscriber implements EventSubscriberInterface
     {
         $flagController = 'Controller';
         $errorIsBeforeController = true;
+        //$this->logger->error($this->formatException($event->getThrowable()));
 
         // We detect if the exception occurred before the kernel called the controller
         foreach ($event->getException()->getTrace() as $trace) {
@@ -382,6 +392,26 @@ class CentreonEventSubscriber implements EventSubscriberInterface
                 new Response($errorMessage, $httpCode)
             );
         }
+    }
+
+    private function formatException(\Throwable $exception): string
+    {
+        $errorMessage = '';
+        $showInto = '';
+        $showInto = function(\Throwable $ex) use (&$errorMessage, &$showInto) {
+            $errorMessage .= sprintf(
+                "%s:%d in %s at line %d",
+                $ex->getMessage(),
+                $ex->getCode(),
+                $ex->getFile(),
+                $ex->getLine()
+            );
+            if ($ex->getPrevious() !== null) {
+                $showInto($ex->getPrevious());
+            }
+        };
+        $showInto($exception);
+        return $errorMessage;
     }
 
     /**
