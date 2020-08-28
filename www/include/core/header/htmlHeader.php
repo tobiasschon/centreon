@@ -86,7 +86,7 @@ print "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n";
 
     ?>
     <?php if (!isset($_REQUEST['iframe']) || (isset($_REQUEST['iframe']) && $_REQUEST['iframe'] != 1)) { ?>
-        <script type="text/javascript" src="./include/common/javascript/jquery/jquery.min.js"></script>
+        <script type="text/javascript" src="./include/common/javascript/jquery/jquery-3.5.1.min.js"></script>
         <script type="text/javascript" src="./include/common/javascript/jquery/plugins/toggleClick/jquery.toggleClick.js"></script>
         <script type="text/javascript" src="./include/common/javascript/jquery/plugins/select2/js/select2.full.min.js"></script>
         <script type="text/javascript" src="./include/common/javascript/centreon/centreon-select2.js"></script>
