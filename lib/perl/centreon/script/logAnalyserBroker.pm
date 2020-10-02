@@ -145,13 +145,13 @@ sub parseFile($$) {
                 next if ($cur_ctime < $self->{retention_time});
                 my @tab = split(/;/, $2);
                 next if (!defined($self->{cache_host_service}{$tab[1] . ":" . $tab[2]}->{service_id}));
-                push @log_table_rows, [($cur_ctime, $tab[1], $tab[2], $svc_status_code{$tab[3]}, $tab[5], $tab[4], $tab[0], '', 0, '2', $instance_name, $self->{cache_host}{$tab[1]}, $self->{cache_host_service}{$tab[1] . ":" . $tab[2]}->{service_id})];
+                push @log_table_rows, [($cur_ctime, $tab[1], $tab[2], $svc_status_code{$tab[3]}, $tab[5], $tab[4], $tab[0], undef, 0, '2', $instance_name, $self->{cache_host}{$tab[1]}, $self->{cache_host_service}{$tab[1] . ":" . $tab[2]}->{service_id})];
             } elsif ($_ =~ m/^\[([0-9]*)\](?:\s\[[0-9]*\])*\sHOST NOTIFICATION\:\s(.*)$/) {
                 $cur_ctime = $1;
                 next if ($cur_ctime < $self->{retention_time});
                 my @tab = split(/;/, $2);
                 next if (!defined($self->{cache_host}{$tab[1]}));
-                push @log_table_rows, [($cur_ctime, $tab[1], undef, $host_status_code{$tab[2]}, $tab[4], $tab[3], $tab[0], '', 0, '3', $instance_name, $self->{cache_host}{$tab[1]}, undef)];
+                push @log_table_rows, [($cur_ctime, $tab[1], undef, $host_status_code{$tab[2]}, $tab[4], $tab[3], $tab[0], undef, 0, '3', $instance_name, $self->{cache_host}{$tab[1]}, undef)];
             } elsif ($_ =~ m/^\[([0-9]*)\](?:\s\[[0-9]*\])*\sCURRENT\sHOST\sSTATE\:\s(.*)$/) {
                 $cur_ctime = $1;
                 next if ($cur_ctime < $self->{retention_time});
